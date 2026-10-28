@@ -1,0 +1,17 @@
+galbench visual assets
+
+Character illustrations were supplied by the project owner from community AI
+character artwork. The original artists retain their respective rights.
+The project does not claim authorship of those community illustrations.
+
+The following CG illustrations were generated with the built-in imagegen tool
+using the supplied character illustrations as visual references:
+- club-cg-v1.png: DeepSeek, GPT and Claude in a literature club.
+- arena-duel-cg-v1.png: Gemini, GPT and Grok in a fictional arena.
+- archive-table-cg-v1.png: Claude, Qwen and Kimi around a story research table.
+
+Brand icons are from LobeHub Icons:
+https://github.com/lobehub/lobe-icons
+The accompanying icons/LICENSE contains the original MIT permission notice.
+DeepSeek's monochrome mark uses the brand blue color #4D6BFE.
+These marks identify their respective brands and do not imply endorsement.

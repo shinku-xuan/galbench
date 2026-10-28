@@ -1,0 +1,319 @@
+{
+  "source_note": "作品展示封面来自 Steam 商店及其图片 CDN，版权属于各自权利人。",
+  "covers": [
+    {
+      "id": "steam-324160",
+      "title": "CLANNAD",
+      "image": "/covers/steam-324160.jpg",
+      "source": "Steam",
+      "source_url": "https://store.steampowered.com/app/324160/",
+      "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/324160/library_600x900.jpg"
+    },
+    {
+      "id": "steam-412830",
+      "title": "STEINS;GATE",
+      "image": "/covers/steam-412830.jpg",
+      "source": "Steam",
+      "source_url": "https://store.steampowered.com/app/412830/",
+      "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/412830/library_600x900.jpg"
+    },
+    {
+      "id": "steam-1230140",
+      "title": "ATRI -My Dear Moments-",
+      "image": "/covers/steam-1230140.jpg",
+      "source": "Steam",
+      "source_url": "https://store.steampowered.com/app/1230140/",
+      "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1230140/library_600x900.jpg"
+    },
+    {
+      "id": "steam-897220",
+      "title": "Summer Pockets",
+      "image": "/covers/steam-897220.jpg",
+      "source": "Steam",
+      "source_url": "https://store.steampowered.com/app/897220/",
+      "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/897220/library_600x900.jpg"
+    },
+    {
+      "id": "steam-623080",
+      "title": "planetarian HD",
+      "image": "/covers/steam-623080.jpg",
+      "source": "Steam",
+      "source_url": "https://store.steampowered.com/app/623080/",
+      "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/623080/library_600x900.jpg",
+      "aliases": [
+        "planetarian ～ちいさなほしのゆめ～",
+        "planetarian"
+      ]
+    },
+    {
+      "id": "steam-1680000",
+      "title": "Rewrite+",
+      "image": "/covers/steam-1680000.jpg",
+      "source": "Steam",
+      "source_url": "https://store.steampowered.com/app/1680000/",
+      "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1680000/library_600x900.jpg",
+      "aliases": [
+        "Rewrite"
+      ]
+    },
+    {
+      "id": "steam-421660",
+      "title": "Harmonia",
+      "image": "/covers/steam-421660.jpg",
+      "source": "Steam",
+      "source_url": "https://store.steampowered.com/app/421660/",
+      "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/421660/library_600x900.jpg"
+    },
+    {
+      "id": "steam-1811500",
+      "title": "LOOPERS",
+      "image": "/covers/steam-1811500.jpg",
+      "source": "Steam",
+      "source_url": "https://store.steampowered.com/app/1811500/",
+      "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1811500/library_600x900.jpg"
+    },
+    {
+      "id": "steam-2510770",
+      "title": "Stella of The End",
+      "image": "/covers/steam-2510770.jpg",
+      "source": "Steam",
+      "source_url": "https://store.steampowered.com/app/2510770/",
+      "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2510770/library_600x900.jpg"
+    },
+    {
+      "id": "steam-2983250",
+      "title": "AIR",
+      "image": "/covers/steam-2983250.jpg",
+      "source": "Steam",
+      "source_url": "https://store.steampowered.com/app/2983250/",
+      "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2983250/library_600x900.jpg"
+    },
+    {
+      "id": "steam-2850310",
+      "title": "Kanon",
+      "image": "/covers/steam-2850310.jpg",
+      "source": "Steam",
+      "source_url": "https://store.steampowered.com/app/2850310/",
+      "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2850310/library_600x900.jpg"
+    },
+    {
+      "id": "steam-326480",
+      "title": "If My Heart Had Wings",
+      "image": "/covers/steam-326480.jpg",
+      "source": "Steam",
+      "source_url": "https://store.steampowered.com/app/326480/",
+      "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/326480/library_600x900.jpg"
+    },
+    {
+      "id": "steam-303310",
+      "title": "The House in Fata Morgana",
+      "image": "/covers/steam-303310.jpg",
+      "source": "Steam",
+      "source_url": "https://store.steampowered.com/app/303310/",
+      "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/303310/library_600x900.jpg"
+    },
+    {
+      "id": "steam-345610",
+      "title": "The Fruit of Grisaia",
+      "image": "/covers/steam-345610.jpg",
+      "source": "Steam",
+      "source_url": "https://store.steampowered.com/app/345610/",
+      "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/345610/library_600x900.jpg"
+    },
+    {
+      "id": "steam-2138000",
+      "title": "Hoshizora no Memoria -Eternal Heart- HD",
+      "image": "/covers/steam-2138000.jpg",
+      "source": "Steam",
+      "source_url": "https://store.steampowered.com/app/2138000/",
+      "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2138000/library_600x900.jpg"
+    },
+    {
+      "id": "steam-1144400",
+      "title": "Senren＊Banka",
+      "image": "/covers/steam-1144400.jpg",
+      "source": "Steam",
+      "source_url": "https://store.steampowered.com/app/1144400/",
+      "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1144400/library_600x900.jpg"
+    },
+    {
+      "id": "steam-1277930",
+      "title": "Riddle Joker",
+      "image": "/covers/steam-1277930.jpg",
+      "source": "Steam",
+      "source_url": "https://store.steampowered.com/app/1277930/",
+      "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1277930/library_600x900.jpg"
+    },
+    {
+      "id": "steam-802880",
+      "title": "Muv-Luv",
+      "image": "/covers/steam-802880.jpg",
+      "source": "Steam",
+      "source_url": "https://store.steampowered.com/app/802880/",
+      "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/802880/library_600x900.jpg"
+    },
+    {
+      "id": "steam-802890",
+      "title": "Muv-Luv Alternative",
+      "image": "/covers/steam-802890.jpg",
+      "source": "Steam",
+      "source_url": "https://store.steampowered.com/app/802890/",
+      "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/802890/library_600x900.jpg"
+    },
+    {
+      "id": "steam-970570",
+      "title": "CHAOS;CHILD",
+      "image": "/covers/steam-970570.jpg",
+      "source": "Steam",
+      "source_url": "https://store.steampowered.com/app/970570/",
+      "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/970570/library_600x900.jpg"
+    },
+    {
+      "id": "steam-1111390",
+      "title": "ROBOTICS;NOTES DaSH",
+      "image": "/covers/steam-1111390.jpg",
+      "source": "Steam",
+      "source_url": "https://store.steampowered.com/app/1111390/",
+      "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1111390/library_600x900.jpg"
+    },
+    {
+      "id": "steam-2432110",
+      "title": "WHITE ALBUM: Memories like Falling Snow",
+      "image": "/covers/steam-2432110.jpg",
+      "source": "Steam",
+      "source_url": "https://store.steampowered.com/app/2432110/",
+      "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2432110/library_600x900.jpg"
+    },
+    {
+      "id": "steam-976390",
+      "title": "9-nine-:Episode 1",
+      "image": "/covers/steam-976390.jpg",
+      "source": "Steam",
+      "source_url": "https://store.steampowered.com/app/976390/",
+      "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/976390/library_600x900.jpg"
+    },
+    {
+      "id": "steam-2052410",
+      "title": "WITCH ON THE HOLY NIGHT",
+      "image": "/covers/steam-2052410.jpg",
+      "source": "Steam",
+      "source_url": "https://store.steampowered.com/app/2052410/",
+      "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2052410/library_600x900.jpg"
+    },
+    {
+      "id": "steam-2396980",
+      "title": "Fate/stay night REMASTERED",
+      "image": "/covers/steam-2396980.jpg",
+      "source": "Steam",
+      "source_url": "https://store.steampowered.com/app/2396980/",
+      "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2396980/library_600x900.jpg"
+    },
+    {
+      "id": "steam-745960",
+      "title": "A Sky Full of Stars 仰望夜空的星辰",
+      "image": "/covers/steam-745960.jpg",
+      "source": "Steam",
+      "source_url": "https://store.steampowered.com/app/745960/",
+      "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/745960/library_600x900.jpg"
+    },
+    {
+      "id": "steam-430960",
+      "title": "Lucy -The Eternity She Wished For-",
+      "image": "/covers/steam-430960.jpg",
+      "source": "Steam",
+      "source_url": "https://store.steampowered.com/app/430960/",
+      "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/430960/library_600x900.jpg"
+    },
+    {
+      "id": "steam-527190",
+      "title": "WORLD END ECONOMiCA episode.03",
+      "image": "/covers/steam-527190.jpg",
+      "source": "Steam",
+      "source_url": "https://store.steampowered.com/app/527190/",
+      "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/527190/library_600x900.jpg"
+    },
+    {
+      "id": "steam-629650",
+      "title": "Symphonic Rain",
+      "image": "/covers/steam-629650.jpg",
+      "source": "Steam",
+      "source_url": "https://store.steampowered.com/app/629650/",
+      "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/629650/library_600x900.jpg"
+    },
+    {
+      "id": "steam-2392500",
+      "title": "Ever 17 - The Out of Infinity",
+      "image": "/covers/steam-2392500.jpg",
+      "source": "Steam",
+      "source_url": "https://store.steampowered.com/app/2392500/",
+      "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2392500/library_600x900.jpg"
+    },
+    {
+      "id": "steam-635940",
+      "title": "Little Busters! English Edition",
+      "image": "/covers/steam-635940.jpg",
+      "source": "Steam",
+      "source_url": "https://store.steampowered.com/app/635940/",
+      "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/635940/library_600x900.jpg",
+      "aliases": [
+        "Little Busters!"
+      ]
+    },
+    {
+      "id": "steam-857450",
+      "title": "ISLAND",
+      "image": "/covers/steam-857450.jpg",
+      "source": "Steam",
+      "source_url": "https://store.steampowered.com/app/857450/",
+      "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/857450/library_600x900.jpg"
+    },
+    {
+      "id": "steam-1044620",
+      "title": "Aokana - Four Rhythms Across the Blue",
+      "image": "/covers/steam-1044620.jpg",
+      "source": "Steam",
+      "source_url": "https://store.steampowered.com/app/1044620/",
+      "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1044620/library_600x900.jpg"
+    },
+    {
+      "id": "steam-264380",
+      "title": "Narcissu 1st & 2nd",
+      "image": "/covers/steam-264380.jpg",
+      "source": "Steam",
+      "source_url": "https://store.steampowered.com/app/264380/",
+      "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/264380/library_600x900.jpg"
+    },
+    {
+      "id": "steam-315810",
+      "title": "eden*",
+      "image": "/covers/steam-315810.jpg",
+      "source": "Steam",
+      "source_url": "https://store.steampowered.com/app/315810/",
+      "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/315810/library_600x900.jpg"
+    },
+    {
+      "id": "steam-888790",
+      "title": "Sabbat of the Witch",
+      "image": "/covers/steam-888790.jpg",
+      "source": "Steam",
+      "source_url": "https://store.steampowered.com/app/888790/",
+      "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/888790/library_600x900.jpg"
+    },
+    {
+      "id": "steam-1277940",
+      "title": "Kinkoi: Golden Loveriche",
+      "image": "/covers/steam-1277940.jpg",
+      "source": "Steam",
+      "source_url": "https://store.steampowered.com/app/1277940/",
+      "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1277940/library_600x900.jpg"
+    },
+    {
+      "id": "steam-1111380",
+      "title": "ROBOTICS;NOTES ELITE",
+      "image": "/covers/steam-1111380.jpg",
+      "source": "Steam",
+      "source_url": "https://store.steampowered.com/app/1111380/",
+      "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1111380/library_600x900.jpg"
+    }
+  ]
+}

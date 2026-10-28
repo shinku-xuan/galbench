@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>galbench · 模型攻略大赛</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/app.css">
+  <link rel="stylesheet" href="/arena.css">
+  <link rel="stylesheet" href="/quest.css">
+  <link rel="stylesheet" href="/novel.css">
+  <link rel="stylesheet" href="/cast.css">
+  <script src="/arena.js" defer></script>
+  <script src="/quest.js" defer></script>
+  <script src="/novel.js" defer></script>
+  <script src="/cast.js" defer></script>
+  <script src="/app.js" defer></script>
+</head>
+<body data-screen="title">
+  <section id="title-screen" class="title-screen" aria-labelledby="title-logo">
+    <div class="title-copy">
+      <div class="title-atmosphere" aria-hidden="true"><span class="title-color-orb orb-lilac"></span><span class="title-color-orb orb-rose"></span><span class="title-color-orb orb-blue"></span>
+        <svg class="title-constellation" viewBox="0 0 660 1000" preserveAspectRatio="none" focusable="false"><defs><linearGradient id="title-signal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#9b78cc"/><stop offset=".5" stop-color="#cb86b5"/><stop offset="1" stop-color="#e2ae8e"/></linearGradient></defs><g fill="none" stroke="url(#title-signal)" stroke-width="1"><path d="M371 72 492 120 561 222 493 281 590 355M24 739 100 682 191 733 245 845 421 888M492 120 493 281M100 682 245 845"/><ellipse cx="581" cy="576" rx="125" ry="177" transform="rotate(18 581 576)"/><ellipse cx="581" cy="576" rx="100" ry="190" transform="rotate(-24 581 576)"/><path d="M45 381h34m-17-17v34M524 824h26m-13-13v26"/></g><g fill="#faf3ff" stroke="#bc8fc4" stroke-width="1.3"><circle cx="371" cy="72" r="4"/><circle cx="492" cy="120" r="7"/><circle cx="561" cy="222" r="4"/><circle cx="493" cy="281" r="5"/><circle cx="590" cy="355" r="3"/><circle cx="24" cy="739" r="4"/><circle cx="100" cy="682" r="6"/><circle cx="191" cy="733" r="3"/><circle cx="245" cy="845" r="7"/><circle cx="421" cy="888" r="4"/></g></svg>
+        <span class="title-dust dust-one">✧</span><span class="title-dust dust-two">✦</span><span class="title-dust dust-three">♡</span><span class="title-dust dust-four">✧</span><span class="title-ghost-type">STORY<br>MEETS AI.</span>
+      </div>
+      <div class="title-center"><div class="title-ai-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><span>AI</span><b>✦</b></div><h1 id="title-logo">gal<span>bench</span><em>让模型，走进故事里。</em></h1><p class="title-description">测测模型，记得多少故事。</p><div class="title-route-tags"><span>游戏内知识</span><span>角色识图</span><span>剧情总结</span></div><button type="button" id="enter-arena" class="title-enter">进入攻略大厅 <span>↗</span></button></div>
+      <div class="title-bottom"><button type="button" data-cover-credits>封面与来源 ↗</button></div>
+    </div>
+    <div class="title-wall"><div id="cover-wall" class="cover-wall" aria-hidden="true"></div><div class="wall-caption"><strong id="cover-wall-count">故事封面集</strong><button type="button" id="toggle-cover-motion" aria-pressed="false">Ⅱ 暂停滚动</button></div></div>
+  </section>
+  <div id="app-shell" hidden inert>
+  <header class="topbar">
+    <a class="brand" id="show-title" href="/" aria-label="返回 galbench 标题页"><span class="brand-icon">✦</span> galbench</a>
+    <div class="top-actions"><button type="button" id="open-config-top" class="secondary">⚙ 选手准备室</button></div>
+  </header>
+  <main>
+    <section class="intro arena-hero cast-hero" id="cast-hero" data-scene="dashboard" aria-label="AI 伙伴小剧场">
+      <div class="cast-atmosphere" aria-hidden="true"><span class="cast-orbit orbit-one"></span><span class="cast-orbit orbit-two"></span><span class="cast-spark spark-one">✧</span><span class="cast-spark spark-two">✦</span><span class="cast-spark spark-three">＋</span><span id="cast-ghost-type" class="cast-ghost-type">AFTER SCHOOL</span></div>
+      <div class="hero-copy cast-copy"><div class="eyebrow cast-eyebrow"><span class="cast-status-dot"></span><span id="cast-location">AI 同好会</span></div><h1 id="hero-title">和 AI 娘一起，<br><em>攻略故事的世界。</em></h1><div class="cast-copy-foot"><div class="cast-foot-copy"><div class="cast-actions"><button type="button" id="cast-primary" class="cast-primary">准备登场 <span>↗</span></button><button type="button" id="cast-gallery-open" class="cast-secondary">伙伴档案 <span>✧</span></button></div></div><figure class="cast-bloom" id="cast-bloom" aria-label="多家 AI 的图标从共同星核向上涌现"><div class="cast-bloom-art"><canvas id="cast-bloom-canvas" class="bloom-canvas" width="480" height="420" aria-hidden="true"></canvas><div id="cast-bloom-logos" aria-hidden="true"></div><button type="button" class="bloom-source" id="cast-bloom-pulse" title="点亮星核，迸发新的灵感" aria-label="点亮 AI 灵感喷泉"><span>✦</span><b>AI</b></button></div></figure></div></div>
+      <div class="cast-stage" id="cast-stage">
+        <div class="cast-cg-wrap"><img id="cast-cg" class="cast-cg" src="/ai-cast/club-cg-v1.png" alt="DeepSeek、GPT 与 Claude 在阳光下的文学社团相聚" width="1672" height="941" decoding="async"></div>
+        <div class="cast-night-set" aria-hidden="true"><span class="cast-moon"></span><div class="cast-spotlight light-left"></div><div class="cast-spotlight light-right"></div><div class="cast-pedestal"></div></div>
+        <div class="cast-library-set" aria-hidden="true"><div class="cast-library-window"><i></i><i></i><i></i><i></i></div><span class="cast-book-spine spine-one"></span><span class="cast-book-spine spine-two"></span><span class="cast-book-spine spine-three"></span></div>
+        <div class="cast-companion companion-left" aria-hidden="true"><img id="cast-companion-left" alt="" decoding="async"></div><div class="cast-companion companion-right" aria-hidden="true"><img id="cast-companion-right" alt="" decoding="async"></div>
+        <button type="button" id="cast-main-portrait" class="cast-main-portrait" aria-label="查看角色完整立绘" title="查看完整立绘"><img id="cast-main-image" alt="" decoding="async"><span class="cast-card-name"><img id="cast-main-logo" alt="" width="20" height="20"><strong id="cast-main-name"></strong></span></button>
+        <button type="button" id="cast-reset-scene" class="cast-reset-scene" hidden>↶ 回到社团合照</button>
+        <div class="cast-dialogue"><div class="cast-dialogue-top"><strong id="cast-speaker">攻略同好会</strong></div><p id="cast-line" role="status">「这一次，让模型成为故事里的主角。」</p><button type="button" id="cast-next-line" aria-label="下一句角色对白" title="下一句对白">▸</button></div>
+      </div>
+      <div class="cast-roster-bar"><div class="cast-roster-heading"><strong id="cast-roster-heading">选择今日应援</strong></div><div id="cast-roster" class="cast-roster" role="group" aria-label="切换应援角色" title="悬停预览，点击保留"></div></div>
+    </section>
+    <div id="global-error" class="notice error" role="alert" hidden></div>
+    <nav class="page-nav" aria-label="页面导航"><button type="button" class="selected" data-view="dashboard" aria-current="page">出场测试</button><button type="button" data-view="leaderboard">排行榜</button><button type="button" data-view="bank">题库图鉴</button></nav>
+    <dialog id="config-dialog" class="config-dialog"><div class="modal-heading"><div><h2>选手准备室</h2></div><button type="button" class="icon-button" data-close="config-dialog" aria-label="关闭配置">×</button></div><div class="config-dialog-body">
+      <aside class="configuration panel">
+        <div class="section-title"><h2>连接模型</h2></div>
+        <p id="preferences-notice" class="notice" role="status" hidden>接入方式已统一为 Agent。请选择客户端并确认模型；旧 API 配置不再使用。</p>
+        <form id="model-form" autocomplete="off">
+          <fieldset id="settings-fields">
+            <div class="mode-switch" role="group" aria-label="运行模式">
+              <button type="button" id="mode-agent" class="selected" aria-pressed="true">Agent 模型</button>
+              <button type="button" id="mode-demo" aria-pressed="false">本地流程演示</button>
+            </div>
+            <div id="demo-notice" class="notice" hidden>使用固定模拟回答验证流程，不调用外部模型。演示成绩不进入排行榜和战绩馆。</div>
+            <div id="agent-settings">
+              <div class="model-heading"><h3>答题模型</h3></div>
+              <label>Agent 客户端<select id="target-provider"><option value="codex">Codex · Agent CLI</option><option value="minimax_code">MiniMax Code · Agent CLI</option><option value="zcode">ZCode · Agent CLI</option></select></label>
+              <div id="target-cli" hidden>
+                <label>CLI 路径（自动识别，可手工修改）<input id="target-executable" spellcheck="false" placeholder="未发现时可填写完整路径，不含参数"></label><p id="target-path-source" class="muted small cli-path-source"></p>
+                <label><span id="target-model-title">模型调用 ID（可留空）</span><input id="target-cli-model" spellcheck="false" placeholder="例如 gpt-6-luna，留空使用默认模型"></label>
+                <p id="target-model-route" class="muted small cli-path-source"></p><button type="button" id="target-model-template" class="text-button" hidden>填入 DeepSeek Flash 路线 ↗</button>
+                  <label>榜单显示名（不影响实际模型）<input id="target-model-label" maxlength="160" placeholder="例如 DeepSeek Flash" spellcheck="false"></label>
+                  <div id="target-codex-config"><label class="check"><input id="target-use-client-config" type="checkbox" checked>沿用 Codex 客户端配置（支持第三方模型）</label><label>Codex profile（可选）<input id="target-cli-profile" placeholder="留空使用默认配置" spellcheck="false"></label></div>
+                  <details class="advanced"><summary>第三方模型凭据</summary><label>需要传给 Agent 的环境变量名<input id="target-credential-env" placeholder="例如 MCODE_PROVIDER_API_KEY，多个用英文逗号" spellcheck="false"></label><p class="muted small">只填变量名。密钥在启动本程序前设置到环境变量，或交由 Agent 自己管理；不在这里填写密钥。</p></details>
+                <label>每题超时 / 秒<input id="target-cli-timeout" type="number" min="10" max="1800" value="600"></label>
+                <button type="button" id="target-detect-cli" class="text-button">自动填入路径 ↗</button> <button type="button" id="target-check-cli" class="text-button">检查 CLI 安装 ↗</button> <a id="target-cli-docs" class="text-button" target="_blank" rel="noreferrer">官方接入说明 ↗</a>
+                <p id="target-cli-status" class="muted small" role="status"></p>
+                <details class="advanced"><summary>客户端使用说明</summary><p id="target-cli-hint" class="muted small"></p></details>
+              </div>
+              <label class="check"><input id="target-vision" type="checkbox">我确认答题模型支持图片输入</label>
+              <div class="divider"></div>
+              <div class="model-heading"><h3>模型裁判</h3><label class="switch"><input id="judge-enabled" type="checkbox" checked><span>启用</span></label></div>
+              <p class="muted small">用于解释题与总结；关闭后，语义题需人工复核。</p>
+              <fieldset id="judge-fields">
+                <label>Agent 客户端<select id="judge-provider"><option value="codex">Codex · Agent CLI</option><option value="minimax_code">MiniMax Code · Agent CLI</option><option value="zcode">ZCode · Agent CLI</option></select></label>
+                <div id="judge-cli" hidden>
+                  <label>CLI 路径（自动识别，可手工修改）<input id="judge-executable" spellcheck="false" placeholder="未发现时可填写完整路径，不含参数"></label><p id="judge-path-source" class="muted small cli-path-source"></p>
+                  <label><span id="judge-model-title">模型调用 ID（可留空）</span><input id="judge-cli-model" spellcheck="false" placeholder="例如 gpt-6-luna，留空使用默认模型"></label>
+                  <p id="judge-model-route" class="muted small cli-path-source"></p><button type="button" id="judge-model-template" class="text-button" hidden>填入 DeepSeek Flash 路线 ↗</button>
+                  <label>榜单显示名（不影响实际模型）<input id="judge-model-label" maxlength="160" placeholder="例如 DeepSeek Flash" spellcheck="false"></label>
+                  <div id="judge-codex-config"><label class="check"><input id="judge-use-client-config" type="checkbox" checked>沿用 Codex 客户端配置（支持第三方模型）</label><label>Codex profile（可选）<input id="judge-cli-profile" placeholder="留空使用默认配置" spellcheck="false"></label></div>
+                  <details class="advanced"><summary>第三方模型凭据</summary><label>需要传给 Agent 的环境变量名<input id="judge-credential-env" placeholder="例如 MCODE_PROVIDER_API_KEY，多个用英文逗号" spellcheck="false"></label><p class="muted small">只填变量名。密钥在启动本程序前设置到环境变量，或交由 Agent 自己管理；不在这里填写密钥。</p></details>
+                  <label>每次评分超时 / 秒<input id="judge-cli-timeout" type="number" min="10" max="1800" value="600"></label>
+                  <button type="button" id="judge-detect-cli" class="text-button">自动填入路径 ↗</button> <button type="button" id="judge-check-cli" class="text-button">检查 CLI 安装 ↗</button> <a id="judge-cli-docs" class="text-button" target="_blank" rel="noreferrer">官方接入说明 ↗</a>
+                  <p id="judge-cli-status" class="muted small" role="status"></p>
+                  <details class="advanced"><summary>客户端使用说明</summary><p id="judge-cli-hint" class="muted small"></p></details>
+                </div>
+              </fieldset>
+            </div>
+          </fieldset>
+        </form>
+        <datalist id="codex-model-ids"></datalist>
+      </aside>
+      </div><div class="modal-footer"><span class="muted small">模型设置保存在本机，凭据由客户端管理。</span><button type="button" id="finish-config" class="primary">准备好了 ↗</button></div></dialog>
+    <div class="workspace" id="dashboard-view">
+      <div class="main-column">
+        <section class="match-setup panel"><button type="button" class="player-slot" data-config-role="target"><span class="player-avatar">P1</span><span><small>参赛选手</small><strong id="target-summary">选择答题模型</strong><em id="target-connection">点击连接模型</em></span><b>↗</b></button><span class="match-vs">VS</span><button type="button" class="player-slot judge-slot" data-config-role="judge"><span class="player-avatar">J</span><span><small>本场裁判</small><strong id="judge-summary">规则 + 模型裁判</strong><em id="judge-connection">独立评分，更有说服力</em></span><b>↗</b></button></section>
+        <section class="panel routes">
+          <div class="section-title"><span class="step">✦</span><h2>选择你的攻略线</h2></div>
+          <fieldset id="run-fields">
+            <label class="dataset-picker">题库<select id="dataset-profile"></select></label>
+            <div class="route-grid">
+              <label class="route-card text-route"><input type="checkbox" name="board" value="text" checked><span class="route-mark">文</span><strong>游戏内知识</strong><span class="route-description">人物 · 剧情 · 音乐 · 世界观</span><span class="route-count" id="text-count">5 道文本题</span></label>
+              <label class="route-card vision-route"><input type="checkbox" name="board" value="vision" checked><span class="route-mark">像</span><strong>角色识图</strong><span class="route-description">作品名 + 立绘，辨认角色</span><span class="route-count" id="vision-count">3 道立绘题</span></label>
+              <label class="route-card story-route"><input type="checkbox" name="board" value="story" checked><span class="route-mark">叙</span><strong>剧情总结</strong><span class="route-description">阅读片段，梳理剧情</span><span class="route-count" id="story-count">2 道总结题</span></label>
+            </div>
+            <div id="vision-warning" class="notice warning" role="status" hidden>当前答题模型未开启图片支持。请更换模型、确认图片能力，或取消角色识图路线。</div>
+            <div id="budget-warning" class="notice warning" role="status" hidden>已开启思考，但输出预算较小。思考和最终答案共用上限，建议将生成参数中的输出上限提高到至少 32768。</div>
+            <div class="run-options"><label>重复轮数<select id="repeats"><option value="1">1 轮 · 快速体验</option><option value="3">3 轮 · 观察稳定性</option><option value="5">5 轮</option></select></label><label>并发数<select id="concurrency"><option value="1">1</option><option value="2" selected>2</option><option value="3">3</option><option value="4">4</option><option value="8">8</option><option value="16">16</option></select></label></div>
+            <p class="muted small">建议从 2 并发开始，遇到限流会自动降速。</p>
+          </fieldset>
+          <p id="dataset-note" class="muted small">开发赛季 · 成绩用于本地体验与比较。</p>
+          <div class="launch-row"><div><strong id="call-estimate">10 道题 / 10 次答题调用</strong><p class="muted small" id="cost-hint">解释与总结按需调用裁判；额度和计费由客户端通道决定。</p></div><button type="button" id="start-button" class="primary" disabled>开始测试 <span>↗</span></button></div>
+          <details class="guide-note"><summary>题库与计分说明</summary><p id="dataset-scoring-note">新题库的知识与识图按固定答案等权计分，总结使用裁判或人工评分。每榜满分 100，同场三榜总分 300；开发题成绩仅供比较。</p></details>
+        </section>
+        <section class="panel progress-panel quest-panel" id="progress-panel" hidden>
+          <div class="quest-heading"><div class="quest-heading-copy"><span class="quest-eyebrow"><i class="live-dot"></i><span id="quest-phase-badge">攻略中</span></span><h2 id="quest-title" role="status" aria-live="polite">属于模型的攻略时间</h2></div><div class="quest-tools"><span id="elapsed" class="quest-clock" aria-label="已用时间">00:00</span><button type="button" id="quest-motion" class="quest-icon-button" aria-pressed="false" aria-label="暂停小剧场动画" title="暂停动画，测试照常进行">Ⅱ</button><button type="button" id="stop-run" class="quest-stop-button" disabled title="停止后续请求并保留已有记录；已提交服务商的请求仍可能计费"><span>■</span> 停止测试</button></div></div>
+          <div id="quest-theater" class="quest-theater" data-board="text" data-phase="answering" data-paused="false">
+            <div class="quest-scene-label"><strong id="quest-location">记忆森林</strong></div><span id="quest-stage-note" class="quest-stage-note">遇见问题，也遇见故事</span>
+            <div id="quest-memory" class="quest-memory" aria-label="当前或最近一道题目的缩略预览"><div id="quest-memory-image" class="quest-memory-image" aria-hidden="true"><span>✧</span></div><div class="quest-memory-copy"><span id="quest-memory-label">题卡翻阅中</span><strong id="quest-memory-work">正在翻开第一张题卡</strong><p id="quest-memory-excerpt"></p><small id="quest-memory-id"></small></div><i class="memory-paperclip" aria-hidden="true"></i></div>
+            <button type="button" id="quest-error-hud" class="quest-error-hud" title="累计记录实际调用失败和重试告警；答错、待复核和主动停止不计入报错。点击查看记录"><span id="quest-error-symbol" class="quest-error-symbol">✓</span><span class="quest-error-copy"><strong id="quest-error-total" role="status" aria-live="polite">报错 0 次</strong><small id="quest-error-breakdown">旅途顺利，尚未发现调用异常</small></span><span class="quest-error-arrow">↗</span></button>
+            <div class="quest-bug" aria-hidden="true"><i></i><span>!</span><small>捕获小插曲</small></div>
+            <svg class="quest-art" viewBox="0 0 960 310" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+              <defs>
+                <linearGradient id="quest-sky" x2="0" y2="1"><stop class="quest-sky-top" stop-color="#e5dcff"/><stop offset="1" class="quest-sky-bottom" stop-color="#fff0e8"/></linearGradient>
+                <linearGradient id="quest-hill" x2="0" y2="1"><stop stop-color="#d9c9ef"/><stop offset="1" stop-color="#ede2f9"/></linearGradient>
+                <linearGradient id="quest-path" x2="1" y2="0"><stop stop-color="#ece3ff"/><stop offset=".5" stop-color="#fff9f2"/><stop offset="1" stop-color="#f7dfea"/></linearGradient>
+              </defs>
+              <rect width="960" height="310" fill="url(#quest-sky)"/>
+              <circle class="quest-moon" cx="730" cy="82" r="34" fill="#fffdf4"/><circle cx="743" cy="72" r="34" fill="#e9dff9" opacity=".5"/>
+              <g class="quest-stars" fill="#fffef8"><path d="m335 81 3-9 3 9 9 3-9 3-3 9-3-9-9-3z"/><path d="m591 55 2-6 2 6 6 2-6 2-2 6-2-6-6-2z"/><circle cx="445" cy="45" r="2"/><circle cx="810" cy="119" r="2.5"/><circle cx="176" cy="96" r="2"/></g>
+              <g fill="#fff" opacity=".48"><g class="quest-cloud cloud-one"><ellipse cx="225" cy="101" rx="45" ry="11"/><ellipse cx="209" cy="94" rx="19" ry="15"/><ellipse cx="237" cy="96" rx="22" ry="16"/></g><g class="quest-cloud cloud-two"><ellipse cx="540" cy="111" rx="43" ry="10"/><ellipse cx="528" cy="104" rx="20" ry="14"/><ellipse cx="555" cy="106" rx="16" ry="12"/></g></g>
+              <path d="M0 188Q135 114 285 181T580 179T960 157V310H0Z" fill="#d5caed" opacity=".6"/><path d="M0 224Q170 172 340 212T690 211T960 210V310H0Z" fill="url(#quest-hill)"/>
+              <g class="quest-school" fill="#b9a9d0" opacity=".5"><path d="M770 194v-64h54v-24l25-17 25 17v24h56v64z"/><path d="m755 131 43-23 28 22m46 0 28-22 40 23" fill="none" stroke="#b9a9d0" stroke-width="7"/><circle cx="849" cy="119" r="10" fill="#eee6fa"/><path d="M848 112v8h6M785 150h13m12 0h13m53 0h13m12 0h13m-129 19h13m12 0h13m53 0h13m12 0h13" fill="none" stroke="#f4e9fc" stroke-width="6"/></g>
+              <g class="quest-tree" stroke="#b39fca" stroke-width="11" fill="none"><path d="M72 239 65 104 17 67M66 135l65-64M894 235l13-125 49-46M906 144l-49-66"/></g>
+              <g fill="#eac6e1"><ellipse cx="45" cy="71" rx="74" ry="47"/><ellipse cx="109" cy="77" rx="59" ry="36"/><ellipse cx="910" cy="67" rx="87" ry="52"/><ellipse cx="858" cy="85" rx="50" ry="33"/></g><g fill="#f4d8eb"><ellipse cx="24" cy="51" rx="63" ry="32"/><ellipse cx="101" cy="56" rx="50" ry="27"/><ellipse cx="908" cy="45" rx="69" ry="34"/></g>
+              <path d="M0 286Q250 245 480 267T960 277" stroke="url(#quest-path)" stroke-width="49" fill="none"/><path d="M140 268Q370 251 520 269T820 278" stroke="#c8afd7" stroke-width="2" stroke-dasharray="4 12" stroke-linecap="round" fill="none"/>
+              <g fill="#baa6ce" opacity=".55"><path d="m124 249 3-9 4 9m43 44 4-8 4 8m590-42 4-10 4 10m61 35 4-8 4 8"/><ellipse cx="286" cy="289" rx="5" ry="2"/><ellipse cx="607" cy="292" rx="6" ry="2"/></g>
+              <g class="quest-petals" fill="#efabc7"><ellipse class="petal petal-a" cx="223" cy="68" rx="5" ry="2.5" transform="rotate(-25 223 68)"/><ellipse class="petal petal-b" cx="792" cy="73" rx="5" ry="2.5"/><ellipse class="petal petal-c" cx="420" cy="139" rx="4" ry="2.5"/><ellipse class="petal petal-d" cx="615" cy="94" rx="4" ry="2"/></g>
+              <g class="quest-prop prop-text" transform="translate(657 205)"><ellipse cy="59" rx="42" ry="7" fill="#b09bc3" opacity=".25"/><g class="quest-slime"><path d="M-40 36Q-35 11-22 6-13-18 0-12 13-18 23 6 39 14 42 36 46 58 1 57-45 60-40 36Z" fill="#a995df" stroke="#8e78c2" stroke-width="2"/><path d="M-27 18Q-18 5-6 5" fill="none" stroke="#d6c4ff" stroke-width="6" stroke-linecap="round"/><ellipse cx="-12" cy="32" rx="3" ry="5" fill="#594c7b"/><ellipse cx="13" cy="32" rx="3" ry="5" fill="#594c7b"/><path d="m-4 44 4-3 4 3" fill="none" stroke="#594c7b" stroke-width="2"/><ellipse cx="-23" cy="41" rx="6" ry="3" fill="#e7b6d9"/><ellipse cx="24" cy="41" rx="6" ry="3" fill="#e7b6d9"/></g><text class="quest-float-mark" x="0" y="-24" text-anchor="middle" fill="#9a7abd" font-size="27" font-weight="700">?</text></g>
+              <g class="quest-prop prop-vision" transform="translate(665 0)"><ellipse cy="263" rx="37" ry="7" fill="#b09bc3" opacity=".24"/><g class="quest-partner"><path d="M-29 157Q-36 115 0 113 38 112 34 160l5 57-21-7h-43l-11 8z" fill="#ad789c"/><g class="quest-leg partner-leg"><path d="M-12 222v28m24-28v28" stroke="#f8d4cc" stroke-width="10" stroke-linecap="round"/><path d="M-13 242v9m26-9v9" stroke="#fcf8ff" stroke-width="10"/><path d="M-18 255h12m15 0h12" stroke="#73618b" stroke-width="7" stroke-linecap="round"/></g><path d="m-19 184-10 42q30 12 60 0l-12-42z" fill="#8876b8"/><path d="m-22 179-10 20 15 6 4-13h28l4 13 15-6-12-20z" fill="#fff8f4" stroke="#ddcde4" stroke-width="1.5"/><path d="m-18 179 18 18 18-18" fill="#bd9ecc"/><path d="m0 192-7 7 7 13 7-13z" fill="#e58eae"/><path d="M-27 203q-11 8-2 16l18-8m39-8q10 8 1 16l-16-8" fill="none" stroke="#f8d4cc" stroke-width="9" stroke-linecap="round"/><ellipse cy="151" rx="29" ry="30" fill="#ffe2d6"/><path d="M-31 146q-3-31 31-30 32 0 32 32l-13-7-6-15q-7 15-23 18l1-12-12 18z" fill="#b47e9f"/><path d="M-19 123q-15 8-12 29" fill="none" stroke="#c58fac" stroke-width="5" stroke-linecap="round"/><g class="quest-eyes"><ellipse cx="-11" cy="153" rx="3" ry="5" fill="#604f70"/><ellipse cx="11" cy="153" rx="3" ry="5" fill="#604f70"/></g><ellipse cx="-19" cy="164" rx="6" ry="3" fill="#efa7b5" opacity=".6"/><ellipse cx="19" cy="164" rx="6" ry="3" fill="#efa7b5" opacity=".6"/><path d="M-3 167q3 4 6 0" fill="none" stroke="#b5768d" stroke-width="1.8" stroke-linecap="round"/><path d="m25 126 10-9 2 12 11 8-13 2-7-7-9 6-3-12z" fill="#f1a9bf"/><circle cx="29" cy="130" r="4" fill="#f9cfda"/></g></g>
+              <g class="quest-prop prop-story" transform="translate(665 209)"><ellipse cy="55" rx="52" ry="8" fill="#b09bc3" opacity=".2"/><path d="m-51 14 48 5 51-6 5 38-54 7-54-6z" fill="#b29ac9"/><path d="m-48 5 44 3 4 8 5-8 44-4v42l-46 6-3-7-4 7-44-6z" fill="#fff9ef" stroke="#ccb4d9" stroke-width="2"/><path d="M0 16v28m-37-26 23 2m-22 7 24 2m-24 7 24 2m25-19 24-2m-24 11 24-2m-24 11 24-2" stroke="#d9c2df" stroke-width="2"/><g class="quest-page"><path d="m-28-36 36-4 5 31-36 5z" fill="#fffef8" stroke="#d2bfe4"/><path d="m-19-27 18-2m-17 9 18-2" stroke="#ccb7da" stroke-width="2"/></g><g class="quest-page page-two"><path d="m25-64 29 7-7 30-29-7z" fill="#fffef8" stroke="#d2bfe4"/><path d="m30-53 14 3m-16 5 14 3" stroke="#ccb7da" stroke-width="2"/></g></g>
+              <g class="quest-reviewer" transform="translate(665 0)"><ellipse cy="263" rx="50" ry="7" fill="#b09bc3" opacity=".22"/><g class="quest-review-bob"><rect x="-25" y="164" width="50" height="62" rx="16" fill="#9aadc3"/><rect x="-29" y="124" width="58" height="46" rx="16" fill="#f6f1ff" stroke="#a695bd" stroke-width="2"/><path d="M0 123v-10" stroke="#a695bd" stroke-width="3"/><circle cy="109" r="5" fill="#f2adc7"/><rect x="-21" y="137" width="42" height="17" rx="7" fill="#c8c5e2"/><path d="M-11 146h5m12 0h5" stroke="#685e90" stroke-width="3" stroke-linecap="round"/><path d="M-6 160h12" stroke="#c6b5d9" stroke-width="2"/><path d="M-24 181-39 205m63-24 13 25" stroke="#f6f1ff" stroke-width="10" stroke-linecap="round"/></g><path d="M-49 215h98m-87 0v41m77-41v41" stroke="#ae94c2" stroke-width="8" stroke-linecap="round"/><path d="m-27 190 42 6-3 23-42-6z" fill="#fffaf0" stroke="#d8bedb"/><path d="m-18 198 22 3m-23 5 15 2" stroke="#c8aed5" stroke-width="2"/><path class="quest-pen" d="m26 200 9-20" stroke="#9174bc" stroke-width="4" stroke-linecap="round"/></g>
+              <g id="quest-traveler" transform="translate(230 0)"><ellipse cy="263" rx="33" ry="7" fill="#a18abb" opacity=".24"/><g class="quest-player"><path d="m-22 177-17 52 26-5 21 4 9-48z" fill="#a991d6"/><g class="quest-leg leg-left"><path d="M-11 222v29" stroke="#4f526f" stroke-width="11" stroke-linecap="round"/><path d="M-18 255h15" stroke="#514a69" stroke-width="7" stroke-linecap="round"/></g><g class="quest-leg leg-right"><path d="M11 222v29" stroke="#64617f" stroke-width="11" stroke-linecap="round"/><path d="M7 255h15" stroke="#514a69" stroke-width="7" stroke-linecap="round"/></g><path d="m-20 180-8 44q28 9 54 0l-7-44z" fill="#68628e"/><path d="m-15 178 15 18 14-18" fill="#fff9f3"/><path d="m-2 193-3 16 6 6 5-6-5-16z" fill="#bda5e2"/><path d="M-23 189-31 212" stroke="#68628e" stroke-width="12" stroke-linecap="round"/><circle cx="-31" cy="216" r="6" fill="#ffe0ce"/><g class="quest-arm"><path d="m21 189 9 17 16-7" fill="none" stroke="#68628e" stroke-width="12" stroke-linecap="round"/><circle cx="47" cy="198" r="6" fill="#ffe0ce"/><g class="quest-quill"><path d="m45 204 9-40q24-6 9 20l-17 21" fill="#f7d893" stroke="#cfac78" stroke-width="1.5"/><path d="m45 204 17-31" stroke="#ae859f" stroke-width="1.5"/></g><g class="quest-letter"><rect x="34" y="180" width="32" height="23" rx="3" fill="#fff8f1" stroke="#dfb9d0" stroke-width="1.5"/><path d="m35 182 15 11 15-11" fill="none" stroke="#dfb9d0" stroke-width="1.5"/><path d="M50 190q-6-6-7 0 0 4 7 8 7-4 7-8-1-6-7 0" fill="#e8a2c0"/></g></g><path d="M-30 147q-2-35 30-35 35 0 33 35l-6 28-13-2h-32l-10 3z" fill="#69618c"/><ellipse cy="152" rx="28" ry="30" fill="#ffe2d0"/><path d="M-30 145q-1-33 30-33 32 0 32 34l-12-5-3-13q-8 12-19 14l1-13-17 20-2-12-9 15z" fill="#78709c"/><path d="M-17 121q13-8 26-3" fill="none" stroke="#9486b5" stroke-width="4" stroke-linecap="round"/><g class="quest-eyes"><ellipse cx="-10" cy="153" rx="3" ry="5" fill="#574c73"/><ellipse cx="11" cy="153" rx="3" ry="5" fill="#574c73"/></g><ellipse cx="-19" cy="164" rx="5" ry="3" fill="#edaeb7" opacity=".55"/><ellipse cx="19" cy="164" rx="5" ry="3" fill="#edaeb7" opacity=".55"/><path d="M-3 167q4 3 7-1" fill="none" stroke="#b67e86" stroke-width="1.8" stroke-linecap="round"/><path d="m-26 139-5-8 9 2 3-9 3 10 9 1-8 5 2 9-8-5-7 5z" fill="#f3d28f"/></g></g>
+              <g class="quest-projectile" fill="#eaa0be"><path class="quest-flying-heart" d="M462 183c-22-21-34 10 0 27 34-17 22-48 0-27z"/><path class="quest-magic" d="m475 188 5-15 5 15 15 5-15 5-5 15-5-15-15-5z" fill="#f7d89a"/></g>
+              <g class="quest-ending-hearts" fill="#eaa0be"><path d="M589 135c-14-14-23 7 0 19 23-12 14-33 0-19z"/><path d="M623 112c-9-9-15 5 0 13 15-8 9-22 0-13z"/></g>
+            </svg>
+            <div id="quest-cheer-burst" class="quest-cheer-burst" aria-hidden="true"><i>♥</i><i>✦</i><i>♥</i><i>✧</i><i>♥</i><i>✦</i><span>这一题，也请加油！</span></div>
+            <div class="quest-scene-footer"><span id="quest-actor-label">模型选手 · 出发！</span><span id="quest-prop-label">疑问史莱姆出没</span></div>
+          </div>
+          <div class="quest-dialogue"><div class="quest-speaker"><span id="quest-speaker">攻略手记</span><i>◆</i></div><p id="quest-line">先别快进，这句话可能是伏笔。</p><button type="button" id="quest-cheer" title="应援只点亮舞台，不影响评分">应援 <span>♡</span></button></div>
+          <div id="route-progress" class="quest-routes" role="group" aria-label="切换攻略小剧场"></div>
+          <div class="quest-footnote"><span id="quest-sync-note">舞台随实际答题进度推进</span></div>
+          <details id="quest-issues" class="quest-issues" hidden><summary><span id="quest-issues-title">异常记录</span><span>↗</span></summary><p class="quest-issues-note">展示最近 8 条；重试告警和已恢复的异常仍保留累计次数，答错与主动停止不计入。</p><div id="quest-issues-list"></div></details>
+          <details class="quest-details"><summary>比赛详情与运行记录 <span>↗</span></summary><div class="section-title"><h3 id="phase-label">正在准备</h3></div><progress id="run-progress" max="100" value="0" aria-label="答题和判分处理进度"></progress><div class="progress-counts"><span id="target-progress">答题 0 / 10</span><span id="score-progress">判分 0 / 10</span></div><p id="answer-phase-time" class="muted small"></p><div id="active-calls" class="call-list"></div><div id="recent-calls" class="call-list muted"></div><p id="running-note" class="muted small">比赛进行中 · 请保持本地启动窗口运行。</p><details class="log-details"><summary>运行记录</summary><pre id="run-log"></pre></details></details>
+        </section>
+        <section class="panel results" id="results-panel">
+          <div class="section-title"><span class="step">♡</span><h2>探索结果</h2><span id="result-status" class="mini-label"></span></div>
+          <div id="empty-results" class="empty-state"><span class="save-icon">◇</span><h3>新的故事，等待开始</h3><button type="button" id="try-demo" class="text-button">体验演示 →</button></div>
+          <div id="result-content" hidden>
+            <div id="result-banner" class="notice"></div>
+            <div class="result-meta"><strong id="result-model"></strong><span id="result-date"></span></div>
+            <div id="result-overview" class="result-overview"></div>
+            <div id="score-cards" class="score-grid"></div>
+            <details class="guide-note"><summary>分数与正确率怎么看？</summary><p>每榜满分 100。全对率只计满分题，部分正确也得分。比率按已评分样本计算；弃答、无效、未评分单列，未评分不算答错。</p></details>
+            <details class="result-diagnostics"><summary>比赛数据与运行记录 <span>↗</span></summary><div id="operation-stats" class="operation-stats"></div><div id="result-warning" class="notice warning" hidden></div></details>
+            <div class="result-actions"><button type="button" id="view-mistakes" class="secondary">查看错题</button><button type="button" id="view-issues" class="secondary">异常与人工补分</button><button type="button" id="retry-judge-button" class="secondary" hidden>仅补判失败题</button><button type="button" id="rescore-button" class="text-button">按现有记录重新评分（不调用模型）</button></div>
+            <p id="retry-judge-hint" class="muted small" hidden>沿用原裁判，仅补判失败题，不重新答题；可能消耗裁判额度。</p>
+            <div class="download-row"><span>导出存档</span><div id="download-links"></div></div>
+            <p id="output-path" class="muted small output-path"></p>
+          </div>
+        </section>
+      </div>
+    </div>
+    <section id="leaderboard-view" class="full-page leaderboard-page" hidden>
+      <div class="arena-toolbar"><div><span class="eyebrow" id="season-label">第 1 赛季</span><h2>今天，谁站上 C 位？</h2><p class="muted small" id="arena-caption"></p></div><div class="toolbar-actions"><button type="button" id="all-records" class="secondary">↗ 全部记录</button><button type="button" id="clear-rankings" class="text-button danger-text">清除排名</button><button type="button" id="restore-rankings" class="text-button" hidden>恢复历史排名</button></div></div>
+      <div class="panel standings-panel"><div class="standings-filters"><div class="board-tabs" role="group" aria-label="选择排行榜"><button type="button" class="selected" data-rank-board="total">总分王座</button><button type="button" data-rank-board="text">知识擂台</button><button type="button" data-rank-board="vision">识图对决</button><button type="button" data-rank-board="story">故事演绎</button></div><div class="compact-filters"><label class="visually-hidden" for="rank-profile">榜单题库</label><select id="rank-profile"></select><label class="visually-hidden" for="rank-mode">Harness</label><select id="rank-mode"><option value="all">全部 Harness</option></select></div></div><div id="standings-content"></div></div>
+      <section class="panel history-panel" id="history-panel"><div class="section-title"><span class="step">↺</span><div><h2 id="history-title">战绩馆</h2><p id="history-subtitle" class="muted small">选择一位选手，回看 TA 的每一场。</p></div><button type="button" id="refresh-history" class="text-button">刷新 ↻</button></div><div id="model-roster" class="model-roster"></div><div class="history-filters"><label>模型检索<input id="history-search" type="search" placeholder="搜索模型名称…"></label><label>模型厂商<select id="history-vendor"><option value="all">全部厂商</option></select></label><label>成绩类型<select id="history-state"><option value="all">全部成绩</option><option value="complete">完整自动成绩</option><option value="partial">参考 / 未完成</option><option value="manual">人工补分</option></select></label><label>成绩区间<select id="history-range"><option value="all">全部分数</option><option value="high">90–100 分</option><option value="middle">60–89 分</option><option value="low">低于 60 分</option><option value="unknown">尚无评分</option></select></label><label>排序<select id="history-sort"><option value="latest">最近评测</option><option value="score">所选榜单分数</option><option value="model">模型名称</option><option value="vendor">模型厂商</option></select></label></div><div id="history-list" class="record-grid"></div><div class="pagination"><button type="button" id="history-prev" class="secondary">上一页</button><span id="history-page" class="muted small"></span><button type="button" id="history-next" class="secondary">下一页</button></div></section>
+    </section>
+    <section id="mistakes-view" class="panel full-page" hidden>
+      <button type="button" class="text-button back-button" data-back-results>← 返回本次成绩</button><div class="section-title"><span class="step">↳</span><h2>错题回放</h2></div>
+      <p id="mistakes-context" class="muted small">先在测试与成绩页运行测试，或选择一份历史存档。</p>
+      <div class="detail-heading"><h3 id="mistakes-count">未满分题目</h3><label class="visually-hidden" for="result-filter">筛选榜单</label><select id="result-filter"><option value="all">全部榜单</option><option value="text">游戏内知识</option><option value="vision">角色识图</option><option value="story">剧情总结</option></select></div>
+      <p class="muted small">仅显示未满分题；调用与判分异常单独标注，不算答错。</p>
+      <div id="question-results" class="question-grid"></div>
+    </section>
+    <section id="issues-view" class="panel full-page" hidden>
+      <button type="button" class="text-button back-button" data-back-results>← 返回本次成绩</button><div class="section-title"><span class="step">!</span><h2>异常与人工补分</h2></div>
+      <p id="issues-context" class="muted small">先运行测试或选择一份历史存档。</p>
+      <p class="notice">未完成评分的题目不按知识错误计零分。可按实际回答填写人工得分和依据；缺少回答时，可补录核验后的答案。补分保留原始错误、不调用模型，并生成新存档。</p>
+      <div class="detail-heading"><h3 id="issues-count">待人工补分</h3><label class="visually-hidden" for="issues-filter">筛选异常</label><select id="issues-filter"><option value="pending">待人工补分</option><option value="all">全部异常记录</option><option value="manual">已人工补分</option></select></div>
+      <p id="manual-save-status" class="muted small" role="status"></p><div id="issue-results" class="question-grid"></div>
+    </section>
+    <section id="bank-view" class="panel full-page" hidden>
+      <div class="memory-collection-heading"><div><h2>把每一段故事，<em>收进回忆图鉴。</em></h2></div><div class="collection-stamp" aria-hidden="true"><strong>回忆<br>保管中</strong></div></div>
+      <div class="shelf-heading"><h3>作品书架</h3><span id="bank-collection-total">正在整理图鉴…</span><button type="button" id="bank-all-works" class="text-button">全部作品 ↗</button></div><div id="bank-shelf" class="bank-shelf" role="group" aria-label="按作品筛选题目"></div>
+      <div class="bank-filters"><label>题库<select id="bank-profile"></select></label><label>榜单<select id="bank-board"><option value="all">全部榜单</option><option value="text">游戏内知识</option><option value="vision">角色识图</option><option value="story">剧情总结</option></select></label><label>厂商<select id="bank-developer"><option value="all">全部厂商</option></select></label><label>首发年份<select id="bank-year"><option value="all">全部年份</option></select></label><label class="bank-search-field">搜索<input id="bank-search" type="search" maxlength="100" placeholder="题号、作品名或题目内容"></label></div>
+      <p id="bank-count" class="muted small" role="status"></p><div id="bank-questions" class="question-grid"></div>
+      <div class="pagination"><button type="button" id="bank-prev" class="secondary">上一页</button><span id="bank-page" class="muted small"></span><button type="button" id="bank-next" class="secondary">下一页</button></div>
+    </section>
+    <footer><span>galbench</span><button type="button" class="text-button" data-cover-credits>封面与来源 ↗</button></footer>
+  </main>
+  <dialog id="question-dialog" class="question-dialog"><div class="modal-heading"><div><span id="question-dialog-kicker" class="eyebrow"></span><h2 id="question-dialog-title"></h2></div><button type="button" class="icon-button" data-close="question-dialog" aria-label="关闭题目详情">×</button></div><div id="question-dialog-content" class="question-dialog-content"></div></dialog>
+  <dialog id="cast-dialog" class="cast-dialog" aria-labelledby="cast-dialog-title"><div class="modal-heading"><div><h2 id="cast-dialog-title">伙伴档案</h2></div><button type="button" class="icon-button" data-close="cast-dialog" aria-label="关闭伙伴档案">×</button></div><div class="cast-dialog-body"><div class="cast-dialog-art"><img id="cast-dialog-image" alt="" decoding="async"></div><div class="cast-dialog-copy"><img id="cast-dialog-logo" class="cast-dialog-logo" alt="" width="38" height="38"><h3 id="cast-dialog-name"></h3><p id="cast-dialog-quote"></p><div id="cast-dialog-roster" class="cast-dialog-roster" role="group" aria-label="查看其他 AI 角色"></div><a id="cast-original-link" class="cast-original-link" target="_blank" rel="noopener noreferrer">查看完整立绘 ↗</a></div></div></dialog>
+  <dialog id="reset-dialog" class="reset-dialog"><div class="reset-symbol">↻</div><h2>开启一个新赛季？</h2><p>清除当前排名，所有原始战绩仍保留在「全部记录」中。</p><div class="reset-actions"><button type="button" class="secondary" data-close="reset-dialog">再想一下</button><button type="button" id="confirm-clear-rankings" class="primary">清除排名</button></div></dialog>
+  </div>
+  <dialog id="cover-credits" class="cover-credits"><div class="modal-heading"><div><h2>封面与来源</h2></div><button type="button" class="icon-button" id="close-cover-credits" aria-label="关闭封面来源">×</button></div><p class="cover-source-note">封面来自 Steam，版权归原作者；点击可查看商店页。封面墙不代表题库收录范围。</p><div id="cover-credit-list" class="cover-credit-list"></div></dialog>
+  <div id="toast" class="toast" role="status" hidden></div><div id="celebration" class="celebration" aria-hidden="true"></div>
+</body>
+</html>
