@@ -1,6 +1,6 @@
 {
   "schema_version": "galbench-third-party-assets-1.0",
-  "reviewed_at": "2026-10-28",
+  "reviewed_at": "2026-10-29",
   "scope": "Current distributed dev-v2.0, spec/v2.0 and web assets; no raw upstream script dumps, development files or Harness binaries.",
   "project_code_license": "MIT",
   "project_code_license_file": "LICENSE",
@@ -95,6 +95,17 @@
       "license": null,
       "rights_note": "Steam 商店/CDN 可下载不等于取得封面再分发许可。"
     },
+    "vndb-cover": {
+      "license": null,
+      "source_policy_url": "https://vndb.org/d17",
+      "rights_note": "游戏封面图片不在 VNDB 数据许可的统一授权范围内；已记录来源，不声称取得再分发授权。"
+    },
+    "renpy-demo-cover": {
+      "license": "MIT",
+      "upstream_license_url": "https://github.com/renpy/renpy/blob/80b3e8236e3d022bdcc103b4833758c9b4ea6666/sphinx/source/license.rst",
+      "notice_file": "licenses/RenPy-TheQuestion-NOTICE.txt",
+      "rights_note": "来自实际示例标题画面的背景；上游示例美术贡献者保留各自权利，许可按上游 MIT 条款保留。"
+    },
     "community-character": {
       "license": null,
       "rights_note": "项目维护者提供文件；原作者、公开原帖及再分发权限待补充。"
@@ -113,7 +124,7 @@
     },
     {
       "path": "licenses/RenPy-TheQuestion-NOTICE.txt",
-      "sha256": "57b19c638129eb1165ce71ecce36475e6cfccb034224b8c36e7673471f6ae369",
+      "sha256": "d769a8392f8000be495b331196d33515e6b34b1e96dc21bec5237064f32686aa",
       "sha256_mode": "git_lf",
       "source_url": "https://github.com/renpy/renpy/blob/80b3e8236e3d022bdcc103b4833758c9b4ea6666/sphinx/source/license.rst"
     },
@@ -137,12 +148,15 @@
     }
   ],
   "counts": {
-    "unique_image_assets": 463,
-    "image_asset_files": 466,
+    "unique_image_assets": 582,
+    "image_asset_files": 585,
     "image_categories": {
       "game-portrait": 400,
       "steam-cover": 38,
+      "vndb-cover": 107,
+      "renpy-demo-cover": 1,
       "community-character": 11,
+      "community-character-preview": 11,
       "generated-cg": 3,
       "brand-icon": 11
     },
@@ -152,9 +166,9 @@
     "story_records_including_smoke": 102,
     "knowledge_records_including_smoke": 405,
     "recorded_image_redistribution_statuses": {
-      "source_recorded_permission_pending": 449,
-      "references_permission_pending": 3,
-      "upstream_license_recorded": 11
+      "source_recorded_permission_pending": 567,
+      "upstream_license_recorded": 12,
+      "references_permission_pending": 3
     }
   },
   "datasets": [
@@ -11875,7 +11889,10 @@
       "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/324160/library_600x900.jpg",
       "copyright_holder": null,
       "license_policy_ref": "steam-cover",
-      "redistribution_status": "source_recorded_permission_pending"
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v4"
+      ]
     },
     {
       "category": "steam-cover",
@@ -11899,7 +11916,10 @@
       "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1230140/library_600x900.jpg",
       "copyright_holder": null,
       "license_policy_ref": "steam-cover",
-      "redistribution_status": "source_recorded_permission_pending"
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v27448"
+      ]
     },
     {
       "category": "steam-cover",
@@ -11911,7 +11931,10 @@
       "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/897220/library_600x900.jpg",
       "copyright_holder": null,
       "license_policy_ref": "steam-cover",
-      "redistribution_status": "source_recorded_permission_pending"
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v20424"
+      ]
     },
     {
       "category": "steam-cover",
@@ -11923,7 +11946,10 @@
       "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/623080/library_600x900.jpg",
       "copyright_holder": null,
       "license_policy_ref": "steam-cover",
-      "redistribution_status": "source_recorded_permission_pending"
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v34"
+      ]
     },
     {
       "category": "steam-cover",
@@ -11935,7 +11961,10 @@
       "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1680000/library_600x900.jpg",
       "copyright_holder": null,
       "license_policy_ref": "steam-cover",
-      "redistribution_status": "source_recorded_permission_pending"
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v751"
+      ]
     },
     {
       "category": "steam-cover",
@@ -11947,7 +11976,10 @@
       "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/421660/library_600x900.jpg",
       "copyright_holder": null,
       "license_policy_ref": "steam-cover",
-      "redistribution_status": "source_recorded_permission_pending"
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v16510"
+      ]
     },
     {
       "category": "steam-cover",
@@ -11959,7 +11991,10 @@
       "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1811500/library_600x900.jpg",
       "copyright_holder": null,
       "license_policy_ref": "steam-cover",
-      "redistribution_status": "source_recorded_permission_pending"
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v29445"
+      ]
     },
     {
       "category": "steam-cover",
@@ -11971,7 +12006,10 @@
       "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2510770/library_600x900.jpg",
       "copyright_holder": null,
       "license_policy_ref": "steam-cover",
-      "redistribution_status": "source_recorded_permission_pending"
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v29443"
+      ]
     },
     {
       "category": "steam-cover",
@@ -11983,7 +12021,10 @@
       "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2983250/library_600x900.jpg",
       "copyright_holder": null,
       "license_policy_ref": "steam-cover",
-      "redistribution_status": "source_recorded_permission_pending"
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v36"
+      ]
     },
     {
       "category": "steam-cover",
@@ -12007,7 +12048,10 @@
       "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/326480/library_600x900.jpg",
       "copyright_holder": null,
       "license_policy_ref": "steam-cover",
-      "redistribution_status": "source_recorded_permission_pending"
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v9093"
+      ]
     },
     {
       "category": "steam-cover",
@@ -12031,7 +12075,10 @@
       "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/345610/library_600x900.jpg",
       "copyright_holder": null,
       "license_policy_ref": "steam-cover",
-      "redistribution_status": "source_recorded_permission_pending"
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v5154"
+      ]
     },
     {
       "category": "steam-cover",
@@ -12055,7 +12102,10 @@
       "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1144400/library_600x900.jpg",
       "copyright_holder": null,
       "license_policy_ref": "steam-cover",
-      "redistribution_status": "source_recorded_permission_pending"
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v19073"
+      ]
     },
     {
       "category": "steam-cover",
@@ -12067,7 +12117,10 @@
       "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1277930/library_600x900.jpg",
       "copyright_holder": null,
       "license_policy_ref": "steam-cover",
-      "redistribution_status": "source_recorded_permission_pending"
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v22230"
+      ]
     },
     {
       "category": "steam-cover",
@@ -12139,7 +12192,10 @@
       "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/976390/library_600x900.jpg",
       "copyright_holder": null,
       "license_policy_ref": "steam-cover",
-      "redistribution_status": "source_recorded_permission_pending"
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v19829"
+      ]
     },
     {
       "category": "steam-cover",
@@ -12235,7 +12291,10 @@
       "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/635940/library_600x900.jpg",
       "copyright_holder": null,
       "license_policy_ref": "steam-cover",
-      "redistribution_status": "source_recorded_permission_pending"
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v5"
+      ]
     },
     {
       "category": "steam-cover",
@@ -12295,7 +12354,10 @@
       "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/888790/library_600x900.jpg",
       "copyright_holder": null,
       "license_policy_ref": "steam-cover",
-      "redistribution_status": "source_recorded_permission_pending"
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v16044"
+      ]
     },
     {
       "category": "steam-cover",
@@ -12307,7 +12369,10 @@
       "source_image_url": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1277940/library_600x900.jpg",
       "copyright_holder": null,
       "license_policy_ref": "steam-cover",
-      "redistribution_status": "source_recorded_permission_pending"
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v21852"
+      ]
     },
     {
       "category": "steam-cover",
@@ -12320,6 +12385,2913 @@
       "copyright_holder": null,
       "license_policy_ref": "steam-cover",
       "redistribution_status": "source_recorded_permission_pending"
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v28.jpg",
+      "sha256": "ee7c5605ef6d415b38aa79f58c1d73873bbb16549f8052c01e11d6bc1ef22368",
+      "sha256_mode": "raw",
+      "title": "SHUFFLE!",
+      "source_page": "https://vndb.org/v28",
+      "source_image_url": "https://t.vndb.org/cv/64/98864.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v28"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 13
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "accfa471c46cb59fe1c8c899e16fe4f6767dbdd84314dfba2cd2d5112f155de9",
+      "dimensions": [
+        566,
+        800
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v35.jpg",
+      "sha256": "23d0e8ac56ae069d5d4166699bda1b4f31676a1aefde3726831b3c29e65d0a54",
+      "sha256_mode": "raw",
+      "title": "Wind -a breath of heart-",
+      "source_page": "https://vndb.org/v35",
+      "source_image_url": "https://t.vndb.org/cv/34/89734.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v35"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "a8dc9622dd9fccd38cea7dc630361fbc028aa4d9716327751053219ba2b1f8a5",
+      "dimensions": [
+        555,
+        800
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v80.jpg",
+      "sha256": "540b2cef62e3e02c9b9fb691936fc95c63d667119374189de2f658032f3ac51d",
+      "sha256_mode": "raw",
+      "title": "夜月东升·暮日西沉~Operation Sanctuary~",
+      "source_page": "https://vndb.org/v80",
+      "source_image_url": "https://t.vndb.org/cv/66/139266.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v80"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 10
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "582a178597ca8cd7c31c4b6061307f67c6bbbfe7cd764886e6b8002dde7048cd",
+      "dimensions": [
+        595,
+        800
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v87.jpg",
+      "sha256": "e0b40741a3b748582e1e9694b8226632251acd5efc59a743fb7778690975e51c",
+      "sha256_mode": "raw",
+      "title": "FORTUNE ARTERIAL",
+      "source_page": "https://vndb.org/v87",
+      "source_image_url": "https://t.vndb.org/cv/25/50725.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v87"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "0044df2a755c9d606b42ab5a3c15ec6b72985fee33b7ca4c0f6235822ca98262",
+      "dimensions": [
+        256,
+        349
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v88.jpg",
+      "sha256": "fb8429beab5f7512b601d7829f4c9cdcbeec3934cf07f35653a75811675e179f",
+      "sha256_mode": "raw",
+      "title": "悠久之翼",
+      "source_page": "https://vndb.org/v88",
+      "source_image_url": "https://t.vndb.org/cv/16/77716.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v88"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "56eead64a7adec1ec2548a8a9948e0f34f8b045ce0decdad416b10fe3c884bf6",
+      "dimensions": [
+        533,
+        800
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v156.jpg",
+      "sha256": "420bb74a4dddf7d21e69e5152529c2c24a7e8642d31970b2813525b40c2ca6c4",
+      "sha256_mode": "raw",
+      "title": "公主华尔兹",
+      "source_page": "https://vndb.org/v156",
+      "source_image_url": "https://t.vndb.org/cv/49/79449.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v156"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "ee11689efb55e394738c79e811da2756fbcc57f25bb9cae5aad010130037dd9e",
+      "dimensions": [
+        411,
+        560
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v176.jpg",
+      "sha256": "7b13f04ff12fcff911e2996b7491c7b13a02b9aed9452947a629cebe05f20ef4",
+      "sha256_mode": "raw",
+      "title": "Clover Heart’s（四叶之心）",
+      "source_page": "https://vndb.org/v176",
+      "source_image_url": "https://t.vndb.org/cv/89/94089.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v176"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "32d42aaff059947d630c917fa8a83a6d0c55b44d26f3142f5b2cbc87c245a714",
+      "dimensions": [
+        385,
+        559
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v182.jpg",
+      "sha256": "67037bdcc4fd2bba9660d2eb1dace156c7ac4a245ce1063920d0f508f86e5602",
+      "sha256_mode": "raw",
+      "title": "青空下的约定",
+      "source_page": "https://vndb.org/v182",
+      "source_image_url": "https://t.vndb.org/cv/26/90926.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v182"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "23f1760bd7ddfd35abcb09a9b8ce2588540cb54dc65c4eabf20e4486934ac989",
+      "dimensions": [
+        361,
+        500
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v198.jpg",
+      "sha256": "0d0e10cdd3f9af8df5eb20390b4941442dd6f22051591acf983a70e9126b0224",
+      "sha256_mode": "raw",
+      "title": "Princess Holiday～回转苹果亭的一千零一夜～",
+      "source_page": "https://vndb.org/v198",
+      "source_image_url": "https://t.vndb.org/cv/76/51876.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v198"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "62e44ec30a89e766089a26250d382371a473f6e851159d9ea338db708450c333",
+      "dimensions": [
+        256,
+        362
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v232.jpg",
+      "sha256": "b3059c0c26e307e67c8b39bb1780ee9a42318f24a16d8e48d66f1f49dc070fc1",
+      "sha256_mode": "raw",
+      "title": "更胜黎明前的琉璃色",
+      "source_page": "https://vndb.org/v232",
+      "source_image_url": "https://t.vndb.org/cv/81/69881.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v232"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "507f4c17b316288d45e37383909b33c1f4bfa9815d9122800e553f43e8d7a03a",
+      "dimensions": [
+        411,
+        560
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v309.jpg",
+      "sha256": "b3d46985418cf054e8bc7c4fe63183ce7e63783002eac374227ff7ffd21aadc4",
+      "sha256_mode": "raw",
+      "title": "DUEL SAVIOR",
+      "source_page": "https://vndb.org/v309",
+      "source_image_url": "https://t.vndb.org/cv/54/89154.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v309"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "07f63a88b0d39a5e77f5ea83887bbbf17096f4c034d00a6f476db51a462bc4c0",
+      "dimensions": [
+        411,
+        560
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v532.jpg",
+      "sha256": "9685dc486c9db5994a66ae9295dfc783f9ab8c063758d268f7a031af222daeac",
+      "sha256_mode": "raw",
+      "title": "管乐恋曲！",
+      "source_page": "https://vndb.org/v532",
+      "source_image_url": "https://t.vndb.org/cv/60/88660.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v532"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 13
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "ec84cd991729d60b2257faae47e43e815632204a681f3d355ced4d12f4688919",
+      "dimensions": [
+        389,
+        560
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v562.jpg",
+      "sha256": "a8fed209ad8076bdc6804fa50aff3e32238b0baad6f72016b9d73af8e405948e",
+      "sha256_mode": "raw",
+      "title": "樱之诗 −于樱之森上飞舞−",
+      "source_page": "https://vndb.org/v562",
+      "source_image_url": "https://t.vndb.org/cv/63/79663.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v562"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "c88808c856a7f409946abec3e33587968881280c5972b2af0f3ad032e21dc9fe",
+      "dimensions": [
+        801,
+        560
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v617.jpg",
+      "sha256": "0a1f37a6f727592b556d9c45bafc1e915b2f36b009b0d89b75e0135d696f746d",
+      "sha256_mode": "raw",
+      "title": "Soul Link",
+      "source_page": "https://vndb.org/v617",
+      "source_image_url": "https://t.vndb.org/cv/67/98867.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v617"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "1e76381544508febc47985345f812db692aff5d739033a81abcea10699b3ca21",
+      "dimensions": [
+        389,
+        560
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v682.jpg",
+      "sha256": "26548c407e7a21c050574d2e2ea7356a0761f289a28823b6260d0fb778ff49a8",
+      "sha256_mode": "raw",
+      "title": "女仆咖啡巧克拉",
+      "source_page": "https://vndb.org/v682",
+      "source_image_url": "https://t.vndb.org/cv/83/90783.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v682"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "7f71df9270afa3bec4f6e97c740bb8713d9171d6ce6cab721f1954f06cb27a05",
+      "dimensions": [
+        557,
+        800
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v683.jpg",
+      "sha256": "b6a8f92f55d515a2f2f3d4e842fd0bedf14ccf37b701b083b8b0848b7d992c85",
+      "sha256_mode": "raw",
+      "title": "女仆咖啡帕露菲",
+      "source_page": "https://vndb.org/v683",
+      "source_image_url": "https://t.vndb.org/cv/91/89091.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v683"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "2f4539a22e9787d2b0dc8d418c68105fa5945acc7f962b9132d5977f05be6a2b",
+      "dimensions": [
+        558,
+        800
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v701.jpg",
+      "sha256": "25b56dfb337d0ff884a7a45dbd21a28c9708b36f25ac8449820720dc9dd8140f",
+      "sha256_mode": "raw",
+      "title": "夏空彼方",
+      "source_page": "https://vndb.org/v701",
+      "source_image_url": "https://t.vndb.org/cv/69/52169.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v701"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "c12f0639f6161d34263b478a02066f05f578edaa628baaa2bdb96f1e6cc2141a",
+      "dimensions": [
+        256,
+        368
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v945.jpg",
+      "sha256": "d860ade95ca66f2de402f86cd689fed09cb4890d9665768be8600450e4fceca1",
+      "sha256_mode": "raw",
+      "title": "片轮少女",
+      "source_page": "https://vndb.org/v945",
+      "source_image_url": "https://t.vndb.org/cv/88/88188.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "katawa-shoujo"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "20995e205697981e7b5d75220e2eba66337743f5c3fc8571832080b2e5295035",
+      "dimensions": [
+        533,
+        800
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v1141.jpg",
+      "sha256": "551ba2c2f308d27cbf84cdfae8a3e482db4347939e06172b6fd6e723052aff12",
+      "sha256_mode": "raw",
+      "title": "我们没有翅膀",
+      "source_page": "https://vndb.org/v1141",
+      "source_image_url": "https://t.vndb.org/cv/72/79672.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v1141"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "93835d72d83a0c70912a21467ba5910a12570ed95eb1ff7f1b49454b48a4b494",
+      "dimensions": [
+        411,
+        560
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v1286.jpg",
+      "sha256": "f5ca6b00cfc44012240a4e62e163328cffd6f2a56ea8c7798b5bfa7dbcf839ca",
+      "sha256_mode": "raw",
+      "title": "eden* They were only two, on the planet.",
+      "source_page": "https://vndb.org/v1286",
+      "source_image_url": "https://t.vndb.org/cv/17/79017.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v1286"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "5aefffd24d4b21abad9d73066f110d1d61d75eeb1df890c681711aa7e8b5b259",
+      "dimensions": [
+        411,
+        560
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v1322.jpg",
+      "sha256": "9cb1d76ef8620d0ee7f457ed78129b720b22abb78e83c1e614bf5c7d73a249b5",
+      "sha256_mode": "raw",
+      "title": "天神乱漫 LUCKY or UNLUCKY!?",
+      "source_page": "https://vndb.org/v1322",
+      "source_image_url": "https://t.vndb.org/cv/11/27811.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v1322"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "3197f34716ed3962adca712d29f26568d692e2954739ba2139e56a755dfd9b62",
+      "dimensions": [
+        256,
+        348
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v1474.jpg",
+      "sha256": "677fc3e523b36842fd22eb2eec2dd126aefc411d81cf44d979d6079794290e96",
+      "sha256_mode": "raw",
+      "title": "星空的记忆 -Wish upon a shooting star",
+      "source_page": "https://vndb.org/v1474",
+      "source_image_url": "https://t.vndb.org/cv/29/79729.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v1474"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "fa7d8f866178ce67c2afc3ec35db15e2903ca63031c5ea5699a6cf7f134f2bd4",
+      "dimensions": [
+        320,
+        453
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v2622.jpg",
+      "sha256": "19687a65c7b6348670ae0219caa5c1d63f24e5c2d53e49b17de4ad2f4708a766",
+      "sha256_mode": "raw",
+      "title": "幼驯染成了大总统",
+      "source_page": "https://vndb.org/v2622",
+      "source_image_url": "https://t.vndb.org/cv/65/93765.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v2622"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 13
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "83f54cee7341e808681124855b16d67c3bc90f5cbd18647a311f6f21929a9ecb",
+      "dimensions": [
+        568,
+        800
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v3770.jpg",
+      "sha256": "6064cf4af37fb83e9e7e79028e3b899576314d952db55250cbf7628326cf00dc",
+      "sha256_mode": "raw",
+      "title": "秽翼的尤斯蒂娅",
+      "source_page": "https://vndb.org/v3770",
+      "source_image_url": "https://t.vndb.org/cv/78/79678.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v3770"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "41e9dd8a34d0166000b37b6e6fae8b1c05b4af2e642c74f2f90ca8b855e84045",
+      "dimensions": [
+        411,
+        560
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v4806.jpg",
+      "sha256": "df3233f5a508be38a1182df7e0c02ece82246e16de736d0ab239079d1df4dc56",
+      "sha256_mode": "raw",
+      "title": "NOBLE☆WORKS",
+      "source_page": "https://vndb.org/v4806",
+      "source_image_url": "https://t.vndb.org/cv/33/101533.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v4806"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 13
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "95acf3d495d8d09b0c7f1022c929aa6c2e5c5282df182950a5ebb6de92b39c14",
+      "dimensions": [
+        511,
+        699
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v5240.jpg",
+      "sha256": "28a1670f832c37fdd3e6e21b41ab7a12ecdf5cd6a7df23de8b05eb2dba4a9826",
+      "sha256_mode": "raw",
+      "title": "突然之间发现我已恋上你",
+      "source_page": "https://vndb.org/v5240",
+      "source_image_url": "https://t.vndb.org/cv/89/100189.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v5240"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "69b015c2d13c731ebf0348eebb9fd7b265e995277f93303979635afccb530a81",
+      "dimensions": [
+        1000,
+        732
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v5549.jpg",
+      "sha256": "6a82ad9973ccfda82c9a24c61f8190bc107ae280a5a1b6af2dc9c7d98ef73cbe",
+      "sha256_mode": "raw",
+      "title": "鬼的捉迷藏！",
+      "source_page": "https://vndb.org/v5549",
+      "source_image_url": "https://t.vndb.org/cv/99/79799.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v5549"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "c63b049f3c2cde1c9484328986aff4158ac3592158960c2d3fe24d0ee287f547",
+      "dimensions": [
+        411,
+        560
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v5834.jpg",
+      "sha256": "a2db7f08fc232134524b8ed88c8ff9c5ab68020aa230e4c09a8d0334dba90bc2",
+      "sha256_mode": "raw",
+      "title": "五彩斑斓的世界",
+      "source_page": "https://vndb.org/v5834",
+      "source_image_url": "https://t.vndb.org/cv/77/88277.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v5834"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "4664b4ae940d60816233040929c5055239862e8bcd8e5c8441e8eae8009794b1",
+      "dimensions": [
+        543,
+        768
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v6700.jpg",
+      "sha256": "b3265e8b67283900b9b785ad3ff774174edd277d05950d5906f00d4edf1a0d82",
+      "sha256_mode": "raw",
+      "title": "sppl - 魔女爱丽丝",
+      "source_page": "https://vndb.org/v6700",
+      "source_image_url": "https://t.vndb.org/cv/67/82067.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v6700"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "2ec622ed33784de1dde7fd511add01a284e47b702f7922ee4a82d667405b294e",
+      "dimensions": [
+        411,
+        560
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v6714.jpg",
+      "sha256": "b6b486fb062f0b94cd8bd905e0b7c7b9f9ed037e101761981e9df230a8aca238",
+      "sha256_mode": "raw",
+      "title": "恋爱0公里",
+      "source_page": "https://vndb.org/v6714",
+      "source_image_url": "https://t.vndb.org/cv/78/116878.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v6714"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 12
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "86795d5a2f3aaa88849284685527279cfd783229e2a3a54533eca1931521c8b7",
+      "dimensions": [
+        533,
+        800
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v7302.jpg",
+      "sha256": "18383d040be446bfe7cb0eb5fb0ae0efac9914f1cf37acbfeb1c78a70fbfc545",
+      "sha256_mode": "raw",
+      "title": "初雪樱",
+      "source_page": "https://vndb.org/v7302",
+      "source_image_url": "https://t.vndb.org/cv/43/89943.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v7302"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "d1a5d5fce4b6f95ee09e5efc4a03f6b3a6dd53ef924b6bdc6cfeaff5f917fb60",
+      "dimensions": [
+        563,
+        800
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v7967.jpg",
+      "sha256": "172ae9336487923e67b14b5715387715d588a16dc91711efb69a51c1555a745c",
+      "sha256_mode": "raw",
+      "title": "ホチキス",
+      "source_page": "https://vndb.org/v7967",
+      "source_image_url": "https://t.vndb.org/cv/45/91545.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v7967"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "5ec1fac5c1622ae187f7e9fc782280bff7406955eb2aee118d43729b63af7cde",
+      "dimensions": [
+        1000,
+        704
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v8158.jpg",
+      "sha256": "c403a969d73cd14f25e9341aedd1686619ddcbf8f9c7a604c1ef0ded92ad973b",
+      "sha256_mode": "raw",
+      "title": "大图书馆的牧羊人",
+      "source_page": "https://vndb.org/v8158",
+      "source_image_url": "https://t.vndb.org/cv/72/86072.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v8158"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 13
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "8b3e9c10e42716a8fa20c08d2ebd68d628537f1a355ef84ea4a176cca13c11c5",
+      "dimensions": [
+        566,
+        800
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v8213.jpg",
+      "sha256": "9fe141996267be08794b54d3eba9d92c9f65e87a2932340344ca349a317ee8de",
+      "sha256_mode": "raw",
+      "title": "DRACU-RIOT!",
+      "source_page": "https://vndb.org/v8213",
+      "source_image_url": "https://t.vndb.org/cv/68/116468.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v8213"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 10
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "7f61ea0ce8904bf77fb938922d5acbc5ea91d6fe51449d36343c0451ec11000c",
+      "dimensions": [
+        565,
+        800
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v9124.jpg",
+      "sha256": "f2320b7ff07ac18b81b9c6a334b89b1801cb7e058352a6ea56980cdfe8d646b6",
+      "sha256_mode": "raw",
+      "title": "初恋１／１",
+      "source_page": "https://vndb.org/v9124",
+      "source_image_url": "https://t.vndb.org/cv/43/90143.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v9124"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 13
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "a40ad3e8905b3ec6007f38e22aeccd8134b2e3942d373f5980e21e7f720228b5",
+      "dimensions": [
+        320,
+        451
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v10304.jpg",
+      "sha256": "36dc9564f76191b6434d2a1424500dd9f47d8a454ffbcf905e93c5bf0ac20cb7",
+      "sha256_mode": "raw",
+      "title": "恋花绽放樱飞时",
+      "source_page": "https://vndb.org/v10304",
+      "source_image_url": "https://t.vndb.org/cv/51/76551.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v10304"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "5e74aca8c647f13e2fabf4598200c1a8b9945ef027b6ee429ead237451d9b3df",
+      "dimensions": [
+        533,
+        800
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v10597.jpg",
+      "sha256": "00757364242db6d305fa8bf6df030cfcdc893a24351b01f2e876b1467f31c030",
+      "sha256_mode": "raw",
+      "title": "夏空的英仙座",
+      "source_page": "https://vndb.org/v10597",
+      "source_image_url": "https://t.vndb.org/cv/00/89200.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v10597"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 13
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "80ea7ea96dc807ac0da80905ada73968813e326b3fb27b4667c084b848464d6f",
+      "dimensions": [
+        792,
+        560
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v10680.jpg",
+      "sha256": "08267acd8d6b46507949cfed17b955a2aedbc82d7b60dad9f00463ed60a532e4",
+      "sha256_mode": "raw",
+      "title": "近月少女的礼仪",
+      "source_page": "https://vndb.org/v10680",
+      "source_image_url": "https://t.vndb.org/cv/94/79894.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v10680"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 15
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "b6af9028d90618aa4f8b80169cc2be6bf7677b512755d290c5fafe0d6aa9a2bd",
+      "dimensions": [
+        533,
+        800
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v11856.jpg",
+      "sha256": "b6d39ec413b0f8b16f6cb1c553201a228a4eab373444fa4b236dff47589b0f36",
+      "sha256_mode": "raw",
+      "title": "フレラバ ～Friend to Lover～",
+      "source_page": "https://vndb.org/v11856",
+      "source_image_url": "https://t.vndb.org/cv/81/81481.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v11856"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "11542d5062eeecdc40c86bf83207238ad674c0f43e9299047628b97fe732f521",
+      "dimensions": [
+        552,
+        800
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v12167.jpg",
+      "sha256": "b6a4975ad933b5d5a7125f34ca7bdb64d8eb978428e0aa1f49fc478fd848819c",
+      "sha256_mode": "raw",
+      "title": "天色幻想岛",
+      "source_page": "https://vndb.org/v12167",
+      "source_image_url": "https://t.vndb.org/cv/02/97302.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v12167"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 13
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "d0af18d80efc9431fb630661f6d32d9a1dc520c1d50bace7202e6fdd04b98c1f",
+      "dimensions": [
+        572,
+        800
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v12246.jpg",
+      "sha256": "eefc9a90ec18cabbab4d44153f499a5d4f1cde6ebb8f806e5b68e34d52de9712",
+      "sha256_mode": "raw",
+      "title": "少女理论及其周边 -École de Paris-",
+      "source_page": "https://vndb.org/v12246",
+      "source_image_url": "https://t.vndb.org/cv/46/92146.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v12246"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "a94f5e0b37edec7af0c14a8e723d52d757f78325298fde70de756aa035262464",
+      "dimensions": [
+        370,
+        512
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v12600.jpg",
+      "sha256": "d95634dafac30296fc1d70d8b2de7339d3d81fa10f01d90faadba9e35d72f134",
+      "sha256_mode": "raw",
+      "title": "大图书馆的牧羊人 ～放学后的最后时光～",
+      "source_page": "https://vndb.org/v12600",
+      "source_image_url": "https://t.vndb.org/cv/65/89565.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v12600"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "ff6be9d5b303ee769f93717d5bbfbff5ad1e6e9a4397ee74a2b7dd0a732fc733",
+      "dimensions": [
+        411,
+        560
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v12984.jpg",
+      "sha256": "1e96174a7e52f82a8f2abb47387c84e528de7f7a4ed4c3de453226deb4fa7e36",
+      "sha256_mode": "raw",
+      "title": "星辰恋曲的白色永恒",
+      "source_page": "https://vndb.org/v12984",
+      "source_image_url": "https://t.vndb.org/cv/31/101331.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v12984"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "c57cf35ffe4c56dd39b62c5c521fe4831422bf46c041a1019b5cb7fb26d12878",
+      "dimensions": [
+        822,
+        509
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v13325.jpg",
+      "sha256": "47e87f04ce2bcc8d4c822963174694952fd7a230f80b7a80a42b9085439b6a07",
+      "sha256_mode": "raw",
+      "title": "幸运草的约定",
+      "source_page": "https://vndb.org/v13325",
+      "source_image_url": "https://t.vndb.org/cv/50/94750.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v13325"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "acfab81d7b6b9dec8ff1616818febb519686877e2b13e77d16d744545d83c0df",
+      "dimensions": [
+        568,
+        800
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v13632.jpg",
+      "sha256": "a6491532420149956e5b3f33e0582b289e393408ec74b661efd1d44f8de5d75f",
+      "sha256_mode": "raw",
+      "title": "キスアト",
+      "source_page": "https://vndb.org/v13632",
+      "source_image_url": "https://t.vndb.org/cv/93/93093.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v13632"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 13
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "dd5e5468edf0eb322da3061be2500db5e1b3a5934a726c530338dd330042e50a",
+      "dimensions": [
+        1000,
+        704
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v13774.jpg",
+      "sha256": "6a128dac123e5ba2a2cea0f4203d49ebc1fd6004efebd1560489708a1e4e379e",
+      "sha256_mode": "raw",
+      "title": "Angel Beats! -1st beat-",
+      "source_page": "https://vndb.org/v13774",
+      "source_image_url": "https://t.vndb.org/cv/70/121870.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v13774"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 12
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "6c04a4272f509bd89e92d0faa63b5de8db1ae8ff1a0bafbbbc5929de60fec4b3",
+      "dimensions": [
+        411,
+        560
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v14265.jpg",
+      "sha256": "aaf58e2e9ea791d3659e4e97753ce02aef3aa781cde7ebe1d7084a9ea1a9d122",
+      "sha256_mode": "raw",
+      "title": "星织梦未来",
+      "source_page": "https://vndb.org/v14265",
+      "source_image_url": "https://t.vndb.org/cv/91/115491.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v14265"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 12
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "fcc11ff8c3428aeb08fc94524f5f3d45068dc2176fd02c185f25e65ccff6a2b1",
+      "dimensions": [
+        600,
+        800
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v15637.jpg",
+      "sha256": "44e75770d2c5b2a2a917d3ded462476b45152e495c2767c2a97a49a3fb9cc7a4",
+      "sha256_mode": "raw",
+      "title": "永不落幕的前奏诗",
+      "source_page": "https://vndb.org/v15637",
+      "source_image_url": "https://t.vndb.org/cv/16/95416.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v15637"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 13
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "7844ab25cf591dac1bf0d6a328dfa15c60bdbaad8140ebe53c4d963093bde506",
+      "dimensions": [
+        362,
+        494
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v15679.jpg",
+      "sha256": "c0aa921978acebf0bf8cd5119c5d90d29b998210af4bc2f22c3808667cbabc0f",
+      "sha256_mode": "raw",
+      "title": "アマカノ",
+      "source_page": "https://vndb.org/v15679",
+      "source_image_url": "https://t.vndb.org/cv/12/96612.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v15679"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "4f28cff800189f6a9b5ce04306e18533e29f3fa59f4d42bc276e0005f21a6943",
+      "dimensions": [
+        562,
+        800
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v15708.jpg",
+      "sha256": "0db31a4c4c36f8c53c1d0fc47e19b703cdfbb62d01bb5839ef1814159d45c6be",
+      "sha256_mode": "raw",
+      "title": "千之刃涛，桃花染之皇姬",
+      "source_page": "https://vndb.org/v15708",
+      "source_image_url": "https://t.vndb.org/cv/37/89937.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v15708"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "a18d57084337d01f6874c16012b3c677a94251cb8efcb564d47cd5cc2c4571fc",
+      "dimensions": [
+        579,
+        800
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v16070.jpg",
+      "sha256": "d60413320fc916245f008333c7d056bbdce2a9dd5561472ac71c3bad5818bd39",
+      "sha256_mode": "raw",
+      "title": "花咲work spring！",
+      "source_page": "https://vndb.org/v16070",
+      "source_image_url": "https://t.vndb.org/cv/40/89940.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v16070"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "cdfb4943967d78081cbfdc0543d4da2056f5b9f090bd1d8ecb4ab47207da8d07",
+      "dimensions": [
+        551,
+        800
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v16208.jpg",
+      "sha256": "4b944ce70257c4c485f7b941507382724ab5c45cc9678a83889b808c9c331c2b",
+      "sha256_mode": "raw",
+      "title": "柯罗的怀表",
+      "source_page": "https://vndb.org/v16208",
+      "source_image_url": "https://t.vndb.org/cv/23/76523.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v16208"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "42d56fd8db72ad425fe9fceed3ea05d45ff271170ca58104d3b41d838e2ca0a5",
+      "dimensions": [
+        533,
+        800
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v16560.jpg",
+      "sha256": "a3a232efe1102ae8a085f815f5ee6b94e7558b38e0d59ba05b4688c744ca2c69",
+      "sha256_mode": "raw",
+      "title": "仰望夜空的星辰",
+      "source_page": "https://vndb.org/v16560",
+      "source_image_url": "https://t.vndb.org/cv/14/76414.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v16560"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "e39e7780164921ed08528793ea3a050e45e8020649a48a7508060dee07c09fc3",
+      "dimensions": [
+        533,
+        800
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v17843.jpg",
+      "sha256": "45dc2985180ad7c81626af4754967c96345b688dae9c9fa140aa8e53ef18bb7e",
+      "sha256_mode": "raw",
+      "title": "アマカノ～Second Season～",
+      "source_page": "https://vndb.org/v17843",
+      "source_image_url": "https://t.vndb.org/cv/13/96613.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v17843"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "08f02d337338777d1e74bd96082ab0fea2dc5d15d29598a9d14362c0c5b7f923",
+      "dimensions": [
+        354,
+        500
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v17872.jpg",
+      "sha256": "27a81ab34edf3662986d75cbbc441bddddda72f1c00a0702bbd9a2c7f1d29fa3",
+      "sha256_mode": "raw",
+      "title": "罪之光Rendezvous",
+      "source_page": "https://vndb.org/v17872",
+      "source_image_url": "https://t.vndb.org/cv/51/94351.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v17872"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "2b9e97140996ad82dba751c3170356c1e74ae311bfda9c2a96b9b6d816a219c3",
+      "dimensions": [
+        377,
+        512
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v18778.jpg",
+      "sha256": "141e899a3ea37a54c89ed53cfe023c8caafd59ec8a432ec60fa930803e8384d2",
+      "sha256_mode": "raw",
+      "title": "银色遥远",
+      "source_page": "https://vndb.org/v18778",
+      "source_image_url": "https://t.vndb.org/cv/53/100853.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v18778"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "5328e943c3ab98b6c324adb3b31de0d1e398f0bfc746b431ed83d4ccb8bbcf68",
+      "dimensions": [
+        746,
+        800
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v18842.jpg",
+      "sha256": "fb196738f3bfebfef2be69588439db468e3542553c23f21ff2a68b49501624e5",
+      "sha256_mode": "raw",
+      "title": "花之天使的夏日恋歌",
+      "source_page": "https://vndb.org/v18842",
+      "source_image_url": "https://t.vndb.org/cv/39/89939.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v18842"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "be3d4cd457130bbcf5a82c7e59506c127a4afe7b80012c52450e8b3224e56c52",
+      "dimensions": [
+        567,
+        800
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v18852.jpg",
+      "sha256": "51ab2a408e7179f86ef08a1e3bbf4c954f97f7e9a51993b6822e9ffb870c1bc6",
+      "sha256_mode": "raw",
+      "title": "天津罪",
+      "source_page": "https://vndb.org/v18852",
+      "source_image_url": "https://t.vndb.org/cv/31/79031.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v18852"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "8df8388dced516fc93b70be7a9288f98f48d02f32a2ba198f2ef87210d8a7332",
+      "dimensions": [
+        411,
+        560
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v19444.jpg",
+      "sha256": "0a7eff27010452c46dc03ca4fdc6728b5c3dca3fb1b89214b4480df1864048c2",
+      "sha256_mode": "raw",
+      "title": "青春×好奇相伴的三角恋爱",
+      "source_page": "https://vndb.org/v19444",
+      "source_image_url": "https://t.vndb.org/cv/36/93936.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v19444"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "22a494c495e94ec841a9c9cf1e290b3f2fe7f61117f7583ea2dc082e6d490505",
+      "dimensions": [
+        547,
+        800
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v19644.jpg",
+      "sha256": "5248fde0df0cc1e6bc646dfe004639453803285174ad89fc222c9f3b911db6a0",
+      "sha256_mode": "raw",
+      "title": "特里诺兰",
+      "source_page": "https://vndb.org/v19644",
+      "source_image_url": "https://t.vndb.org/cv/86/101686.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v19644"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "9e349c5f9e77a3307e3da6f41aeebbc60848438ee9dc4433627ab7fabcab913b",
+      "dimensions": [
+        570,
+        800
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v20002.jpg",
+      "sha256": "9ffca461189685d50e56ada95791cc008d26ffeb8380de0bcc079524d88833ba",
+      "sha256_mode": "raw",
+      "title": "你的眼眸命中我心头",
+      "source_page": "https://vndb.org/v20002",
+      "source_image_url": "https://t.vndb.org/cv/48/87448.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v20002"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "9556fa229f7e7750991efcbd5d95ad3d47d8c146f2dbb8d2c4332bb56f5bd06f",
+      "dimensions": [
+        411,
+        560
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v20431.jpg",
+      "sha256": "320728ba1e32eadaa075aa60891b617f561fdc688713fca3180e99fb539aa9e8",
+      "sha256_mode": "raw",
+      "title": "樱之刻－漫步于樱花之森下－",
+      "source_page": "https://vndb.org/v20431",
+      "source_image_url": "https://t.vndb.org/cv/66/79666.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v20431"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "c8c987f19dd7573b20749b665114e6b5d24109207a4a927b7210b3126a803205",
+      "dimensions": [
+        800,
+        560
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v20433.jpg",
+      "sha256": "819bf2eee2a6ea7926d8ce31e6e1372275e0270d2555cdf209b93e8245fadbf5",
+      "sha256_mode": "raw",
+      "title": "猫忍えくすはーと",
+      "source_page": "https://vndb.org/v20433",
+      "source_image_url": "https://t.vndb.org/cv/58/79458.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v20433"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "c39ecc7e497b83332083ddc7f5217d0281a858b504983395e8fd00891fca801c",
+      "dimensions": [
+        411,
+        560
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v21523.jpg",
+      "sha256": "fcb82696fe0d54b6afae96c8ce6547deb9854a14d354dc92047ddc1f8159167c",
+      "sha256_mode": "raw",
+      "title": "青鸟",
+      "source_page": "https://vndb.org/v21523",
+      "source_image_url": "https://t.vndb.org/cv/22/79722.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v21523"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "115c3449d1415f372fb95f724b2acbe18838739f2c0a8b4b1dabc4ea70c417a6",
+      "dimensions": [
+        411,
+        560
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v21552.jpg",
+      "sha256": "47c431d2d3223c84862ce546cf363182ff5616853cb048e71aeb0690fd7cf861",
+      "sha256_mode": "raw",
+      "title": "突然＊恋人",
+      "source_page": "https://vndb.org/v21552",
+      "source_image_url": "https://t.vndb.org/cv/98/94598.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v21552"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "28d256551a1f227d18921f995f64921ea8da86d6937e4e3b6b587b0c682e96d8",
+      "dimensions": [
+        533,
+        800
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v21956.jpg",
+      "sha256": "f0b6ce13efa37afee4bc79e107d12ed9c6e54aa185922a5679ce989aa866b16b",
+      "sha256_mode": "raw",
+      "title": "IxSHE Tell",
+      "source_page": "https://vndb.org/v21956",
+      "source_image_url": "https://t.vndb.org/cv/52/80752.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v21956"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "ba2bbcdd7689039702581b75f195842243744a1cab1b2aedd90274300070c367",
+      "dimensions": [
+        411,
+        560
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v22045.jpg",
+      "sha256": "721e09cbdda2185f629055b0a2a2e3d29d031133839121205bd79c2e6069cc49",
+      "sha256_mode": "raw",
+      "title": "寄宿之恋",
+      "source_page": "https://vndb.org/v22045",
+      "source_image_url": "https://t.vndb.org/cv/21/89121.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v22045"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "34d0804700f48fc2a42195d534b9de8eace56fb23d99e09415122ef66c80d1c5",
+      "dimensions": [
+        566,
+        800
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v22313.jpg",
+      "sha256": "df6fbd99ae304438b6a4b4c9627c5a30d819c6c389dccb9a04eb52ed84c01582",
+      "sha256_mode": "raw",
+      "title": "樱花，萌放。-as the Night's, Reincarnation-",
+      "source_page": "https://vndb.org/v22313",
+      "source_image_url": "https://t.vndb.org/cv/71/79671.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v22313"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "011dc8dd13b20a3eb271c0864b9dd71458e6d885d788758e5c6e787b8537d3d7",
+      "dimensions": [
+        822,
+        509
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v24320.jpg",
+      "sha256": "344618fb81c4b934af554154021ea7301215645a4d01837cdfd692d536b2bcc0",
+      "sha256_mode": "raw",
+      "title": "Sugar*Style",
+      "source_page": "https://vndb.org/v24320",
+      "source_image_url": "https://t.vndb.org/cv/61/79761.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v24320"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "f66dde155eb7dddcded4455caf0ccc9ff797882c7e2e0864bf723756470dd097",
+      "dimensions": [
+        411,
+        560
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v24702.jpg",
+      "sha256": "5dce9cb6e4c7144d1d0a52b8fcb3abf60fd7ea0e6b008b426f3602b09b51dcfb",
+      "sha256_mode": "raw",
+      "title": "青夏轨迹",
+      "source_page": "https://vndb.org/v24702",
+      "source_image_url": "https://t.vndb.org/cv/45/81645.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v24702"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "86f0a82de3e9f2130f9339ca2c7c173356658b839fdf4f37ce8130a20c0eee46",
+      "dimensions": [
+        411,
+        560
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v24803.jpg",
+      "sha256": "360684d262ef914c64f9001997fc3e1910d197c8a8070f9899ce92a262f43b88",
+      "sha256_mode": "raw",
+      "title": "在月之彼岸邂逅",
+      "source_page": "https://vndb.org/v24803",
+      "source_image_url": "https://t.vndb.org/cv/54/100854.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v24803"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "0b210c3f7bd7c31ae29148530f3850c997ecd598ec5aecb2e4038216117e1d83",
+      "dimensions": [
+        725,
+        800
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v24935.jpg",
+      "sha256": "0de7d10fa0e68a98c72a9c94ac08900cdbbaf0ebd57805d1524668216d76dde7",
+      "sha256_mode": "raw",
+      "title": "美好的回乡生活",
+      "source_page": "https://vndb.org/v24935",
+      "source_image_url": "https://t.vndb.org/cv/02/89402.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v24935"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "9002266f200e03e3d58fe53b05eaafe7f4d14b153620d42da5934f32a39e7af0",
+      "dimensions": [
+        1000,
+        710
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v25366.jpg",
+      "sha256": "2fd3deb597972e941a25f6eaedc4f2779f40c18b02c7968d415bdf60712ea86d",
+      "sha256_mode": "raw",
+      "title": "恋爱，我就借走咯",
+      "source_page": "https://vndb.org/v25366",
+      "source_image_url": "https://t.vndb.org/cv/59/81959.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v25366"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "b8597f8c6bb932f5d102006084ed482a9500e1e42ec0c200077d2c79895ff0ea",
+      "dimensions": [
+        411,
+        560
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v26001.jpg",
+      "sha256": "9f110ebb78d05989da04573b30f39985330a374ddc4ddb811dadd574b3e81e74",
+      "sha256_mode": "raw",
+      "title": "千之刃涛，桃花染之皇姬 -柳暗花明-",
+      "source_page": "https://vndb.org/v26001",
+      "source_image_url": "https://t.vndb.org/cv/18/97918.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v26001"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "207e11b1a5dc6e86f1891d9635a913b79407ab384696a74b183b878f7fcbed6c",
+      "dimensions": [
+        411,
+        560
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v26307.jpg",
+      "sha256": "4229817f215bc191f166fa770aad766b624bfe2a3cd49df984340d07996ed42a",
+      "sha256_mode": "raw",
+      "title": "甜蜜女友2",
+      "source_page": "https://vndb.org/v26307",
+      "source_image_url": "https://t.vndb.org/cv/18/96618.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v26307"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "9565d3a9dd7f82ea346594a2ef9ca8dc2f82e6de9e4e08eebb26f036797254a2",
+      "dimensions": [
+        628,
+        800
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v26414.jpg",
+      "sha256": "df4647aea128256b5b69f5bc6f32be64f69be573eee4fd04dfc85efedd47f98b",
+      "sha256_mode": "raw",
+      "title": "星光咖啡馆与死神之蝶",
+      "source_page": "https://vndb.org/v26414",
+      "source_image_url": "https://t.vndb.org/cv/27/113927.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v26414"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 13
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "c47075516f05d7af3dad9906fe872998d55e0a7e5309c73eea8bb6e5f6f4946a",
+      "dimensions": [
+        500,
+        695
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v28283.jpg",
+      "sha256": "a416762c12f6bbb4e0d6fca2ce39413bd21db574c20248a790660af048d68e21",
+      "sha256_mode": "raw",
+      "title": "放学后的灰姑娘",
+      "source_page": "https://vndb.org/v28283",
+      "source_image_url": "https://t.vndb.org/cv/88/93288.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v28283"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "59a184deefb3be98a04834413865806440d0b539d685581d67e6d7e18792a75a",
+      "dimensions": [
+        1000,
+        693
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v28286.jpg",
+      "sha256": "514790999f2d96a3bbf51715a21a3bd4a123a3cb61c338c9cd922ca6a8506dc4",
+      "sha256_mode": "raw",
+      "title": "绽放★青春全力向前冲！",
+      "source_page": "https://vndb.org/v28286",
+      "source_image_url": "https://t.vndb.org/cv/65/95965.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v28286"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "edb2d1f02e6b7e941b452e5356e2eddf82f02dabfd65ee48e311bf38055a06ae",
+      "dimensions": [
+        533,
+        800
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v28633.jpg",
+      "sha256": "96a3a9f7852693c359a822e674a30358812ff1df27c85338fa978e60cddc7ad1",
+      "sha256_mode": "raw",
+      "title": "恋爱×决胜战",
+      "source_page": "https://vndb.org/v28633",
+      "source_image_url": "https://t.vndb.org/cv/61/81961.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v28633"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "d567a464e0047a2dbc6d246612d29641f5bf1e4a67f4421abcc45f610c371f8f",
+      "dimensions": [
+        411,
+        560
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v32021.jpg",
+      "sha256": "ba0ab7a324e5fc9e2508b4bcc2f205c92760eb38d677603baf6dc77f03531098",
+      "sha256_mode": "raw",
+      "title": "久那土国记",
+      "source_page": "https://vndb.org/v32021",
+      "source_image_url": "https://t.vndb.org/cv/60/79760.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v32021"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "128690f69e8be7a82a3d7a64eca1c826d5ba0717825c63e13ad954fdd9094687",
+      "dimensions": [
+        800,
+        560
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v32811.jpg",
+      "sha256": "6639e5f26bbfccc9080ce71a1517d4931f8f6ebbf20d74b303ec656f985c02c5",
+      "sha256_mode": "raw",
+      "title": "恋爱成双",
+      "source_page": "https://vndb.org/v32811",
+      "source_image_url": "https://t.vndb.org/cv/64/89064.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v32811"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "d968f2bc764c276f23054b158f32bd05edc74b5152f393d34d429cc800a11c87",
+      "dimensions": [
+        533,
+        800
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v34848.jpg",
+      "sha256": "25d770b76a0038378d26a1e8b2581bb9d3d604be0ce6075b22442dc3e4e34d73",
+      "sha256_mode": "raw",
+      "title": "甜蜜夏日",
+      "source_page": "https://vndb.org/v34848",
+      "source_image_url": "https://t.vndb.org/cv/92/78992.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v34848"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "2efa8dbb247af6f3c34d6795d5b0016bdf8c90ee768bcd1cb717c8ea093db782",
+      "dimensions": [
+        1000,
+        705
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v40520.jpg",
+      "sha256": "d76ae845640ce8597dafecd14d660133e7d1d93a8cf7806842b7ff7e7d948b34",
+      "sha256_mode": "raw",
+      "title": "天使☆嚣嚣 RE-BOOT!",
+      "source_page": "https://vndb.org/v40520",
+      "source_image_url": "https://t.vndb.org/cv/66/88666.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v40520"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "5835f11fa917b6f568faecda0f2f13c52bb9a0fc4dcfb78ea7db5a8a2eb13cff",
+      "dimensions": [
+        569,
+        800
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v44195.jpg",
+      "sha256": "ee26063548fb4009be23bff2f056c70776d51c776cf94ac28b8cde98141cba28",
+      "sha256_mode": "raw",
+      "title": "八卦恋爱",
+      "source_page": "https://vndb.org/v44195",
+      "source_image_url": "https://t.vndb.org/cv/17/89017.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v44195"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "5dd7b7518258e4626bed4e51431bb58ed954a2e1b00496bb81ff408daab5275a",
+      "dimensions": [
+        1000,
+        707
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v47458.jpg",
+      "sha256": "03ad319fa237dd50e19048ef4761e0ff7491c59f234568c2fa5b15a6937029b6",
+      "sha256_mode": "raw",
+      "title": "创造世界的空想理论 -goodbye world index-",
+      "source_page": "https://vndb.org/v47458",
+      "source_image_url": "https://t.vndb.org/cv/17/98017.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v47458"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 13
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "bce0ab94ec730fa9f0090de76eef3e0f8c0a9aa125d54db452fa34ac5ac958a5",
+      "dimensions": [
+        900,
+        636
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v47937.jpg",
+      "sha256": "11a7546ccedf665029952a8f07bf51f55101ea76b7800927918b594d1b11b71d",
+      "sha256_mode": "raw",
+      "title": "anemoi",
+      "source_page": "https://vndb.org/v47937",
+      "source_image_url": "https://t.vndb.org/cv/05/93705.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v47937"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "b3db26cc1f75cd9ac3707a3617c124d3fffb1d20be3e6def4f981adda30c4288",
+      "dimensions": [
+        502,
+        800
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v48262.jpg",
+      "sha256": "51847f07906ae436b1d661a4404b6213f0e05967d8870a3e685964732cbdc056",
+      "sha256_mode": "raw",
+      "title": "Lilac",
+      "source_page": "https://vndb.org/v48262",
+      "source_image_url": "https://t.vndb.org/cv/29/108229.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v48262"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 13
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "ca3a70b1ed5a45895ae9939d043443f387c39e3c58ab3637653277c6b3d573fd",
+      "dimensions": [
+        539,
+        800
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v50153.jpg",
+      "sha256": "3dd7525d0afd7c28e21be22e0a0a5c61a1f282dc3d34e2cee04f0bc4f1eee317",
+      "sha256_mode": "raw",
+      "title": "秘密之恋（伪）",
+      "source_page": "https://vndb.org/v50153",
+      "source_image_url": "https://t.vndb.org/cv/54/86354.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v50153"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 14
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "0f5a5f0883fa3501bcfc5fa5d224c508a16af144869ef4018acd73467736ad07",
+      "dimensions": [
+        694,
+        560
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v52407.jpg",
+      "sha256": "4963a90798c64614ef28c9f6057b7b08540f2de5838e0283ce38141a284bb1d1",
+      "sha256_mode": "raw",
+      "title": "as:9-nine- ARTEISIA",
+      "source_page": "https://vndb.org/v52407",
+      "source_image_url": "https://t.vndb.org/cv/91/122491.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v52407"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 10
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "f7974b9ff9f4b4857468ad294e38606371a9d090cc2db840d004da157a42f94e",
+      "dimensions": [
+        584,
+        800
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v52780.jpg",
+      "sha256": "d6b92d69a7238e551ae8c3fe08f644235cc70a0e4f1e5f0dd463c0d33bb567b0",
+      "sha256_mode": "raw",
+      "title": "COCORO",
+      "source_page": "https://vndb.org/v52780",
+      "source_image_url": "https://t.vndb.org/cv/28/135228.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v52780"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 9
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "069f133f5babd7b90304db43c9f7bb30701b0ee6875f7997b4e932e8b8081c18",
+      "dimensions": [
+        533,
+        800
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v56650.jpg",
+      "sha256": "4ae44a6dbb1ff9e5426d0f9b658dec9b8b1c963a18c427431e0c4819fe8e0822",
+      "sha256_mode": "raw",
+      "title": "聚光灯下的青柠恋曲",
+      "source_page": "https://vndb.org/v56650",
+      "source_image_url": "https://t.vndb.org/cv/06/109906.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v56650"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 13
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "d7906dbe6ed8b140e07384fdc4c1ea560f511f5e424ecbea3afd28b1696178a6",
+      "dimensions": [
+        500,
+        709
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v61832.jpg",
+      "sha256": "41a31b581e5fa936a73629fcf876f49a8072f7ce66f2404efaf93697ed08ecb6",
+      "sha256_mode": "raw",
+      "title": "三角圆舞曲 -Triple Pairing-",
+      "source_page": "https://vndb.org/v61832",
+      "source_image_url": "https://t.vndb.org/cv/20/133420.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v61832"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 9
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "8ee6bdf7cf62ed0cfa1703095849ad902ef8ee323a16ee40987e6bd16671fec2",
+      "dimensions": [
+        533,
+        800
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v61834.jpg",
+      "sha256": "1a614f9bc3ed61a6a72d7409a1af723a5422e8e4de296ce17fa3f0d3b659150e",
+      "sha256_mode": "raw",
+      "title": "Relirium -レリリウム- 遺跡と出逢いと冒険と",
+      "source_page": "https://vndb.org/v61834",
+      "source_image_url": "https://t.vndb.org/cv/79/123979.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v61834"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 12
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "15094a7562e993d3099286326e65c6f33e88bc5ece1e18ecb345f585147b38a8",
+      "dimensions": [
+        1000,
+        707
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v62721.jpg",
+      "sha256": "9d54686e495efbc9e16667b744ed7b6d4b20b60489474161ff38b0763594d6a0",
+      "sha256_mode": "raw",
+      "title": "マガルミナ",
+      "source_page": "https://vndb.org/v62721",
+      "source_image_url": "https://t.vndb.org/cv/09/128609.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v62721"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 11
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "561689e64fb1a041d5a494ac4d21cbb290781f96ca0ac17f5103b145aa9156c6",
+      "dimensions": [
+        1000,
+        763
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v63828.jpg",
+      "sha256": "9b1556e804c05d409de9bdfc0d8929a0473f6b73d9b05b770aaf71d9a2f92943",
+      "sha256_mode": "raw",
+      "title": "国王恋爱",
+      "source_page": "https://vndb.org/v63828",
+      "source_image_url": "https://t.vndb.org/cv/06/131606.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v63828"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0,
+        "votecount": 9
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；保留来源评分。",
+      "source_sha256": "881d3f37220b6c590d26a973e4821bd649959d947ee27629e02a7d86f275a2dd",
+      "dimensions": [
+        570,
+        800
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v83.jpg",
+      "sha256": "1f54a96b8f31a093c3901142a5c380de1b269ad3763e245dd70676816c5c1b76",
+      "sha256_mode": "raw",
+      "title": "ExE",
+      "source_page": "https://vndb.org/v83",
+      "source_image_url": "https://t.vndb.org/cv/32/101532.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v83"
+      ],
+      "image_safety": {
+        "sexual": 0.07,
+        "violence": 0,
+        "votecount": 15
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；未见裸露或性行为画面，保留来源评分。",
+      "source_sha256": "91b3f838254f5b7befd6e5486fd00d55b637aa385b7b9bdaaf8f0d545049fe32",
+      "dimensions": [
+        411,
+        560
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v110.jpg",
+      "sha256": "55c22258574a9d877ff41d0c58dba96e8dedf50d7e57c8fc3eb7c821e9c486bf",
+      "sha256_mode": "raw",
+      "title": "恋する王国",
+      "source_page": "https://vndb.org/v110",
+      "source_image_url": "https://t.vndb.org/cv/79/3179.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v110"
+      ],
+      "image_safety": {
+        "sexual": 0.93,
+        "violence": 0,
+        "votecount": 15
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；未见裸露或性行为画面，保留来源评分。",
+      "source_sha256": "0be3b39c527f4d60fb04f3c94178c617f9476f563673b2534f1d970a665d9049",
+      "dimensions": [
+        236,
+        350
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v10957.jpg",
+      "sha256": "22caf37c3ee1dae2a524ea6f67c6af98c58836e6c41a94b396d2f35d39cde132",
+      "sha256_mode": "raw",
+      "title": "幸福噩梦",
+      "source_page": "https://vndb.org/v10957",
+      "source_image_url": "https://t.vndb.org/cv/76/88076.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v10957"
+      ],
+      "image_safety": {
+        "sexual": 0.33,
+        "violence": 0,
+        "votecount": 15
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；未见裸露或性行为画面，保留来源评分。",
+      "source_sha256": "1999a731f1a354b3e8c6036b706342cc22eecdb92f6373c459ef97ec64886003",
+      "dimensions": [
+        411,
+        560
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v12562.jpg",
+      "sha256": "ebc086dd5475199d988e3e4d265c38d8de7171846c84f94809869e2c6d4f39b5",
+      "sha256_mode": "raw",
+      "title": "无尽的平安夜",
+      "source_page": "https://vndb.org/v12562",
+      "source_image_url": "https://t.vndb.org/cv/61/89561.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v12562"
+      ],
+      "image_safety": {
+        "sexual": 0.07,
+        "violence": 0,
+        "votecount": 15
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；未见裸露或性行为画面，保留来源评分。",
+      "source_sha256": "07924737ba95d574c145b8acad546d1d6670ff17983ed9e439054963ffb1ea47",
+      "dimensions": [
+        791,
+        560
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v15869.jpg",
+      "sha256": "0e63954a1400f993c9c4719b38f4a70dfeb4956067ae37ae5fe6b496317852d3",
+      "sha256_mode": "raw",
+      "title": "ハルキス",
+      "source_page": "https://vndb.org/v15869",
+      "source_image_url": "https://t.vndb.org/cv/55/100655.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v15869"
+      ],
+      "image_safety": {
+        "sexual": 0.07,
+        "violence": 0,
+        "votecount": 15
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；未见裸露或性行为画面，保留来源评分。",
+      "source_sha256": "ea912bf12b841c0915f356b925626dc1bb25d24dcf38a6f54da3ba35115370f8",
+      "dimensions": [
+        512,
+        372
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v20232.jpg",
+      "sha256": "6761977cd949f44e03f3bf979d522ad6530a7a9f2b19de4c2b7f0f78963fa618",
+      "sha256_mode": "raw",
+      "title": "爱之钥",
+      "source_page": "https://vndb.org/v20232",
+      "source_image_url": "https://t.vndb.org/cv/16/98416.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v20232"
+      ],
+      "image_safety": {
+        "sexual": 0.07,
+        "violence": 0,
+        "votecount": 15
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；未见裸露或性行为画面，保留来源评分。",
+      "source_sha256": "5691a32c07babe899386b76223068e800946c5a1ef7701a3b78df32b3012ff49",
+      "dimensions": [
+        411,
+        560
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v28634.jpg",
+      "sha256": "ca8ddea71c7518fcaf4027f5be2743385ec905b8cbc1f4ef8ecb18fb5846a2ea",
+      "sha256_mode": "raw",
+      "title": "竜姫ぐーたらいふ",
+      "source_page": "https://vndb.org/v28634",
+      "source_image_url": "https://t.vndb.org/cv/17/81617.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v28634"
+      ],
+      "image_safety": {
+        "sexual": 0.6,
+        "violence": 0,
+        "votecount": 15
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；未见裸露或性行为画面，保留来源评分。",
+      "source_sha256": "2c8e28775538e23594a4e0ed40586444b9aff020e06342f60ceeceb7d610bf36",
+      "dimensions": [
+        411,
+        560
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v33036.jpg",
+      "sha256": "36f91c48ad57fcc9754910abd0be470c07fbca4eb3829bd8f86a5cf431dbcb99",
+      "sha256_mode": "raw",
+      "title": "AMBITIOUS MISSION",
+      "source_page": "https://vndb.org/v33036",
+      "source_image_url": "https://t.vndb.org/cv/96/90196.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v33036"
+      ],
+      "image_safety": {
+        "sexual": 0.47,
+        "violence": 0,
+        "votecount": 15
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；未见裸露或性行为画面，保留来源评分。",
+      "source_sha256": "b5de388ea918ca7a0d57c0868ed3150eeefaf947edade98fa0026da66cf844b5",
+      "dimensions": [
+        1000,
+        708
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v50215.jpg",
+      "sha256": "eb6604b6b0179aebb3023504ac9923e7ce8d647a66cdfa715293b8dd46adcb26",
+      "sha256_mode": "raw",
+      "title": "甜蜜女友 3",
+      "source_page": "https://vndb.org/v50215",
+      "source_image_url": "https://t.vndb.org/cv/22/109522.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v50215"
+      ],
+      "image_safety": {
+        "sexual": 0.93,
+        "violence": 0,
+        "votecount": 15
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；未见裸露或性行为画面，保留来源评分。",
+      "source_sha256": "6549970c511d8fdce3aa87c122a0f91e43fb6f5dac7424d073c046c9008cae54",
+      "dimensions": [
+        796,
+        560
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v10028.jpg",
+      "sha256": "aa9079dc2db611737eabc661bb8b3ff46ea6dde08818095802e4378c1570c227",
+      "sha256_mode": "raw",
+      "title": "五彩斑斓的曙光",
+      "source_page": "https://vndb.org/v10028",
+      "source_image_url": "https://t.vndb.org/cv/82/88282.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v10028"
+      ],
+      "image_safety": {
+        "sexual": 0,
+        "violence": 0.07,
+        "votecount": 15
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；未见裸露或性行为画面，保留来源评分。",
+      "source_sha256": "61db81bae899df7523e6ffd0d929ca9a6096981efabe82001c9286054c077013",
+      "dimensions": [
+        543,
+        768
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v26180.jpg",
+      "sha256": "3d05e30d700547b375d5cfd33865b521251da48a7317e12739d48647feed0c60",
+      "sha256_mode": "raw",
+      "title": "アイキス",
+      "source_page": "https://vndb.org/v26180",
+      "source_image_url": "https://t.vndb.org/cv/60/93160.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v26180"
+      ],
+      "image_safety": {
+        "sexual": 0.87,
+        "violence": 0,
+        "votecount": 15
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；未见裸露或性行为画面，保留来源评分。",
+      "source_sha256": "136a336249d125ef232c3f48693899beda0fb7cf2e2fedf55a2d8ab99b6ce4e0",
+      "dimensions": [
+        1000,
+        712
+      ]
+    },
+    {
+      "category": "vndb-cover",
+      "path": "galbench/static/covers/vndb-v48420.jpg",
+      "sha256": "66cb87c24e9e5e9928b4617c60693e4af2a117e014abf1b625e7887c0f80c7e1",
+      "sha256_mode": "raw",
+      "title": "缘起甜韵趣恋丛生！",
+      "source_page": "https://vndb.org/v48420",
+      "source_image_url": "https://t.vndb.org/cv/40/86540.jpg",
+      "copyright_holder": null,
+      "license_policy_ref": "vndb-cover",
+      "redistribution_status": "source_recorded_permission_pending",
+      "work_ids": [
+        "v48420"
+      ],
+      "image_safety": {
+        "sexual": 0.13,
+        "violence": 0,
+        "votecount": 15
+      },
+      "modifications": "等比例缩小至不超过 1000×800，并优化 JPEG 压缩；未裁剪或重绘。",
+      "content_review": "人工检查游戏封面；未见裸露或性行为画面，保留来源评分。",
+      "source_sha256": "2ff84fece7a16066bbfbb30d86d76df3c87545ad1c3d260cede5dcecc0b1733c",
+      "dimensions": [
+        800,
+        585
+      ]
+    },
+    {
+      "category": "renpy-demo-cover",
+      "path": "galbench/static/covers/renpy-the-question.jpg",
+      "sha256": "6dbb69ab0036454f0e0f628bf12777bb881d906ae4cd99f7c8cb2e7d7db55245",
+      "sha256_mode": "raw",
+      "title": "The Question",
+      "source_page": "https://github.com/renpy/renpy/tree/80b3e8236e3d022bdcc103b4833758c9b4ea6666/the_question",
+      "source_image_url": "https://raw.githubusercontent.com/renpy/renpy/80b3e8236e3d022bdcc103b4833758c9b4ea6666/the_question/game/gui/main_menu.png",
+      "copyright_holder": null,
+      "license_policy_ref": "renpy-demo-cover",
+      "redistribution_status": "upstream_license_recorded",
+      "license": "MIT",
+      "work_ids": [
+        "the-question"
+      ],
+      "asset_role": "title_screen_background",
+      "modifications": "官方标题菜单背景缩小至 768×432，PNG 转 JPEG；图片内容未改。"
     },
     {
       "category": "community-character",
@@ -12335,6 +15307,18 @@
       "modifications": "原图复制；未修改图片内容。"
     },
     {
+      "category": "community-character-preview",
+      "path": "galbench/static/ai-cast/card-deepseek.jpg",
+      "sha256": "c8eaf4501c4a1738969209faf6ee935e75821b3a11db7823aa984595c47c4c51",
+      "sha256_mode": "raw",
+      "derived_from": "galbench/static/ai-cast/deepseek.png",
+      "original_artist": null,
+      "copyright_holder": null,
+      "license_policy_ref": "community-character",
+      "redistribution_status": "source_recorded_permission_pending",
+      "modifications": "原图等比例缩小并转为 JPEG，未裁剪或重绘；标题页以 CSS 显示上半身。"
+    },
+    {
       "category": "community-character",
       "path": "galbench/static/ai-cast/glm.png",
       "sha256": "7205f6cc012cca49681d4b8165c69da3f4d19d8b23d03427c98555fab3756fb3",
@@ -12346,6 +15330,18 @@
       "license_policy_ref": "community-character",
       "redistribution_status": "source_recorded_permission_pending",
       "modifications": "原图复制；未修改图片内容。"
+    },
+    {
+      "category": "community-character-preview",
+      "path": "galbench/static/ai-cast/card-glm.jpg",
+      "sha256": "edefb445449bbb53257f048aa4ab34d3e377eae8199885ac0e1ef6e453a8061a",
+      "sha256_mode": "raw",
+      "derived_from": "galbench/static/ai-cast/glm.png",
+      "original_artist": null,
+      "copyright_holder": null,
+      "license_policy_ref": "community-character",
+      "redistribution_status": "source_recorded_permission_pending",
+      "modifications": "原图等比例缩小并转为 JPEG，未裁剪或重绘；标题页以 CSS 显示上半身。"
     },
     {
       "category": "community-character",
@@ -12361,6 +15357,18 @@
       "modifications": "原图复制；未修改图片内容。"
     },
     {
+      "category": "community-character-preview",
+      "path": "galbench/static/ai-cast/card-kimi.jpg",
+      "sha256": "87c988425692f4b48ac0c6adc11f014472db18693f35f2beb703cbe1bfa768c6",
+      "sha256_mode": "raw",
+      "derived_from": "galbench/static/ai-cast/kimi.png",
+      "original_artist": null,
+      "copyright_holder": null,
+      "license_policy_ref": "community-character",
+      "redistribution_status": "source_recorded_permission_pending",
+      "modifications": "原图等比例缩小并转为 JPEG，未裁剪或重绘；标题页以 CSS 显示上半身。"
+    },
+    {
       "category": "community-character",
       "path": "galbench/static/ai-cast/muse.png",
       "sha256": "c09b5af3e1ede7d3a7008c454c1dd3a4f0103baf7c73e3c4ced39b0c4edf08c6",
@@ -12372,6 +15380,18 @@
       "license_policy_ref": "community-character",
       "redistribution_status": "source_recorded_permission_pending",
       "modifications": "原图复制；未修改图片内容。"
+    },
+    {
+      "category": "community-character-preview",
+      "path": "galbench/static/ai-cast/card-muse.jpg",
+      "sha256": "7c6fb3a536dbc91bcd2604999d078377b37c518901523c77cdb44e1c0a0701a4",
+      "sha256_mode": "raw",
+      "derived_from": "galbench/static/ai-cast/muse.png",
+      "original_artist": null,
+      "copyright_holder": null,
+      "license_policy_ref": "community-character",
+      "redistribution_status": "source_recorded_permission_pending",
+      "modifications": "原图等比例缩小并转为 JPEG，未裁剪或重绘；标题页以 CSS 显示上半身。"
     },
     {
       "category": "community-character",
@@ -12387,6 +15407,18 @@
       "modifications": "原图复制；未修改图片内容。"
     },
     {
+      "category": "community-character-preview",
+      "path": "galbench/static/ai-cast/card-gpt.jpg",
+      "sha256": "2332d4d442e4eb4a16037ae7fbb9cd32b7914ba9650783eeba29ffa7a630e5de",
+      "sha256_mode": "raw",
+      "derived_from": "galbench/static/ai-cast/gpt.jpg",
+      "original_artist": null,
+      "copyright_holder": null,
+      "license_policy_ref": "community-character",
+      "redistribution_status": "source_recorded_permission_pending",
+      "modifications": "原图等比例缩小并转为 JPEG，未裁剪或重绘；标题页以 CSS 显示上半身。"
+    },
+    {
       "category": "community-character",
       "path": "galbench/static/ai-cast/claude.jpg",
       "sha256": "24b2766e93b285195b1928935b102e4754179b9798c0b6fa9de55e6633ac5eb0",
@@ -12398,6 +15430,18 @@
       "license_policy_ref": "community-character",
       "redistribution_status": "source_recorded_permission_pending",
       "modifications": "原图复制；未修改图片内容。"
+    },
+    {
+      "category": "community-character-preview",
+      "path": "galbench/static/ai-cast/card-claude.jpg",
+      "sha256": "1b0408087ec308b74e81a3bfd479616fefa77246257a379e3839850b8a224ada",
+      "sha256_mode": "raw",
+      "derived_from": "galbench/static/ai-cast/claude.jpg",
+      "original_artist": null,
+      "copyright_holder": null,
+      "license_policy_ref": "community-character",
+      "redistribution_status": "source_recorded_permission_pending",
+      "modifications": "原图等比例缩小并转为 JPEG，未裁剪或重绘；标题页以 CSS 显示上半身。"
     },
     {
       "category": "community-character",
@@ -12413,6 +15457,18 @@
       "modifications": "原图复制；未修改图片内容。"
     },
     {
+      "category": "community-character-preview",
+      "path": "galbench/static/ai-cast/card-gemini.jpg",
+      "sha256": "401e1c992442817f16af1afed7346a39c30e3863432ca09ecd0c70b478c770d8",
+      "sha256_mode": "raw",
+      "derived_from": "galbench/static/ai-cast/gemini.jpg",
+      "original_artist": null,
+      "copyright_holder": null,
+      "license_policy_ref": "community-character",
+      "redistribution_status": "source_recorded_permission_pending",
+      "modifications": "原图等比例缩小并转为 JPEG，未裁剪或重绘；标题页以 CSS 显示上半身。"
+    },
+    {
       "category": "community-character",
       "path": "galbench/static/ai-cast/grok.jpg",
       "sha256": "94c9758b843654df6549932633989df060bd2e721a67be5c208f21dc020c057a",
@@ -12424,6 +15480,18 @@
       "license_policy_ref": "community-character",
       "redistribution_status": "source_recorded_permission_pending",
       "modifications": "原图复制；未修改图片内容。"
+    },
+    {
+      "category": "community-character-preview",
+      "path": "galbench/static/ai-cast/card-grok.jpg",
+      "sha256": "3401a8d31748fa74b6a645baea20e7958c316ed12ae6d31bf872359938bc71a2",
+      "sha256_mode": "raw",
+      "derived_from": "galbench/static/ai-cast/grok.jpg",
+      "original_artist": null,
+      "copyright_holder": null,
+      "license_policy_ref": "community-character",
+      "redistribution_status": "source_recorded_permission_pending",
+      "modifications": "原图等比例缩小并转为 JPEG，未裁剪或重绘；标题页以 CSS 显示上半身。"
     },
     {
       "category": "community-character",
@@ -12439,6 +15507,18 @@
       "modifications": "原图复制；未修改图片内容。"
     },
     {
+      "category": "community-character-preview",
+      "path": "galbench/static/ai-cast/card-minimax.jpg",
+      "sha256": "eb61c94ea7ba8b2194291efef258b5c950753664cbfb8a511acc969f9f774afc",
+      "sha256_mode": "raw",
+      "derived_from": "galbench/static/ai-cast/minimax.jpg",
+      "original_artist": null,
+      "copyright_holder": null,
+      "license_policy_ref": "community-character",
+      "redistribution_status": "source_recorded_permission_pending",
+      "modifications": "原图等比例缩小并转为 JPEG，未裁剪或重绘；标题页以 CSS 显示上半身。"
+    },
+    {
       "category": "community-character",
       "path": "galbench/static/ai-cast/qwen.jpg",
       "sha256": "555339a5f884ddeb89a58521c77c06b1dd2b697210fc52ea56c53f5beb51c711",
@@ -12452,6 +15532,18 @@
       "modifications": "原图复制；未修改图片内容。"
     },
     {
+      "category": "community-character-preview",
+      "path": "galbench/static/ai-cast/card-qwen.jpg",
+      "sha256": "f83013e279315d38f5389982d42ac3335800cbac8d9e40f03ef1b1180d1cc563",
+      "sha256_mode": "raw",
+      "derived_from": "galbench/static/ai-cast/qwen.jpg",
+      "original_artist": null,
+      "copyright_holder": null,
+      "license_policy_ref": "community-character",
+      "redistribution_status": "source_recorded_permission_pending",
+      "modifications": "原图等比例缩小并转为 JPEG，未裁剪或重绘；标题页以 CSS 显示上半身。"
+    },
+    {
       "category": "community-character",
       "path": "galbench/static/ai-cast/seed.jpg",
       "sha256": "9a6eb4e7a031a50d3d94886f7c146b6aa786fdde96118bdc616d416713a73dab",
@@ -12463,6 +15555,18 @@
       "license_policy_ref": "community-character",
       "redistribution_status": "source_recorded_permission_pending",
       "modifications": "原图复制；未修改图片内容。"
+    },
+    {
+      "category": "community-character-preview",
+      "path": "galbench/static/ai-cast/card-seed.jpg",
+      "sha256": "f548ee59a77e74ed6bc98b06e823db4e91ec893e40fe3a86914b614da3b9adda",
+      "sha256_mode": "raw",
+      "derived_from": "galbench/static/ai-cast/seed.jpg",
+      "original_artist": null,
+      "copyright_holder": null,
+      "license_policy_ref": "community-character",
+      "redistribution_status": "source_recorded_permission_pending",
+      "modifications": "原图等比例缩小并转为 JPEG，未裁剪或重绘；标题页以 CSS 显示上半身。"
     },
     {
       "category": "generated-cg",
@@ -24763,14 +27867,14 @@
   "catalog_files": [
     {
       "path": "galbench/static/covers/catalog.json",
-      "sha256": "8a62f3b56f04adb21398ddce56be57f7b76bba1ea9d74668170045f1ba0ac023",
+      "sha256": "09c160c3edb21702c805b3700f8887f5fe55a0a60ae03b798c6731eb90bf5ada",
       "sha256_mode": "git_lf"
     }
   ],
   "notice_files": [
     {
       "path": "galbench/static/ai-cast/ATTRIBUTION.txt",
-      "sha256": "8d653a72987cbf26d038992ab09d2ae4ae2eb48ac6f9daef6e2c6dcb8f736013",
+      "sha256": "be8d780c80933bc95d83b07257057d6ca82d1345a99ceb82a416a9aa96c2d032",
       "sha256_mode": "git_lf"
     },
     {

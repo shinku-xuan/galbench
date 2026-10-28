@@ -30,3 +30,11 @@ Full upstream licensing information:
 https://github.com/renpy/renpy/blob/80b3e8236e3d022bdcc103b4833758c9b4ea6666/sphinx/source/license.rst
 
 This notice does not license the unrelated third-party game portraits in this dataset.
+
+Additional title-screen artwork used for the book preview:
+Ren'Py upstream demo artwork contributors retain their respective rights.
+Source: the_question/game/gui/main_menu.png at the revision above.
+https://github.com/renpy/renpy/blob/80b3e8236e3d022bdcc103b4833758c9b4ea6666/the_question/game/gui/main_menu.png
+The upstream license.rst states that demo artwork is released by its various
+copyright holders under the same MIT terms. The local preview is resized
+to 768x432 and converted from PNG to JPEG; the artwork is not redrawn.

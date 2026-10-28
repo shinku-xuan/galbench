@@ -7,6 +7,7 @@ const normalizedTitle=value=>String(value||"").toLowerCase().replace(/[^\p{L}\p{
 function coverFor(title){const key=normalizedTitle(title);return novelUI.covers.find(c=>[c.title,...(c.aliases||[])].some(t=>normalizedTitle(t)===key));}
 
 function initNovelUI(){
+  initAtelierUI();
   const comparison=node("details","rank-comparison-note"),comparisonHeading=node("summary","","排名规则"),comparisonGrid=node("div","rank-comparison-grid");
   for(const [name,text] of [["300 分","同一场三榜各 100，未齐不按零分计"],["Agent","显示实际回传 ID 或声明来源，客户端不是模型"]]){const cell=node("div");cell.append(node("strong","",name),node("span","",text));comparisonGrid.append(cell);}
   comparison.append(comparisonHeading,comparisonGrid,node("p","","总分取同一场三榜成绩；单榜取最佳完整自动成绩。复评不重复计场，按客户端与模型配置分别记录。模型未知或回传多个模型时不排名；手动名称标注为未核实。"));
@@ -52,21 +53,18 @@ async function loadCovers(){
     try{
       const data=await api("/api/covers");novelUI.covers=(data.covers||[]).filter(c=>typeof c.title==="string"&&/^\/covers\/[a-z0-9-]+\.jpg$/.test(c.image));
       $("cover-wall").replaceChildren();
+      const wallCovers=[...novelUI.covers].sort((a,b)=>wallCoverOrder(a.id)-wallCoverOrder(b.id)).slice(0,48);
       for(let col=0;col<4;col++){
         const lane=node("div","cover-lane"),track=node("div","cover-track");track.style.setProperty("--scroll-seconds",`${150+col*18}s`);
-        const covers=novelUI.covers.filter((_,index)=>index%4===col);
+        const covers=wallCovers.filter((_,index)=>index%4===col);
         for(let repeat=0;repeat<2;repeat++){
           const group=node("div","cover-track-group");
           for(const c of covers){const frame=node("figure","wall-cover"),image=node("img");image.src=c.image;image.alt="";image.width=600;image.height=900;image.loading="lazy";image.decoding="async";frame.append(image);group.append(frame);}
           track.append(group);
         }lane.append(track);$("cover-wall").append(lane);
       }
-      $("cover-wall-count").textContent=`${novelUI.covers.length} 部作品`;
-      $("cover-credit-list").replaceChildren(...novelUI.covers.map(c=>{
-        const link=node("a","cover-credit"),image=node("img");image.src=c.image;image.alt="";image.loading="lazy";
-        link.href=/^https:\/\/store\.steampowered\.com\/app\/\d+\//.test(c.source_url)?c.source_url:"https://store.steampowered.com/";link.target="_blank";link.rel="noopener noreferrer";
-        link.append(image,node("strong","",c.title),node("span","","Steam 商店 ↗"));return link;
-      }));
+      $("cover-wall-count").textContent=`${novelUI.covers.length} 张故事封面`;
+      renderCoverCredits();
       novelUI.shelfSignature="";if(novelUI.bankWorks)renderBankShelf(novelUI.bankWorks,novelUI.bankTotal);
     }catch(_){$("cover-wall-count").textContent="封面暂不可用";$("cover-wall").classList.add("covers-unavailable");$("cover-credit-list").append(node("p","notice","封面目录暂时不可用，评测功能仍可正常使用。"));}
   })();return novelUI.coverPromise;
@@ -169,7 +167,7 @@ function renderBankShelf(works,total){
     const button=node("button",`shelf-book${work.title===novelUI.bankWork?" is-selected":""}`);button.type="button";button.setAttribute("aria-pressed",String(work.title===novelUI.bankWork));button.title=`《${work.title}》 · ${work.count} 道题，点击筛选`;
     button.dataset.workTitle=work.title;
     const art=node("span","shelf-book-cover"),cover=coverFor(work.title);
-    if(cover){const image=node("img");image.src=cover.image;image.alt="";image.loading="lazy";art.append(image);}else{art.classList.add("original-cover");art.style.setProperty("--book-hue",String(245+(index*21)%80));art.append(node("strong","",work.title),node("span","","✦"));}
+    if(cover){const image=node("img");image.src=cover.image;image.alt="";image.loading="lazy";image.decoding="async";art.style.setProperty("--cover-image",`url("${cover.image}")`);art.classList.add("has-cover");art.append(image);if(cover.show_title_overlay)art.append(node("strong","cover-title-overlay",work.title));}else{art.classList.add("original-cover");art.style.setProperty("--book-hue",String(245+(index*21)%80));art.append(node("strong","",work.title),node("span","","✦"));}
     art.append(node("i","shelf-book-ribbon",work.title===novelUI.bankWork?"选中":""));button.append(art,node("strong","shelf-book-title",work.title),node("small","",`${work.count} 道题`));
     button.addEventListener("click",()=>{novelUI.bankWork=novelUI.bankWork===work.title?"":work.title;bankPage=1;loadBank();});return button;
   }));

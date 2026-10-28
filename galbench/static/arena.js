@@ -65,13 +65,13 @@ function makeQuestionCard(q,open) {
   if(line.childNodes.length)info.append(line);
   card.append(visual,info);card.addEventListener("click",open);return card;
 }
-function showQuestionDialog(title,kicker,body) {
+function showQuestionDialog(title,kicker,body,board) {
   arenaUI.lastFocus=document.activeElement;$("question-dialog-title").textContent=title;$("question-dialog-kicker").textContent=kicker;
   const content=$("question-dialog-content"),images=[...body.querySelectorAll(".question-portrait")];content.replaceChildren();content.classList.toggle("has-gallery",!!images.length);
   if(images.length){const gallery=node("aside","detail-gallery");for(const img of images){img.loading="eager";gallery.append(img);}content.append(gallery);}
-  content.append(body);if(!$("question-dialog").open)$("question-dialog").showModal();content.scrollTop=0;
+  content.append(body);setQuestionScene(title,board);if(!$("question-dialog").open)$("question-dialog").showModal();content.scrollTop=0;
 }
-function openResultQuestion(row) {showQuestionDialog(row.work_title||row.work,`${labels[row.board]} · ${row.question_id} · 第 ${row.repeat+1} 轮`,resultQuestionBody(row));}
+function openResultQuestion(row) {showQuestionDialog(row.work_title||row.work,`${labels[row.board]} · ${row.question_id} · 第 ${row.repeat+1} 轮`,resultQuestionBody(row),row.board);}
 function openBankQuestion(q) {
   const body=node("div","question-body");body.append(node("h4","","本次挑战"),node("p","question-instruction",q.input.prompt||q.input.stage_a?.prompt));
   if(q.input.scope)body.append(node("p","muted small",Object.values(q.input.scope).filter(v=>typeof v==="string").join(" · ")));
@@ -79,7 +79,7 @@ function openBankQuestion(q) {
   const range=q.input.summary_length||q.input.stage_a?.summary_length;if(range)body.append(node("p","notice",`总结要求 ${range.min}–${range.max} 字`));
   for(const source of q.images||[]){const img=node("img","question-portrait");img.src=source;img.alt="本题角色立绘";body.append(img);}
   body.append(node("p","muted small",q.grading_route==="rules"?"核验名称与别名，规则直接评分。":"按题目事实要点与总结维度进行语义评分。"));
-  showQuestionDialog(q.work_title,`${labels[q.board]} · ${q.id}`,body);
+  showQuestionDialog(q.work_title,`${labels[q.board]} · ${q.id}`,body,q.board);
 }
 async function loadArena() {
   try {

@@ -10,6 +10,11 @@ Original artist names, public source links and redistribution permissions
 have not been supplied or independently verified. This notice is attribution
 information, not a license from those artists.
 
+The eleven card-*.jpg title-page previews are resized JPEG copies of the
+corresponding community originals. The originals remain unchanged. The
+previews retain the same unverified attribution and permission status;
+the page uses CSS to frame the upper body inside each collectible card.
+
 The following CG illustrations were generated with the built-in imagegen tool
 using the supplied character illustrations as visual references:
 - club-cg-v1.png: DeepSeek, GPT and Claude in a literature club.

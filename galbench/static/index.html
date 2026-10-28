@@ -11,20 +11,24 @@
   <link rel="stylesheet" href="/quest.css">
   <link rel="stylesheet" href="/novel.css">
   <link rel="stylesheet" href="/cast.css">
+  <link rel="stylesheet" href="/atelier.css">
   <script src="/arena.js" defer></script>
   <script src="/quest.js" defer></script>
   <script src="/novel.js" defer></script>
   <script src="/cast.js" defer></script>
+  <script src="/atelier.js" defer></script>
   <script src="/app.js" defer></script>
 </head>
 <body data-screen="title">
   <section id="title-screen" class="title-screen" aria-labelledby="title-logo">
     <div class="title-copy">
-      <div class="title-atmosphere" aria-hidden="true"><span class="title-color-orb orb-lilac"></span><span class="title-color-orb orb-rose"></span><span class="title-color-orb orb-blue"></span>
-        <svg class="title-constellation" viewBox="0 0 660 1000" preserveAspectRatio="none" focusable="false"><defs><linearGradient id="title-signal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#9b78cc"/><stop offset=".5" stop-color="#cb86b5"/><stop offset="1" stop-color="#e2ae8e"/></linearGradient></defs><g fill="none" stroke="url(#title-signal)" stroke-width="1"><path d="M371 72 492 120 561 222 493 281 590 355M24 739 100 682 191 733 245 845 421 888M492 120 493 281M100 682 245 845"/><ellipse cx="581" cy="576" rx="125" ry="177" transform="rotate(18 581 576)"/><ellipse cx="581" cy="576" rx="100" ry="190" transform="rotate(-24 581 576)"/><path d="M45 381h34m-17-17v34M524 824h26m-13-13v26"/></g><g fill="#faf3ff" stroke="#bc8fc4" stroke-width="1.3"><circle cx="371" cy="72" r="4"/><circle cx="492" cy="120" r="7"/><circle cx="561" cy="222" r="4"/><circle cx="493" cy="281" r="5"/><circle cx="590" cy="355" r="3"/><circle cx="24" cy="739" r="4"/><circle cx="100" cy="682" r="6"/><circle cx="191" cy="733" r="3"/><circle cx="245" cy="845" r="7"/><circle cx="421" cy="888" r="4"/></g></svg>
-        <span class="title-dust dust-one">✧</span><span class="title-dust dust-two">✦</span><span class="title-dust dust-three">♡</span><span class="title-dust dust-four">✧</span><span class="title-ghost-type">STORY<br>MEETS AI.</span>
+      <div class="title-atmosphere" aria-hidden="true"><span class="title-color-orb orb-lilac"></span><span class="title-color-orb orb-rose"></span><span class="title-color-orb orb-blue"></span><span class="title-soft-moon"></span></div>
+      <div class="title-center">
+        <h1 id="title-logo">gal<span>bench</span><em>让模型，走进故事里。</em></h1>
+        <div class="title-route-tags"><span>游戏内知识</span><span>角色识图</span><span>剧情总结</span></div>
+        <div class="title-showcase"><div id="title-polaroids" class="title-polaroids" role="group" aria-label="AI 伙伴收藏卡"></div><div id="title-partners" class="title-partners" role="group" aria-label="预览 AI 伙伴形象"></div></div>
+        <button type="button" id="enter-arena" class="title-enter">进入攻略大厅 <span>↗</span></button>
       </div>
-      <div class="title-center"><div class="title-ai-mark" aria-hidden="true"><i></i><i></i><i></i><i></i><span>AI</span><b>✦</b></div><h1 id="title-logo">gal<span>bench</span><em>让模型，走进故事里。</em></h1><p class="title-description">测测模型，记得多少故事。</p><div class="title-route-tags"><span>游戏内知识</span><span>角色识图</span><span>剧情总结</span></div><button type="button" id="enter-arena" class="title-enter">进入攻略大厅 <span>↗</span></button></div>
       <div class="title-bottom"><button type="button" data-cover-credits>封面与来源 ↗</button></div>
     </div>
     <div class="title-wall"><div id="cover-wall" class="cover-wall" aria-hidden="true"></div><div class="wall-caption"><strong id="cover-wall-count">故事封面集</strong><button type="button" id="toggle-cover-motion" aria-pressed="false">Ⅱ 暂停滚动</button></div></div>
@@ -51,7 +55,7 @@
     </section>
     <div id="global-error" class="notice error" role="alert" hidden></div>
     <nav class="page-nav" aria-label="页面导航"><button type="button" class="selected" data-view="dashboard" aria-current="page">出场测试</button><button type="button" data-view="leaderboard">排行榜</button><button type="button" data-view="bank">题库图鉴</button></nav>
-    <dialog id="config-dialog" class="config-dialog"><div class="modal-heading"><div><h2>选手准备室</h2></div><button type="button" class="icon-button" data-close="config-dialog" aria-label="关闭配置">×</button></div><div class="config-dialog-body">
+    <dialog id="config-dialog" class="config-dialog" aria-label="选手准备室"><div class="modal-heading"><div><h2>选手准备室</h2></div><button type="button" class="icon-button" data-close="config-dialog" aria-label="关闭配置">×</button></div><div class="config-dialog-body">
       <aside class="configuration panel">
         <div class="section-title"><h2>连接模型</h2></div>
         <p id="preferences-notice" class="notice" role="status" hidden>接入方式已统一为 Agent。请选择客户端并确认模型；旧 API 配置不再使用。</p>
@@ -210,11 +214,11 @@
     </section>
     <footer><span>galbench</span><button type="button" class="text-button" data-cover-credits>封面与来源 ↗</button></footer>
   </main>
-  <dialog id="question-dialog" class="question-dialog"><div class="modal-heading"><div><span id="question-dialog-kicker" class="eyebrow"></span><h2 id="question-dialog-title"></h2></div><button type="button" class="icon-button" data-close="question-dialog" aria-label="关闭题目详情">×</button></div><div id="question-dialog-content" class="question-dialog-content"></div></dialog>
+  <dialog id="question-dialog" class="question-dialog" aria-labelledby="question-dialog-title"><div class="modal-heading"><div><span id="question-dialog-kicker" class="eyebrow"></span><h2 id="question-dialog-title"></h2></div><button type="button" class="icon-button" data-close="question-dialog" aria-label="关闭题目详情">×</button></div><div id="question-dialog-content" class="question-dialog-content"></div></dialog>
   <dialog id="cast-dialog" class="cast-dialog" aria-labelledby="cast-dialog-title"><div class="modal-heading"><div><h2 id="cast-dialog-title">伙伴档案</h2></div><button type="button" class="icon-button" data-close="cast-dialog" aria-label="关闭伙伴档案">×</button></div><div class="cast-dialog-body"><div class="cast-dialog-art"><img id="cast-dialog-image" alt="" decoding="async"></div><div class="cast-dialog-copy"><img id="cast-dialog-logo" class="cast-dialog-logo" alt="" width="38" height="38"><h3 id="cast-dialog-name"></h3><p id="cast-dialog-quote"></p><div id="cast-dialog-roster" class="cast-dialog-roster" role="group" aria-label="查看其他 AI 角色"></div><a id="cast-original-link" class="cast-original-link" target="_blank" rel="noopener noreferrer">查看完整立绘 ↗</a></div></div></dialog>
-  <dialog id="reset-dialog" class="reset-dialog"><div class="reset-symbol">↻</div><h2>开启一个新赛季？</h2><p>清除当前排名，所有原始战绩仍保留在「全部记录」中。</p><div class="reset-actions"><button type="button" class="secondary" data-close="reset-dialog">再想一下</button><button type="button" id="confirm-clear-rankings" class="primary">清除排名</button></div></dialog>
+  <dialog id="reset-dialog" class="reset-dialog" aria-label="开启新赛季"><div class="reset-symbol">↻</div><h2>开启一个新赛季？</h2><p>清除当前排名，所有原始战绩仍保留在「全部记录」中。</p><div class="reset-actions"><button type="button" class="secondary" data-close="reset-dialog">再想一下</button><button type="button" id="confirm-clear-rankings" class="primary">清除排名</button></div></dialog>
   </div>
-  <dialog id="cover-credits" class="cover-credits"><div class="modal-heading"><div><h2>封面与来源</h2></div><button type="button" class="icon-button" id="close-cover-credits" aria-label="关闭封面来源">×</button></div><p class="cover-source-note">封面来自 Steam，版权归原作者；点击可查看商店页。封面墙不代表题库收录范围。</p><div id="cover-credit-list" class="cover-credit-list"></div></dialog>
+  <dialog id="cover-credits" class="cover-credits" aria-label="封面与来源"><div class="modal-heading"><div><h2>封面与来源</h2></div><button type="button" class="icon-button" id="close-cover-credits" aria-label="关闭封面来源">×</button></div><div class="cover-tools"><input id="cover-search" type="search" placeholder="找一部作品…" aria-label="搜索封面作品"><select id="cover-source" aria-label="筛选封面来源"><option value="all">全部来源</option><option value="Steam">Steam</option><option value="VNDB">VNDB</option><option value="Ren'Py">Ren'Py</option></select><span id="cover-count" role="status"></span></div><p class="cover-source-note">素材仅作非商业展示，版权及许可归各自权利人。</p><div id="cover-credit-list" class="cover-credit-list"></div></dialog>
   <div id="toast" class="toast" role="status" hidden></div><div id="celebration" class="celebration" aria-hidden="true"></div>
 </body>
 </html>
