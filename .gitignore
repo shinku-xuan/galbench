@@ -105,3 +105,14 @@
 **/test_*.py
 **/*_test.py
 **/conftest.py
+
+# Public legal notices requested for distribution; development docs stay local.
+!/LICENSE
+!/THIRD_PARTY_NOTICES.md
+!/THIRD_PARTY_ASSETS.json
+!/licenses/
+!/licenses/LobeHub-Icons-MIT.txt
+!/licenses/RenPy-TheQuestion-NOTICE.txt
+!/licenses/KatawaShoujo-NOTICE.txt
+!/licenses/ODbL-1.0.txt
+!/licenses/DbCL-1.0.txt

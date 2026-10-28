@@ -1,14 +1,22 @@
 galbench visual assets
 
+See THIRD_PARTY_NOTICES.md and THIRD_PARTY_ASSETS.json at the repository root
+for per-file sources, hashes, license scope and outstanding permissions.
+
 Character illustrations were supplied by the project owner from community AI
 character artwork. The original artists retain their respective rights.
 The project does not claim authorship of those community illustrations.
+Original artist names, public source links and redistribution permissions
+have not been supplied or independently verified. This notice is attribution
+information, not a license from those artists.
 
 The following CG illustrations were generated with the built-in imagegen tool
 using the supplied character illustrations as visual references:
 - club-cg-v1.png: DeepSeek, GPT and Claude in a literature club.
 - arena-duel-cg-v1.png: Gemini, GPT and Grok in a fictional arena.
 - archive-table-cg-v1.png: Claude, Qwen and Kimi around a story research table.
+Generation does not establish permission to reuse the referenced community
+character designs. These CGs are excluded from the project's MIT code license.
 
 Brand icons are from LobeHub Icons:
 https://github.com/lobehub/lobe-icons
