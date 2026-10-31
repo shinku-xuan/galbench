@@ -5,6 +5,8 @@
 *.html text eol=lf
 *.css text eol=lf
 *.js text eol=lf
+# Preserve whitespace inside the bundled upstream GLSL shader strings.
+/galbench/static/three.vendor.js whitespace=-blank-at-eol,-space-before-tab
 *.json text eol=lf
 # Dataset hashes include raw bytes: never normalize JSONL line endings.
 *.jsonl -text whitespace=cr-at-eol
@@ -13,6 +15,7 @@
 **/LICENSE text eol=lf
 /LICENSE text eol=lf
 /THIRD_PARTY_NOTICES.md text eol=lf
+/README.md text eol=lf
 *.bat text eol=crlf
 *.png binary
 *.jpg binary

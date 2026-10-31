@@ -7,6 +7,7 @@ const normalizedTitle=value=>String(value||"").toLowerCase().replace(/[^\p{L}\p{
 function coverFor(title){const key=normalizedTitle(title);return novelUI.covers.find(c=>[c.title,...(c.aliases||[])].some(t=>normalizedTitle(t)===key));}
 
 function initNovelUI(){
+  initVoxelUI();
   initAtelierUI();
   const comparison=node("details","rank-comparison-note"),comparisonHeading=node("summary","","排名规则"),comparisonGrid=node("div","rank-comparison-grid");
   for(const [name,text] of [["300 分","同一场三榜各 100，未齐不按零分计"],["Agent","显示实际回传 ID 或声明来源，客户端不是模型"]]){const cell=node("div");cell.append(node("strong","",name),node("span","",text));comparisonGrid.append(cell);}
@@ -122,6 +123,7 @@ function buildPodium(group,division,maximum=100){
     const plinth=node("span","podium-plinth");plinth.append(node("b","",String(rank).padStart(2,"0")));
     button.append(caption,avatar,info,plinth);if(row)button.addEventListener("click",()=>selectModel(row.model_key));slots.append(button);
   }
+  registerVoxelStage(stage,Array.from({length:5},(_,index)=>finalists[index]||null));
   return stage;
 }
 

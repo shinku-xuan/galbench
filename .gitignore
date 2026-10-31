@@ -82,6 +82,8 @@
 **/.DS_Store
 /.qa/
 /runs/
+/local-assets/
+/previews/
 /tests/
 /test/
 /tools/
@@ -98,7 +100,6 @@
 /package-lock.json
 /uv.lock
 /poetry.lock
-/README.md
 **/*.md
 **/tests/
 **/test/
@@ -116,3 +117,7 @@
 !/licenses/KatawaShoujo-NOTICE.txt
 !/licenses/ODbL-1.0.txt
 !/licenses/DbCL-1.0.txt
+!/licenses/Threejs-MIT.txt
+
+# Public GitHub landing page; other development Markdown stays local.
+!/README.md

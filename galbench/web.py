@@ -576,7 +576,7 @@ def make_server(app, port=8765):
                     if file.parent != folder:
                         raise FileNotFoundError()
                     return self.send_bytes(file.read_bytes(), "application/octet-stream", filename=parts[1])
-                asset = {"/": "index.html", "/app.js": "app.js", "/app.css": "app.css", "/arena.js":"arena.js", "/arena.css":"arena.css", "/quest.js":"quest.js", "/quest.css":"quest.css", "/novel.js":"novel.js", "/novel.css":"novel.css", "/cast.js":"cast.js", "/cast.css":"cast.css", "/atelier.js":"atelier.js", "/atelier.css":"atelier.css", "/favicon.svg": "favicon.svg"}.get(path)
+                asset = {"/": "index.html", "/app.js": "app.js", "/app.css": "app.css", "/arena.js":"arena.js", "/arena.css":"arena.css", "/quest.js":"quest.js", "/quest.css":"quest.css", "/novel.js":"novel.js", "/novel.css":"novel.css", "/cast.js":"cast.js", "/cast.css":"cast.css", "/atelier.js":"atelier.js", "/atelier.css":"atelier.css", "/voxel.js":"voxel.js", "/voxel.css":"voxel.css", "/voxel-models.js":"voxel-models.js", "/voxel-cast.js":"voxel-cast.js", "/voxel-cast-data.js":"voxel-cast-data.js", "/voxel-renderer.js":"voxel-renderer.js", "/three.vendor.js":"three.vendor.js", "/favicon.svg": "favicon.svg"}.get(path)
                 if not asset:
                     raise FileNotFoundError()
                 kind = mimetypes.guess_type(asset)[0] or "application/octet-stream"

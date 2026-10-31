@@ -1,6 +1,6 @@
 {
   "schema_version": "galbench-third-party-assets-1.0",
-  "reviewed_at": "2026-10-29",
+  "reviewed_at": "2026-10-31",
   "scope": "Current distributed dev-v2.0, spec/v2.0 and web assets; no raw upstream script dumps, development files or Harness binaries.",
   "project_code_license": "MIT",
   "project_code_license_file": "LICENSE",
@@ -113,6 +113,12 @@
     "generated-cg": {
       "license": null,
       "rights_note": "不纳入项目 MIT 许可；生成行为不消除参考角色设计等第三方权利。"
+    },
+    "threejs": {
+      "license": "MIT",
+      "authors": "Copyright © 2010-2026 three.js authors",
+      "source_url": "https://github.com/mrdoob/three.js",
+      "notice_file": "licenses/Threejs-MIT.txt"
     }
   },
   "license_texts": [
@@ -145,6 +151,12 @@
       "sha256": "3cbfa990f26df856c6a7d3fff3d1f236e3b0165b1e8257ca0d00f15758754f81",
       "sha256_mode": "git_lf",
       "source_url": "https://opendatacommons.org/licenses/dbcl/dbcl-10.txt"
+    },
+    {
+      "path": "licenses/Threejs-MIT.txt",
+      "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc",
+      "sha256_mode": "git_lf",
+      "source_url": "https://registry.npmjs.org/three/-/three-0.186.1.tgz"
     }
   ],
   "counts": {
@@ -27909,5 +27921,113 @@
     "Harness CLIs and SDKs",
     "model weights",
     "raw upstream script archives"
-  ]
+  ],
+  "runtime_libraries": [
+    {
+      "name": "Three.js",
+      "version": "0.186.1",
+      "path": "galbench/static/three.vendor.js",
+      "license_policy_ref": "threejs",
+      "redistribution_status": "upstream_license_recorded",
+      "sha256": "7060202961386ee515efe0955887f4189a2a463b3aec3b81d73d5985883a5d66",
+      "sha256_mode": "git_lf",
+      "source_url": "https://registry.npmjs.org/three/-/three-0.186.1.tgz",
+      "source_integrity": "sha512-blFeqb49wRCSGUGj7gtpfnSGHy2lwDk94RhUmS1c/hTby70kvChbWpkJ4Pm1390LqzzvTmzgXKHPEafJwCb8jA==",
+      "modification": "Selected official WebGL rendering exports bundled and minified with esbuild 0.28.2; MIT notice retained; no runtime CDN."
+    }
+  ],
+  "voxel_model_state": {
+    "path": "galbench/static/voxel-models.js",
+    "sha256": "5d63fdbe8365dbfa2e0162498df42c3612eba06ad8240f9136c271097f762ec8",
+    "sha256_mode": "git_lf",
+    "implementation_status": "implemented_imported_deepseek_gpt_claude",
+    "implemented_kinds": [
+      "deepseek",
+      "gpt",
+      "claude"
+    ],
+    "planned_reference_characters": [
+      "deepseek",
+      "gpt",
+      "claude"
+    ],
+    "local_reference_images_bundled": false,
+    "rights_note": "DeepSeek, GPT and Claude voxel coordinates and palettes extracted from the user-supplied feiyu_viewer.html, gpt_viewer.html and kexiaojie_viewer.html. Original authors and redistribution permissions remain unverified; these supplied model data are excluded from the root MIT license. Reference character-design and brand rights remain separate. No reference images, textures, original viewer scripts or personal source paths are distributed.",
+    "character_voxel_sizes": {
+      "deepseek": 1,
+      "gpt": 1,
+      "claude": 1
+    },
+    "supporting_files": [
+      {
+        "path": "galbench/static/voxel-cast.js",
+        "sha256": "9308f9a1fd4478020cc735c8e09cfc7ce2046f2ad8b40e3de452105515bef1ed",
+        "sha256_mode": "git_lf"
+      },
+      {
+        "path": "galbench/static/voxel-cast-data.js",
+        "sha256": "9347a34ca1ce358efcd8136887555c56d7ea260671f0fe06b93904fe1b897acc",
+        "sha256_mode": "git_lf"
+      },
+      {
+        "path": "galbench/static/voxel-renderer.js",
+        "sha256": "2908eb23147ec28976cfefe356cdbb5701179ccf137db1268949873d56e02485",
+        "sha256_mode": "git_lf"
+      }
+    ],
+    "character_models": {
+      "deepseek": {
+        "geometry_origin": "user_provided_file",
+        "pose": "standing",
+        "voxel_count": 29985,
+        "source_document": {
+          "name": "feiyu_viewer.html",
+          "sha256": "1a63d97b26f99a10dfdf31706d1fa01f1bb799d5d1593858d574d36d95daf263",
+          "bundled": false
+        },
+        "modification": "Only x,y,z,palette-index voxel data and palette colors extracted. Axes normalized to y-up/z-front and origin aligned for podium display; geometry and palette preserved. Original viewer scripts and UI excluded.",
+        "author": "unverified",
+        "redistribution_status": "source_recorded_permission_pending",
+        "root_mit_license_applies": false
+      },
+      "gpt": {
+        "geometry_origin": "user_provided_file",
+        "pose": "standing",
+        "voxel_count": 30258,
+        "source_document": {
+          "name": "gpt_viewer.html",
+          "sha256": "3e56ec9e58c00678b4d6383fab1243ad9f55821d9d507335e91191021343a804",
+          "bundled": false
+        },
+        "source_origin_metadata": {
+          "name": "gpt_chibi.json",
+          "sha256": "0b81f816db42b3f40110c6785535c2e153a03a3cae2707e497c3c7042a2a7bbc",
+          "bundled": false
+        },
+        "modification": "Only x,y,z,palette-index voxel records and palette colors extracted. Axes normalized to y-up/z-front; podium origin uses the supplied coordinate metadata. Original geometry and palette preserved. Source viewer scripts and UI excluded.",
+        "author": "unverified",
+        "redistribution_status": "source_recorded_permission_pending",
+        "root_mit_license_applies": false
+      },
+      "claude": {
+        "geometry_origin": "user_provided_file",
+        "pose": "standing",
+        "voxel_count": 29937,
+        "source_document": {
+          "name": "kexiaojie_viewer.html",
+          "sha256": "29ff76996cef4610aa591c77106e8c0c3774b9f6e1f7156720bd9598a6a69a44",
+          "bundled": false
+        },
+        "source_origin_metadata": {
+          "name": "kexiaojie_chibi.json",
+          "sha256": "f2c56096ee8109d8a0065fac169ab521b1efe33b798b01c6a5ce3fea25b9d533",
+          "bundled": false
+        },
+        "modification": "Only x,y,z,palette-index voxel records and palette colors extracted. Axes normalized to y-up/z-front; podium origin uses the supplied coordinate metadata. Original geometry and palette preserved. Source viewer scripts and UI excluded.",
+        "author": "unverified",
+        "redistribution_status": "source_recorded_permission_pending",
+        "root_mit_license_applies": false
+      }
+    }
+  }
 }
