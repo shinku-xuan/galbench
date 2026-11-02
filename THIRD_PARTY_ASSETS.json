@@ -1,6 +1,6 @@
 {
   "schema_version": "galbench-third-party-assets-1.0",
-  "reviewed_at": "2026-10-31",
+  "reviewed_at": "2026-11-02",
   "scope": "Current distributed dev-v2.0, spec/v2.0 and web assets; no raw upstream script dumps, development files or Harness binaries.",
   "project_code_license": "MIT",
   "project_code_license_file": "LICENSE",
@@ -27940,23 +27940,41 @@
     "path": "galbench/static/voxel-models.js",
     "sha256": "5d63fdbe8365dbfa2e0162498df42c3612eba06ad8240f9136c271097f762ec8",
     "sha256_mode": "git_lf",
-    "implementation_status": "implemented_imported_deepseek_gpt_claude",
+    "implementation_status": "implemented_imported_nine_characters",
     "implemented_kinds": [
       "deepseek",
       "gpt",
-      "claude"
+      "claude",
+      "grok",
+      "kimi",
+      "gemini",
+      "minimax",
+      "glm",
+      "qwen"
     ],
     "planned_reference_characters": [
       "deepseek",
       "gpt",
-      "claude"
+      "claude",
+      "grok",
+      "kimi",
+      "gemini",
+      "minimax",
+      "glm",
+      "qwen"
     ],
     "local_reference_images_bundled": false,
-    "rights_note": "DeepSeek, GPT and Claude voxel coordinates and palettes extracted from the user-supplied feiyu_viewer.html, gpt_viewer.html and kexiaojie_viewer.html. Original authors and redistribution permissions remain unverified; these supplied model data are excluded from the root MIT license. Reference character-design and brand rights remain separate. No reference images, textures, original viewer scripts or personal source paths are distributed.",
+    "rights_note": "DeepSeek, GPT, Claude, Grok, Kimi, Gemini, MiniMax, GLM and Qwen voxel coordinates and palettes extracted from the user-supplied feiyu_viewer.html, gpt_viewer.html, kexiaojie_viewer.html, gxiaomei_viewer.html, kmiss_viewer.html, hajimi_viewer.html, mi_viewer.html, galama_viewer.html and qwen_viewer.html respectively. Original authors and redistribution permissions remain unverified; these supplied model data are excluded from the root MIT license. Reference character-design and brand rights remain separate. No reference images, textures, original viewer scripts or personal source paths are distributed.",
     "character_voxel_sizes": {
       "deepseek": 1,
       "gpt": 1,
-      "claude": 1
+      "claude": 1,
+      "grok": 1,
+      "kimi": 1,
+      "gemini": 1,
+      "minimax": 1,
+      "glm": 1,
+      "qwen": 1
     },
     "supporting_files": [
       {
@@ -27966,7 +27984,7 @@
       },
       {
         "path": "galbench/static/voxel-cast-data.js",
-        "sha256": "9347a34ca1ce358efcd8136887555c56d7ea260671f0fe06b93904fe1b897acc",
+        "sha256": "2f1bdfbb5852f0e241418c91d70fe19c957325015185e28aadfd7e210ffb8c88",
         "sha256_mode": "git_lf"
       },
       {
@@ -28021,6 +28039,120 @@
         "source_origin_metadata": {
           "name": "kexiaojie_chibi.json",
           "sha256": "f2c56096ee8109d8a0065fac169ab521b1efe33b798b01c6a5ce3fea25b9d533",
+          "bundled": false
+        },
+        "modification": "Only x,y,z,palette-index voxel records and palette colors extracted. Axes normalized to y-up/z-front; podium origin uses the supplied coordinate metadata. Original geometry and palette preserved. Source viewer scripts and UI excluded.",
+        "author": "unverified",
+        "redistribution_status": "source_recorded_permission_pending",
+        "root_mit_license_applies": false
+      },
+      "grok": {
+        "geometry_origin": "user_provided_file",
+        "pose": "standing",
+        "voxel_count": 30257,
+        "source_document": {
+          "name": "gxiaomei_viewer.html",
+          "sha256": "6fbb183af5d4a15ce26a6e09017c3894b3bec4f03a27c8a20ab323368185f508",
+          "bundled": false
+        },
+        "source_origin_metadata": {
+          "name": "gxiaomei_chibi.json",
+          "sha256": "bc5a1db9e2d942b0c6520400ae9938b6e43fd4d3d6e0b8efb9cc94c41f3af875",
+          "bundled": false
+        },
+        "modification": "Only x,y,z,palette-index voxel records and palette colors extracted. Axes normalized to y-up/z-front; podium origin uses the supplied coordinate metadata. Original geometry and palette preserved. Source viewer scripts and UI excluded.",
+        "author": "unverified",
+        "redistribution_status": "source_recorded_permission_pending",
+        "root_mit_license_applies": false
+      },
+      "kimi": {
+        "geometry_origin": "user_provided_file",
+        "pose": "standing",
+        "voxel_count": 30209,
+        "source_document": {
+          "name": "kmiss_viewer.html",
+          "sha256": "79318c9a3e1b6967f0efaf9e46d72751ee83690173cfcd52ec5c603628819cff",
+          "bundled": false
+        },
+        "source_origin_metadata": {
+          "name": "kmiss_chibi.json",
+          "sha256": "fc8c062e7089579c226163d16e3c2bb1a20cad31cc2cfc6dd9bc02ab419de8a5",
+          "bundled": false
+        },
+        "modification": "Only x,y,z,palette-index voxel records and palette colors extracted. Axes normalized to y-up/z-front; podium origin uses the supplied coordinate metadata. Original geometry and palette preserved. Source viewer scripts and UI excluded.",
+        "author": "unverified",
+        "redistribution_status": "source_recorded_permission_pending",
+        "root_mit_license_applies": false
+      },
+      "gemini": {
+        "geometry_origin": "user_provided_file",
+        "pose": "standing",
+        "voxel_count": 29789,
+        "source_document": {
+          "name": "hajimi_viewer.html",
+          "sha256": "1b6a726b7091e02a328fa1def1c89d7176b8525bdba4d279bffc81527ff53257",
+          "bundled": false
+        },
+        "source_origin_metadata": {
+          "name": "hajimi_chibi.json",
+          "sha256": "eb465fde86b36790deabe4141e56b73f4af7d6a3e646c67ef55944309a9b279b",
+          "bundled": false
+        },
+        "modification": "Only x,y,z,palette-index voxel records and palette colors extracted. Axes normalized to y-up/z-front; podium origin uses the supplied coordinate metadata. Original geometry and palette preserved. Source viewer scripts and UI excluded.",
+        "author": "unverified",
+        "redistribution_status": "source_recorded_permission_pending",
+        "root_mit_license_applies": false
+      },
+      "minimax": {
+        "geometry_origin": "user_provided_file",
+        "pose": "standing",
+        "voxel_count": 29907,
+        "source_document": {
+          "name": "mi_viewer.html",
+          "sha256": "8da896d6e9e7bb09d1c72382bcd80faaaed95ec2393e034af6e1fdfa49831997",
+          "bundled": false
+        },
+        "source_origin_metadata": {
+          "name": "mi_chibi.json",
+          "sha256": "a73dd712721b030c76685fa9f2782b045994d3ce0bb76d6f1776f1ef81e6ff13",
+          "bundled": false
+        },
+        "modification": "Only x,y,z,palette-index voxel records and palette colors extracted. Axes normalized to y-up/z-front; podium origin uses the supplied coordinate metadata. Original geometry and palette preserved. Source viewer scripts and UI excluded.",
+        "author": "unverified",
+        "redistribution_status": "source_recorded_permission_pending",
+        "root_mit_license_applies": false
+      },
+      "glm": {
+        "geometry_origin": "user_provided_file",
+        "pose": "standing",
+        "voxel_count": 30643,
+        "source_document": {
+          "name": "galama_viewer.html",
+          "sha256": "0aadcc5f4ab8b66f9c6544ffe4efabe4fb00eaa5d9d634746aba85a99a42b5ea",
+          "bundled": false
+        },
+        "source_origin_metadata": {
+          "name": "galama_chibi.json",
+          "sha256": "6b087416ed084f24379ba4c419853a14e714e370b5822e8741820c4dec17ccc9",
+          "bundled": false
+        },
+        "modification": "Only x,y,z,palette-index voxel records and palette colors extracted. Axes normalized to y-up/z-front; podium origin uses the supplied coordinate metadata. Original geometry and palette preserved. Source viewer scripts and UI excluded.",
+        "author": "unverified",
+        "redistribution_status": "source_recorded_permission_pending",
+        "root_mit_license_applies": false
+      },
+      "qwen": {
+        "geometry_origin": "user_provided_file",
+        "pose": "standing",
+        "voxel_count": 29839,
+        "source_document": {
+          "name": "qwen_viewer.html",
+          "sha256": "63b34d7aae541711ae877eb6a7e397ff4bb3c538851c351d0dd08a47466dd524",
+          "bundled": false
+        },
+        "source_origin_metadata": {
+          "name": "qwen_chibi.json",
+          "sha256": "06d5e1ec61c388a454f8fc503b3c10059e13106b1c0344bc23bacad8d5edb277",
           "bundled": false
         },
         "modification": "Only x,y,z,palette-index voxel records and palette colors extracted. Axes normalized to y-up/z-front; podium origin uses the supplied coordinate metadata. Original geometry and palette preserved. Source viewer scripts and UI excluded.",

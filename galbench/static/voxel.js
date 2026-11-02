@@ -7,6 +7,12 @@ function voxelKindFor(row){
   if(/^(?:deepseek)(?:$|[\s._:-]|\d)/.test(name))return "deepseek";
   if(/^claude(?:$|[\s._:-]|\d)/.test(name))return "claude";
   if(/^(?:gpt(?:$|[\s._:-]|\d)|chatgpt(?:$|[-\s])|o[134](?:$|[-.]))/.test(name))return "gpt";
+  if(/^grok(?:$|[\s._:-]|\d)/.test(name))return "grok";
+  if(/^(?:kimi|moonshot)(?:$|[\s._:-]|\d)/.test(name))return "kimi";
+  if(/^gemini(?:$|[\s._:-]|\d)/.test(name))return "gemini";
+  if(/^minimax(?:$|[\s._:-]|\d)/.test(name))return "minimax";
+  if(/^glm(?:$|[\s._:-]|\d)/.test(name))return "glm";
+  if(/^(?:qwen|qwq|qvq|通义千问|千问)(?:$|[\s._:：-]|\d)/.test(name))return "qwen";
   return "robot";
 }
 function registerVoxelStage(stage,rows){
@@ -70,7 +76,7 @@ async function loadVoxelEngine(){
   voxelUI.loading=(async()=>{
     voxelUI.models=await import("/voxel-models.js");
     for(const control of voxelUI.stages.values())paintVoxelPreviews(control);
-    if(!["deepseek","gpt","claude","robot"].some(kind=>voxelUI.models.voxelModel(kind)?.faces?.length))return;
+    if(!["deepseek","gpt","claude","grok","kimi","gemini","minimax","glm","qwen"].some(kind=>voxelUI.models.voxelModel(kind)?.faces?.length))return;
     const {createVoxelRenderer}=await import("/voxel-renderer.js");
     voxelUI.engine=createVoxelRenderer(ready=>{if(voxelUI.current)voxelUI.current.stage.dataset.voxelMode=ready?"interactive":"static";if(ready)syncVoxelStage();});
   })().catch(()=>{voxelUI.engine=null;});
