@@ -63,6 +63,7 @@ class WebApp:
             self.default_dataset = "custom"
         else:
             self.datasets = {"expanded": load_dataset(ROOT / "data" / "dev-v2.0"),
+                             "stability": load_dataset(ROOT / "spec" / "stability-v2.0"),
                              "smoke": load_dataset(ROOT / "spec" / "v2.0")}
             self.default_dataset = "expanded"
         self.dataset = self.datasets[self.default_dataset]
@@ -201,7 +202,7 @@ class WebApp:
             kwargs = dict(boards=tuple(boards), repeats=repeats, concurrency=concurrency, progress=progress, on_event=event,cancel_token=self.controls[job_id])
             output = self.runs_root / job_id
             if mode == "mock_demo":
-                with mock_server(dataset=dataset if profile in {"expanded", "smoke"} else None) as (url, _):
+                with mock_server(dataset=dataset if profile in {"expanded", "stability", "smoke"} else None) as (url, _):
                     model = ModelConfig(url, "galbench-mock-target", api_key_env=None, supports_vision=True, timeout_seconds=10)
                     judge = ModelConfig(url, "galbench-mock-judge", api_key_env=None, timeout_seconds=10,
                                         parameters={"max_tokens": DEFAULT_MAX_TOKENS}) if judge_enabled else None

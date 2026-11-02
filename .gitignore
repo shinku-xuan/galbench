@@ -49,6 +49,16 @@
 !/spec/v2.0/UPSTREAM_RENPY_NOTICE.txt
 !/spec/v2.0/UPSTREAM_KATAWA_SHOUJO_NOTICE.txt
 
+# Temporary runtime stability bank, removable for the public 1.0 release.
+!/spec/stability-v2.0/
+!/spec/stability-v2.0/text.jsonl
+!/spec/stability-v2.0/vision.jsonl
+!/spec/stability-v2.0/story.jsonl
+!/spec/stability-v2.0/assets/
+!/spec/stability-v2.0/assets/*.jpg
+!/spec/stability-v2.0/UPSTREAM_RENPY_NOTICE.txt
+!/spec/stability-v2.0/UPSTREAM_KATAWA_SHOUJO_NOTICE.txt
+
 # Explicit local-only boundaries, including files added under allowed directories.
 **/__pycache__/
 **/node_modules/

@@ -119,7 +119,7 @@ class Dataset:
 
 def dataset_label(profile, dataset):
     active = [q for q in dataset.questions if q.row["split"] != "retired"]
-    prefix = {"expanded": "广域开发集 2.0", "smoke": "流程样题", "custom": "自定义题库"}.get(profile, "题库")
+    prefix = {"expanded": "广域开发集 2.0", "stability": "稳定性小题库（临时 · 50 题）", "smoke": "流程样题", "custom": "自定义题库"}.get(profile, "题库")
     counts = " / ".join(str(sum(q.board == board for q in active)) for board in ("text", "vision", "story"))
     return f"{prefix} · {counts}"
 

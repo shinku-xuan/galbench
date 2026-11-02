@@ -1,7 +1,7 @@
 {
   "schema_version": "galbench-third-party-assets-1.0",
   "reviewed_at": "2026-11-02",
-  "scope": "Current distributed dev-v2.0, spec/v2.0 and web assets; no raw upstream script dumps, development files or Harness binaries.",
+  "scope": "Current distributed dev-v2.0, spec/v2.0, temporary spec/stability-v2.0 subset and web assets; no raw upstream script dumps, development files or Harness binaries.",
   "project_code_license": "MIT",
   "project_code_license_file": "LICENSE",
   "human_readable_notice": "THIRD_PARTY_NOTICES.md",
@@ -161,7 +161,7 @@
   ],
   "counts": {
     "unique_image_assets": 582,
-    "image_asset_files": 585,
+    "image_asset_files": 605,
     "image_categories": {
       "game-portrait": 400,
       "steam-cover": 38,
@@ -172,7 +172,7 @@
       "generated-cg": 3,
       "brand-icon": 11
     },
-    "dataset_files": 6,
+    "dataset_files": 9,
     "main_questions": 900,
     "smoke_questions": 10,
     "story_records_including_smoke": 102,
@@ -181,7 +181,8 @@
       "source_recorded_permission_pending": 567,
       "upstream_license_recorded": 12,
       "references_permission_pending": 3
-    }
+    },
+    "stability_questions": 50
   },
   "datasets": [
     {
@@ -267,6 +268,110 @@
       ],
       "record_provenance_field": "private.evidence",
       "additional_provenance_field": "private.excerpt_source"
+    },
+    {
+      "path": "spec/stability-v2.0/text.jsonl",
+      "sha256": "d9f7609aafc24127b3b37ea050b6a502975d3d7ddfba436ecadc71dd36628f65",
+      "sha256_mode": "raw",
+      "board": "text",
+      "question_count": 20,
+      "mixed_content": true,
+      "third_party_policy_refs": [
+        "vndb-data",
+        "source-page-expression"
+      ],
+      "record_provenance_field": "private.evidence",
+      "additional_provenance_field": "private.work",
+      "temporary": true,
+      "subset_of": "data/dev-v2.0/text.jsonl",
+      "source_question_ids": [
+        "gb2-t-369",
+        "gb2-t-049",
+        "gb2-t-255",
+        "gb2-t-386",
+        "gb2-t-056",
+        "gb2-t-166",
+        "gb2-t-095",
+        "gb2-t-335",
+        "gb2-t-104",
+        "gb2-t-301",
+        "gb2-t-278",
+        "gb2-t-213",
+        "gb2-t-325",
+        "gb2-t-296",
+        "gb2-t-362",
+        "gb2-t-393",
+        "gb2-t-290",
+        "gb2-t-322",
+        "gb2-t-331",
+        "gb2-t-079"
+      ]
+    },
+    {
+      "path": "spec/stability-v2.0/vision.jsonl",
+      "sha256": "6d3a9f010dd9e3492917c741db49f32220f1d2890719ce7e5b6205c9bc8b6850",
+      "sha256_mode": "raw",
+      "board": "vision",
+      "question_count": 20,
+      "mixed_content": true,
+      "third_party_policy_refs": [
+        "vndb-data",
+        "game-portrait"
+      ],
+      "record_provenance_field": "private.evidence",
+      "additional_provenance_field": "private.work",
+      "temporary": true,
+      "subset_of": "data/dev-v2.0/vision.jsonl",
+      "source_question_ids": [
+        "gb2-v-185",
+        "gb2-v-142",
+        "gb2-v-149",
+        "gb2-v-276",
+        "gb2-v-046",
+        "gb2-v-088",
+        "gb2-v-110",
+        "gb2-v-007",
+        "gb2-v-343",
+        "gb2-v-239",
+        "gb2-v-318",
+        "gb2-v-321",
+        "gb2-v-078",
+        "gb2-v-330",
+        "gb2-v-025",
+        "gb2-v-193",
+        "gb2-v-217",
+        "gb2-v-219",
+        "gb2-v-287",
+        "gb2-v-237"
+      ]
+    },
+    {
+      "path": "spec/stability-v2.0/story.jsonl",
+      "sha256": "3c0be287137accd617cbd7c5c00d92c1557f464e300e3fccb2f7ce8a28bf79ff",
+      "sha256_mode": "raw",
+      "board": "story",
+      "question_count": 10,
+      "mixed_content": true,
+      "third_party_policy_refs": [
+        "katawa-shoujo",
+        "the-question"
+      ],
+      "record_provenance_field": "private.evidence",
+      "additional_provenance_field": "private.excerpt_source",
+      "temporary": true,
+      "subset_of": "data/dev-v2.0/story.jsonl",
+      "source_question_ids": [
+        "gb2-s-022",
+        "gb2-s-008",
+        "gb2-s-019",
+        "gb2-s-011",
+        "gb2-s-058",
+        "gb2-s-041",
+        "gb2-s-043",
+        "gb2-s-067",
+        "gb2-s-096",
+        "gb2-s-097"
+      ]
     }
   ],
   "image_assets": [
@@ -460,6 +565,13 @@
           "path": "data/dev-v2.0/assets/portrait-69bed0606798cd9b49f16720.jpg",
           "used_by": {
             "path": "data/dev-v2.0/vision.jsonl",
+            "question_id": "gb2-v-007"
+          }
+        },
+        {
+          "path": "spec/stability-v2.0/assets/portrait-69bed0606798cd9b49f16720.jpg",
+          "used_by": {
+            "path": "spec/stability-v2.0/vision.jsonl",
             "question_id": "gb2-v-007"
           }
         }
@@ -982,6 +1094,13 @@
           "path": "data/dev-v2.0/assets/portrait-2ed5623d4aab0ce015d40219.jpg",
           "used_by": {
             "path": "data/dev-v2.0/vision.jsonl",
+            "question_id": "gb2-v-025"
+          }
+        },
+        {
+          "path": "spec/stability-v2.0/assets/portrait-2ed5623d4aab0ce015d40219.jpg",
+          "used_by": {
+            "path": "spec/stability-v2.0/vision.jsonl",
             "question_id": "gb2-v-025"
           }
         }
@@ -1598,6 +1717,13 @@
           "path": "data/dev-v2.0/assets/portrait-2d1d89a4e642d3c0130b1963.jpg",
           "used_by": {
             "path": "data/dev-v2.0/vision.jsonl",
+            "question_id": "gb2-v-046"
+          }
+        },
+        {
+          "path": "spec/stability-v2.0/assets/portrait-2d1d89a4e642d3c0130b1963.jpg",
+          "used_by": {
+            "path": "spec/stability-v2.0/vision.jsonl",
             "question_id": "gb2-v-046"
           }
         }
@@ -2528,6 +2654,13 @@
             "path": "data/dev-v2.0/vision.jsonl",
             "question_id": "gb2-v-078"
           }
+        },
+        {
+          "path": "spec/stability-v2.0/assets/portrait-93532e3138f4a7a17b9d8608.jpg",
+          "used_by": {
+            "path": "spec/stability-v2.0/vision.jsonl",
+            "question_id": "gb2-v-078"
+          }
         }
       ],
       "character_id": "c89816",
@@ -2816,6 +2949,13 @@
           "path": "data/dev-v2.0/assets/portrait-35a734cd99475bc15fa4e875.jpg",
           "used_by": {
             "path": "data/dev-v2.0/vision.jsonl",
+            "question_id": "gb2-v-088"
+          }
+        },
+        {
+          "path": "spec/stability-v2.0/assets/portrait-35a734cd99475bc15fa4e875.jpg",
+          "used_by": {
+            "path": "spec/stability-v2.0/vision.jsonl",
             "question_id": "gb2-v-088"
           }
         }
@@ -3454,6 +3594,13 @@
           "path": "data/dev-v2.0/assets/portrait-58b37bdf4daaf8e94e3ad7e9.jpg",
           "used_by": {
             "path": "data/dev-v2.0/vision.jsonl",
+            "question_id": "gb2-v-110"
+          }
+        },
+        {
+          "path": "spec/stability-v2.0/assets/portrait-58b37bdf4daaf8e94e3ad7e9.jpg",
+          "used_by": {
+            "path": "spec/stability-v2.0/vision.jsonl",
             "question_id": "gb2-v-110"
           }
         }
@@ -4391,6 +4538,13 @@
             "path": "data/dev-v2.0/vision.jsonl",
             "question_id": "gb2-v-142"
           }
+        },
+        {
+          "path": "spec/stability-v2.0/assets/portrait-dc6ce0b132f8540217de3247.jpg",
+          "used_by": {
+            "path": "spec/stability-v2.0/vision.jsonl",
+            "question_id": "gb2-v-142"
+          }
         }
       ],
       "character_id": "c12296",
@@ -4592,6 +4746,13 @@
           "path": "data/dev-v2.0/assets/portrait-acd03b536902612f63d8deef.jpg",
           "used_by": {
             "path": "data/dev-v2.0/vision.jsonl",
+            "question_id": "gb2-v-149"
+          }
+        },
+        {
+          "path": "spec/stability-v2.0/assets/portrait-acd03b536902612f63d8deef.jpg",
+          "used_by": {
+            "path": "spec/stability-v2.0/vision.jsonl",
             "question_id": "gb2-v-149"
           }
         }
@@ -5638,6 +5799,13 @@
             "path": "data/dev-v2.0/vision.jsonl",
             "question_id": "gb2-v-185"
           }
+        },
+        {
+          "path": "spec/stability-v2.0/assets/portrait-2c2009b6ee406fdc17eb310b.jpg",
+          "used_by": {
+            "path": "spec/stability-v2.0/vision.jsonl",
+            "question_id": "gb2-v-185"
+          }
         }
       ],
       "character_id": "c101093",
@@ -5868,6 +6036,13 @@
           "path": "data/dev-v2.0/assets/portrait-12cf4d5af31199d937826e96.jpg",
           "used_by": {
             "path": "data/dev-v2.0/vision.jsonl",
+            "question_id": "gb2-v-193"
+          }
+        },
+        {
+          "path": "spec/stability-v2.0/assets/portrait-12cf4d5af31199d937826e96.jpg",
+          "used_by": {
+            "path": "spec/stability-v2.0/vision.jsonl",
             "question_id": "gb2-v-193"
           }
         }
@@ -6566,6 +6741,13 @@
             "path": "data/dev-v2.0/vision.jsonl",
             "question_id": "gb2-v-217"
           }
+        },
+        {
+          "path": "spec/stability-v2.0/assets/portrait-933e1f866b9e0e76a19d5da8.jpg",
+          "used_by": {
+            "path": "spec/stability-v2.0/vision.jsonl",
+            "question_id": "gb2-v-217"
+          }
         }
       ],
       "character_id": "c93685",
@@ -6622,6 +6804,13 @@
           "path": "data/dev-v2.0/assets/portrait-b21c37e7168619f3291c0c38.jpg",
           "used_by": {
             "path": "data/dev-v2.0/vision.jsonl",
+            "question_id": "gb2-v-219"
+          }
+        },
+        {
+          "path": "spec/stability-v2.0/assets/portrait-b21c37e7168619f3291c0c38.jpg",
+          "used_by": {
+            "path": "spec/stability-v2.0/vision.jsonl",
             "question_id": "gb2-v-219"
           }
         }
@@ -7146,6 +7335,13 @@
             "path": "data/dev-v2.0/vision.jsonl",
             "question_id": "gb2-v-237"
           }
+        },
+        {
+          "path": "spec/stability-v2.0/assets/portrait-f5dc2cf2909d918297c2228d.jpg",
+          "used_by": {
+            "path": "spec/stability-v2.0/vision.jsonl",
+            "question_id": "gb2-v-237"
+          }
         }
       ],
       "character_id": "c170192",
@@ -7202,6 +7398,13 @@
           "path": "data/dev-v2.0/assets/portrait-d124637233531798f150c6b8.jpg",
           "used_by": {
             "path": "data/dev-v2.0/vision.jsonl",
+            "question_id": "gb2-v-239"
+          }
+        },
+        {
+          "path": "spec/stability-v2.0/assets/portrait-d124637233531798f150c6b8.jpg",
+          "used_by": {
+            "path": "spec/stability-v2.0/vision.jsonl",
             "question_id": "gb2-v-239"
           }
         }
@@ -8277,6 +8480,13 @@
             "path": "data/dev-v2.0/vision.jsonl",
             "question_id": "gb2-v-276"
           }
+        },
+        {
+          "path": "spec/stability-v2.0/assets/portrait-3b4dd0165818e47188ac29c3.jpg",
+          "used_by": {
+            "path": "spec/stability-v2.0/vision.jsonl",
+            "question_id": "gb2-v-276"
+          }
         }
       ],
       "character_id": "c9995",
@@ -8594,6 +8804,13 @@
           "path": "data/dev-v2.0/assets/portrait-99f03c22272ed96f92f8565f.jpg",
           "used_by": {
             "path": "data/dev-v2.0/vision.jsonl",
+            "question_id": "gb2-v-287"
+          }
+        },
+        {
+          "path": "spec/stability-v2.0/assets/portrait-99f03c22272ed96f92f8565f.jpg",
+          "used_by": {
+            "path": "spec/stability-v2.0/vision.jsonl",
             "question_id": "gb2-v-287"
           }
         }
@@ -9495,6 +9712,13 @@
             "path": "data/dev-v2.0/vision.jsonl",
             "question_id": "gb2-v-318"
           }
+        },
+        {
+          "path": "spec/stability-v2.0/assets/portrait-9ed2d3fd6473f53f33713f26.jpg",
+          "used_by": {
+            "path": "spec/stability-v2.0/vision.jsonl",
+            "question_id": "gb2-v-318"
+          }
         }
       ],
       "character_id": "c18177",
@@ -9580,6 +9804,13 @@
           "path": "data/dev-v2.0/assets/portrait-29a3abac554d314f5c6f4166.jpg",
           "used_by": {
             "path": "data/dev-v2.0/vision.jsonl",
+            "question_id": "gb2-v-321"
+          }
+        },
+        {
+          "path": "spec/stability-v2.0/assets/portrait-29a3abac554d314f5c6f4166.jpg",
+          "used_by": {
+            "path": "spec/stability-v2.0/vision.jsonl",
             "question_id": "gb2-v-321"
           }
         }
@@ -9841,6 +10072,13 @@
           "path": "data/dev-v2.0/assets/portrait-ae7556d36c60ee513707add9.jpg",
           "used_by": {
             "path": "data/dev-v2.0/vision.jsonl",
+            "question_id": "gb2-v-330"
+          }
+        },
+        {
+          "path": "spec/stability-v2.0/assets/portrait-ae7556d36c60ee513707add9.jpg",
+          "used_by": {
+            "path": "spec/stability-v2.0/vision.jsonl",
             "question_id": "gb2-v-330"
           }
         }
@@ -10218,6 +10456,13 @@
           "path": "data/dev-v2.0/assets/portrait-bbcc8c323b091dbcca2d101c.jpg",
           "used_by": {
             "path": "data/dev-v2.0/vision.jsonl",
+            "question_id": "gb2-v-343"
+          }
+        },
+        {
+          "path": "spec/stability-v2.0/assets/portrait-bbcc8c323b091dbcca2d101c.jpg",
+          "used_by": {
+            "path": "spec/stability-v2.0/vision.jsonl",
             "question_id": "gb2-v-343"
           }
         }
@@ -16572,6 +16817,12 @@
           "reference_urls": [],
           "license_policy_ref": "vndb-data"
         }
+      ],
+      "reused_in": [
+        {
+          "path": "spec/stability-v2.0/text.jsonl",
+          "question_id": "gb2-t-049"
+        }
       ]
     },
     {
@@ -16684,6 +16935,12 @@
           "content_sha256": "e26fd24be593c780a48ef27c615d14d18b92bee87b696b0c1f73907bc4f8eed6",
           "reference_urls": [],
           "license_policy_ref": "vndb-data"
+        }
+      ],
+      "reused_in": [
+        {
+          "path": "spec/stability-v2.0/text.jsonl",
+          "question_id": "gb2-t-056"
         }
       ]
     },
@@ -17061,6 +17318,12 @@
           ],
           "license_policy_ref": "vndb-data"
         }
+      ],
+      "reused_in": [
+        {
+          "path": "spec/stability-v2.0/text.jsonl",
+          "question_id": "gb2-t-079"
+        }
       ]
     },
     {
@@ -17318,6 +17581,12 @@
           ],
           "license_policy_ref": "vndb-data"
         }
+      ],
+      "reused_in": [
+        {
+          "path": "spec/stability-v2.0/text.jsonl",
+          "question_id": "gb2-t-095"
+        }
       ]
     },
     {
@@ -17462,6 +17731,12 @@
             "http://www.mangagamer.com/r18/Titles/Details/D223E795-FFA5-44EC-861C-3F738CC53513/shuffle"
           ],
           "license_policy_ref": "vndb-data"
+        }
+      ],
+      "reused_in": [
+        {
+          "path": "spec/stability-v2.0/text.jsonl",
+          "question_id": "gb2-t-104"
         }
       ]
     },
@@ -18459,6 +18734,12 @@
           ],
           "license_policy_ref": "vndb-data"
         }
+      ],
+      "reused_in": [
+        {
+          "path": "spec/stability-v2.0/text.jsonl",
+          "question_id": "gb2-t-166"
+        }
       ]
     },
     {
@@ -19205,6 +19486,12 @@
           ],
           "license_policy_ref": "vndb-data"
         }
+      ],
+      "reused_in": [
+        {
+          "path": "spec/stability-v2.0/text.jsonl",
+          "question_id": "gb2-t-213"
+        }
       ]
     },
     {
@@ -19895,6 +20182,12 @@
           ],
           "license_policy_ref": "vndb-data"
         }
+      ],
+      "reused_in": [
+        {
+          "path": "spec/stability-v2.0/text.jsonl",
+          "question_id": "gb2-t-255"
+        }
       ]
     },
     {
@@ -20254,6 +20547,12 @@
           "reference_urls": [],
           "license_policy_ref": "vndb-data"
         }
+      ],
+      "reused_in": [
+        {
+          "path": "spec/stability-v2.0/text.jsonl",
+          "question_id": "gb2-t-278"
+        }
       ]
     },
     {
@@ -20434,6 +20733,12 @@
           "reference_urls": [],
           "license_policy_ref": "vndb-data"
         }
+      ],
+      "reused_in": [
+        {
+          "path": "spec/stability-v2.0/text.jsonl",
+          "question_id": "gb2-t-290"
+        }
       ]
     },
     {
@@ -20530,6 +20835,12 @@
           ],
           "license_policy_ref": "vndb-data"
         }
+      ],
+      "reused_in": [
+        {
+          "path": "spec/stability-v2.0/text.jsonl",
+          "question_id": "gb2-t-296"
+        }
       ]
     },
     {
@@ -20608,6 +20919,12 @@
             "http://www.purplesoftware.jp/products/amatsutsumi/#prettyPhoto"
           ],
           "license_policy_ref": "vndb-data"
+        }
+      ],
+      "reused_in": [
+        {
+          "path": "spec/stability-v2.0/text.jsonl",
+          "question_id": "gb2-t-301"
         }
       ]
     },
@@ -20956,6 +21273,12 @@
           ],
           "license_policy_ref": "vndb-data"
         }
+      ],
+      "reused_in": [
+        {
+          "path": "spec/stability-v2.0/text.jsonl",
+          "question_id": "gb2-t-322"
+        }
       ]
     },
     {
@@ -21006,6 +21329,12 @@
             "http://ixshe.nekonyansoft.com/character/chara1.html"
           ],
           "license_policy_ref": "vndb-data"
+        }
+      ],
+      "reused_in": [
+        {
+          "path": "spec/stability-v2.0/text.jsonl",
+          "question_id": "gb2-t-325"
         }
       ]
     },
@@ -21107,6 +21436,12 @@
           ],
           "license_policy_ref": "vndb-data"
         }
+      ],
+      "reused_in": [
+        {
+          "path": "spec/stability-v2.0/text.jsonl",
+          "question_id": "gb2-t-331"
+        }
       ]
     },
     {
@@ -21174,6 +21509,12 @@
             "https://whirlpool.co.jp/hajiron/character/chara04.php"
           ],
           "license_policy_ref": "vndb-data"
+        }
+      ],
+      "reused_in": [
+        {
+          "path": "spec/stability-v2.0/text.jsonl",
+          "question_id": "gb2-t-335"
         }
       ]
     },
@@ -21628,6 +21969,12 @@
           ],
           "license_policy_ref": "vndb-data"
         }
+      ],
+      "reused_in": [
+        {
+          "path": "spec/stability-v2.0/text.jsonl",
+          "question_id": "gb2-t-362"
+        }
       ]
     },
     {
@@ -21741,6 +22088,12 @@
           "locator": "Music：Kyou's theme is Sore wa Kaze no Yōni",
           "content_sha256": null,
           "license_policy_ref": "source-page-expression"
+        }
+      ],
+      "reused_in": [
+        {
+          "path": "spec/stability-v2.0/text.jsonl",
+          "question_id": "gb2-t-369"
         }
       ]
     },
@@ -21980,6 +22333,12 @@
           "content_sha256": null,
           "license_policy_ref": "source-page-expression"
         }
+      ],
+      "reused_in": [
+        {
+          "path": "spec/stability-v2.0/text.jsonl",
+          "question_id": "gb2-t-386"
+        }
       ]
     },
     {
@@ -22077,6 +22436,12 @@
           "locator": "Story：隣に住んでいる年上の幼馴染、蔦町ちとせ",
           "content_sha256": null,
           "license_policy_ref": "source-page-expression"
+        }
+      ],
+      "reused_in": [
+        {
+          "path": "spec/stability-v2.0/text.jsonl",
+          "question_id": "gb2-t-393"
         }
       ]
     },
@@ -22699,6 +23064,12 @@
       },
       "source_urls": [
         "https://github.com/fleetingheart/ksre/blob/cb98e1170c918efe834b24473e3e4aca6c9d05e3/game/tl/zh_hans/script-a1-saturday.rpy"
+      ],
+      "reused_in": [
+        {
+          "path": "spec/stability-v2.0/story.jsonl",
+          "question_id": "gb2-s-008"
+        }
       ]
     },
     {
@@ -22879,6 +23250,12 @@
       },
       "source_urls": [
         "https://github.com/fleetingheart/ksre/blob/cb98e1170c918efe834b24473e3e4aca6c9d05e3/game/tl/zh_hans/script-a1-saturday.rpy"
+      ],
+      "reused_in": [
+        {
+          "path": "spec/stability-v2.0/story.jsonl",
+          "question_id": "gb2-s-011"
+        }
       ]
     },
     {
@@ -23345,6 +23722,12 @@
       },
       "source_urls": [
         "https://github.com/fleetingheart/ksre/blob/cb98e1170c918efe834b24473e3e4aca6c9d05e3/game/tl/zh_hans/script-a1-sunday.rpy"
+      ],
+      "reused_in": [
+        {
+          "path": "spec/stability-v2.0/story.jsonl",
+          "question_id": "gb2-s-019"
+        }
       ]
     },
     {
@@ -23531,6 +23914,12 @@
       },
       "source_urls": [
         "https://github.com/fleetingheart/ksre/blob/cb98e1170c918efe834b24473e3e4aca6c9d05e3/game/tl/zh_hans/script-a1-sunday.rpy"
+      ],
+      "reused_in": [
+        {
+          "path": "spec/stability-v2.0/story.jsonl",
+          "question_id": "gb2-s-022"
+        }
       ]
     },
     {
@@ -24587,6 +24976,12 @@
       },
       "source_urls": [
         "https://github.com/fleetingheart/ksre/blob/cb98e1170c918efe834b24473e3e4aca6c9d05e3/game/tl/zh_hans/script-a1-wednesday.rpy"
+      ],
+      "reused_in": [
+        {
+          "path": "spec/stability-v2.0/story.jsonl",
+          "question_id": "gb2-s-041"
+        }
       ]
     },
     {
@@ -24695,6 +25090,12 @@
       },
       "source_urls": [
         "https://github.com/fleetingheart/ksre/blob/cb98e1170c918efe834b24473e3e4aca6c9d05e3/game/tl/zh_hans/script-a1-wednesday.rpy"
+      ],
+      "reused_in": [
+        {
+          "path": "spec/stability-v2.0/story.jsonl",
+          "question_id": "gb2-s-043"
+        }
       ]
     },
     {
@@ -25653,6 +26054,12 @@
       },
       "source_urls": [
         "https://github.com/fleetingheart/ksre/blob/cb98e1170c918efe834b24473e3e4aca6c9d05e3/game/tl/zh_hans/script-a2-hanako.rpy"
+      ],
+      "reused_in": [
+        {
+          "path": "spec/stability-v2.0/story.jsonl",
+          "question_id": "gb2-s-058"
+        }
       ]
     },
     {
@@ -26143,6 +26550,12 @@
       },
       "source_urls": [
         "https://github.com/fleetingheart/ksre/blob/cb98e1170c918efe834b24473e3e4aca6c9d05e3/game/tl/zh_hans/script-a2-lilly.rpy"
+      ],
+      "reused_in": [
+        {
+          "path": "spec/stability-v2.0/story.jsonl",
+          "question_id": "gb2-s-067"
+        }
       ]
     },
     {
@@ -27646,6 +28059,12 @@
       },
       "source_urls": [
         "https://github.com/renpy/renpy/blob/80b3e8236e3d022bdcc103b4833758c9b4ea6666/the_question/game/tl/schinese/script.rpy"
+      ],
+      "reused_in": [
+        {
+          "path": "spec/stability-v2.0/story.jsonl",
+          "question_id": "gb2-s-096"
+        }
       ]
     },
     {
@@ -27684,6 +28103,12 @@
       },
       "source_urls": [
         "https://github.com/renpy/renpy/blob/80b3e8236e3d022bdcc103b4833758c9b4ea6666/the_question/game/tl/schinese/script.rpy"
+      ],
+      "reused_in": [
+        {
+          "path": "spec/stability-v2.0/story.jsonl",
+          "question_id": "gb2-s-097"
+        }
       ]
     },
     {
@@ -27911,6 +28336,16 @@
     },
     {
       "path": "spec/v2.0/UPSTREAM_KATAWA_SHOUJO_NOTICE.txt",
+      "sha256": "1baa8daa920ad5afd9d7b71d99d8b02d6cdbaa881f836065716898035ac0e4bb",
+      "sha256_mode": "git_lf"
+    },
+    {
+      "path": "spec/stability-v2.0/UPSTREAM_RENPY_NOTICE.txt",
+      "sha256": "57b19c638129eb1165ce71ecce36475e6cfccb034224b8c36e7673471f6ae369",
+      "sha256_mode": "git_lf"
+    },
+    {
+      "path": "spec/stability-v2.0/UPSTREAM_KATAWA_SHOUJO_NOTICE.txt",
       "sha256": "1baa8daa920ad5afd9d7b71d99d8b02d6cdbaa881f836065716898035ac0e4bb",
       "sha256_mode": "git_lf"
     }
