@@ -1,6 +1,8 @@
 "use strict";
 
 const voxelUI={stages:new Map(),engine:null,loading:null,models:null,current:null,sequence:0,paused:false,ready:false};
+const VOXEL_COLLECTION=["deepseek","gpt","claude","gemini","grok","kimi","minimax","glm","qwen"];
+const voxelGallery={selected:"deepseek",ready:false};
 function voxelKindFor(row){
   if(!row||["unknown","mixed"].includes(row.model_identity?.source))return "robot";
   const identity=row.model_identity,name=String(identity?.name||row.model||"").toLowerCase().trim().split("/").pop();
@@ -15,9 +17,9 @@ function voxelKindFor(row){
   if(/^(?:qwen|qwq|qvq|通义千问|千问)(?:$|[\s._:：-]|\d)/.test(name))return "qwen";
   return "robot";
 }
-function registerVoxelStage(stage,rows){
-  const control={stage,rows,visible:false,abort:new AbortController(),entries:[],previews:false,cancelGestures:[]};
-  stage.classList.add("voxel-stage");stage.dataset.voxelMode="pending";
+function registerVoxelStage(stage,rows,{gallery=false,kinds=[]}={}){
+  const control={stage,rows,gallery,visible:false,abort:new AbortController(),entries:[],previews:false,cancelGestures:[]};
+  stage.classList.add("voxel-stage");setVoxelMode(control,"pending");
   const toolbar=node("div","voxel-toolbar");
   for(const [action,label,symbol] of [["motion","暂停自动旋转","Ⅱ"],["reset","复位形象朝向","↶"]]){
     const button=node("button","voxel-control",symbol);button.type="button";button.dataset.voxelAction=action;button.title=label;button.setAttribute("aria-label",label);
@@ -25,11 +27,17 @@ function registerVoxelStage(stage,rows){
   }
   stage.append(toolbar);
   for(const [index,button] of [...stage.querySelectorAll(".podium-person")].entries()){
-    const anchor=button.querySelector(".podium-avatar"),entry={anchor,button,kind:voxelKindFor(rows[index]),empty:!rows[index]};control.entries.push(entry);
+    const anchor=button.querySelector(".podium-avatar"),entry={anchor,button,kind:kinds[index]||voxelKindFor(rows[index]),empty:!gallery&&!rows[index]};control.entries.push(entry);
     anchor.dataset.voxelKind=entry.kind;
-    if(rows[index])wireVoxelDrag(control,entry,index);
+    if(gallery||rows[index])wireVoxelDrag(control,entry,index);
   }
   voxelUI.stages.set(stage,control);queueMicrotask(()=>{if(stage.isConnected)voxelUI.observer?.observe(stage);});
+  return control;
+}
+function setVoxelMode(control,mode){
+  control.stage.dataset.voxelMode=mode;
+  const status=control.stage.querySelector(".gallery-render-status");
+  if(status){status.hidden=mode==="interactive";status.textContent=mode==="pending"?"正在布置展台…":"静态预览";}
 }
 function wireVoxelDrag(control,entry,index){
   const {anchor,button}=entry,options={signal:control.abort.signal};let gesture=null,suppressUntil=0;
@@ -62,14 +70,16 @@ function initVoxelUI(){
   try{voxelUI.paused=localStorage.getItem("galbench.voxel.paused")==="true";}catch(_){}
   voxelUI.observer=new IntersectionObserver(entries=>{for(const e of entries){const c=voxelUI.stages.get(e.target);if(c)c.visible=e.isIntersecting;}syncVoxelStage();},{threshold:.01});
   const mutation=new MutationObserver(()=>{
-    for(const [stage,c] of voxelUI.stages)if(!stage.isConnected){c.cancelGestures.forEach(cancel=>cancel());voxelUI.observer.unobserve(stage);voxelUI.resizeObserver.unobserve(stage);c.abort.abort();voxelUI.stages.delete(stage);if(voxelUI.current===c)voxelUI.current=null;}
+    for(const [stage,c] of voxelUI.stages)if(!stage.isConnected){c.cancelGestures.forEach(cancel=>cancel());voxelUI.observer.unobserve(stage);voxelUI.resizeObserver.unobserve(stage);c.abort.abort();voxelUI.stages.delete(stage);if(voxelUI.current===c){voxelUI.engine?.setActive(false,false);voxelUI.current=null;}}
     syncVoxelStage();
   });mutation.observe($("standings-content"),{childList:true});
+  mutation.observe($("voxel-gallery-viewer"),{childList:true});
   new MutationObserver(syncVoxelStage).observe(document.body,{attributes:true,attributeFilter:["data-view","data-screen"]});
   document.addEventListener("visibilitychange",syncVoxelStage);matchMedia("(prefers-reduced-motion: reduce)").addEventListener("change",syncVoxelStage);
   voxelUI.resizeObserver=new ResizeObserver(()=>voxelUI.engine?.dirty());
   window.addEventListener("resize",()=>voxelUI.engine?.dirty());
   window.addEventListener("pagehide",()=>voxelUI.engine?.setActive(false,false));window.addEventListener("pageshow",syncVoxelStage);
+  initVoxelGallery();
 }
 async function loadVoxelEngine(){
   if(voxelUI.loading)return voxelUI.loading;
@@ -78,7 +88,7 @@ async function loadVoxelEngine(){
     for(const control of voxelUI.stages.values())paintVoxelPreviews(control);
     if(!["deepseek","gpt","claude","grok","kimi","gemini","minimax","glm","qwen"].some(kind=>voxelUI.models.voxelModel(kind)?.faces?.length))return;
     const {createVoxelRenderer}=await import("/voxel-renderer.js");
-    voxelUI.engine=createVoxelRenderer(ready=>{if(voxelUI.current)voxelUI.current.stage.dataset.voxelMode=ready?"interactive":"static";if(ready)syncVoxelStage();});
+    voxelUI.engine=createVoxelRenderer(ready=>{if(voxelUI.current)setVoxelMode(voxelUI.current,ready?"interactive":"static");if(ready)syncVoxelStage();});
   })().catch(()=>{voxelUI.engine=null;});
   return voxelUI.loading;
 }
@@ -95,22 +105,61 @@ function paintVoxelPreviews(control){
 }
 async function syncVoxelStage(){
   const sequence=++voxelUI.sequence;
-  const visible=!document.hidden&&document.body.dataset.screen==="app"&&document.body.dataset.view==="leaderboard";
-  const control=visible?[...voxelUI.stages.values()].find(c=>c.stage.isConnected&&c.visible):null;
+  const galleryOpen=$("voxel-gallery-dialog").open;
+  const visible=!document.hidden&&document.body.dataset.screen==="app"&&(galleryOpen||document.body.dataset.view==="leaderboard");
+  const control=visible?[...voxelUI.stages.values()].find(c=>c.gallery===galleryOpen&&c.stage.isConnected&&c.visible):null;
   if(!control){voxelUI.current?.cancelGestures.forEach(cancel=>cancel());voxelUI.engine?.setActive(false,false);return;}
   await loadVoxelEngine();
   if(sequence!==voxelUI.sequence||!control.stage.isConnected||document.hidden)return;
   paintVoxelPreviews(control);
-  if(!voxelUI.engine||!control.entries.some(entry=>entry.available)){voxelUI.engine?.setActive(false,false);control.stage.dataset.voxelMode="static";return;}
+  if(!voxelUI.engine||!control.entries.some(entry=>entry.available)){voxelUI.engine?.setActive(false,false);setVoxelMode(control,"static");return;}
   if(voxelUI.current!==control){
-    if(voxelUI.current){voxelUI.current.stage.dataset.voxelMode="static";voxelUI.resizeObserver.unobserve(voxelUI.current.stage);}
+    if(voxelUI.current){setVoxelMode(voxelUI.current,"static");voxelUI.resizeObserver.unobserve(voxelUI.current.stage);}
     voxelUI.current=control;voxelUI.engine.attach(control.stage,control.entries);voxelUI.resizeObserver.observe(control.stage);
   }
-  const reduced=matchMedia("(prefers-reduced-motion: reduce)").matches,spin=!voxelUI.paused&&!reduced&&control.rows.some(Boolean);
-  const lost=voxelUI.engine.stats().lost;control.stage.dataset.voxelMode=lost?"static":"interactive";
+  const reduced=matchMedia("(prefers-reduced-motion: reduce)").matches,spin=!voxelUI.paused&&!reduced&&(control.gallery||control.rows.some(Boolean));
+  const lost=voxelUI.engine.stats().lost;setVoxelMode(control,lost?"static":"interactive");
   const motion=control.stage.querySelector('[data-voxel-action="motion"]');motion.textContent=spin?"Ⅱ":"▷";motion.disabled=reduced;
   motion.setAttribute("aria-pressed",String(!spin));motion.setAttribute("aria-label",reduced?"系统已启用减少动态效果":spin?"暂停自动旋转":"继续自动旋转");motion.title=motion.getAttribute("aria-label");
   for(const entry of control.entries)if(!entry.empty){entry.button.title=entry.button.title.replace(/ · 拖动形象.*$/,"")+(lost||!entry.available?"":" · 拖动形象旋转，左右键微调，Home 复位");}
   voxelUI.engine.setActive(true,spin);
 }
 function voxelDiagnostics(){return {loaded:!!voxelUI.models,stages:voxelUI.stages.size,mode:voxelUI.current?.stage.dataset.voxelMode||"idle",paused:voxelUI.paused,renderer:voxelUI.engine?.stats()||null};}
+
+function initVoxelGallery(){
+  if(voxelGallery.ready)return;voxelGallery.ready=true;
+  const dialog=$("voxel-gallery-dialog");
+  $("open-voxel-gallery").addEventListener("click",()=>{
+    if(!$("voxel-gallery-viewer").childElementCount)selectVoxelExhibit(voxelGallery.selected);
+    if(!dialog.open)dialog.showModal();
+    dialog.querySelector('[data-close]').focus({preventScroll:true});dialog.scrollTo({top:0,behavior:"instant"});
+    syncVoxelStage();
+  });
+  dialog.addEventListener("close",syncVoxelStage);
+  for(const [id,direction] of [["voxel-gallery-prev",-1],["voxel-gallery-next",1]])$(id).addEventListener("click",()=>{
+    const index=VOXEL_COLLECTION.indexOf(voxelGallery.selected);
+    selectVoxelExhibit(VOXEL_COLLECTION[(index+direction+VOXEL_COLLECTION.length)%VOXEL_COLLECTION.length]);
+  });
+  for(const kind of VOXEL_COLLECTION){
+    const member=castMember(kind),card=node("button","voxel-exhibit-card"),portrait=node("img","voxel-exhibit-portrait"),label=node("span","voxel-exhibit-label"),logo=node("img");
+    card.type="button";card.dataset.voxelExhibit=kind;card.setAttribute("aria-pressed",String(kind===voxelGallery.selected));card.style.setProperty("--exhibit-color",member.color);
+    portrait.src=castPortrait(member);portrait.alt="";portrait.loading="lazy";portrait.decoding="async";portrait.draggable=false;
+    logo.src=castIcon(member);logo.alt="";logo.width=18;logo.height=18;label.append(logo,node("strong","",member.name));
+    card.append(portrait,label);card.addEventListener("click",()=>{if(kind!==voxelGallery.selected)selectVoxelExhibit(kind);});
+    $("voxel-gallery-roster").append(card);
+  }
+}
+function selectVoxelExhibit(kind){
+  if(!VOXEL_COLLECTION.includes(kind))return;
+  voxelGallery.selected=kind;
+  const member=castMember(kind),stage=node("div","voxel-gallery-stage"),actor=node("button","podium-person"),anchor=node("span","podium-avatar"),status=node("span","gallery-render-status","正在布置展台…");
+  actor.type="button";actor.setAttribute("aria-label",`旋转 ${member.name} 体素模型；左右键微调，Home 复位`);actor.title="拖动查看 · 左右键旋转 · Home 复位";
+  stage.style.setProperty("--exhibit-color",member.color);actor.append(anchor);stage.append(actor,status);
+  $("voxel-gallery-viewer").replaceChildren(stage);registerVoxelStage(stage,[],{gallery:true,kinds:[kind]});
+  $("voxel-gallery-name").textContent=member.name;
+  $("voxel-gallery-number").textContent=String(VOXEL_COLLECTION.indexOf(kind)+1).padStart(2,"0")+" / "+String(VOXEL_COLLECTION.length).padStart(2,"0");
+  for(const card of $("voxel-gallery-roster").children)card.setAttribute("aria-pressed",String(card.dataset.voxelExhibit===kind));
+  const dialog=$("voxel-gallery-dialog");
+  if(dialog.open){actor.focus({preventScroll:true});dialog.scrollTo({top:0,behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"instant":"smooth"});}
+  syncVoxelStage();
+}

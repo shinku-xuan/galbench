@@ -44,3 +44,31 @@
 }
 @media(max-width:360px){.voxel-stage{padding-inline:10px}.voxel-stage .podium-avatar{height:128px}.voxel-stage .podium-model{font-size:9px}.voxel-stage .podium-points{font-size:21px}}
 @media(prefers-reduced-motion:reduce){.voxel-control{transition:none}.voxel-control:hover{transform:none}}
+
+.top-actions{display:flex;align-items:center;gap:10px}
+.voxel-gallery-dialog{width:min(1130px,96vw);max-height:92dvh;padding:0;overflow:auto;border:1px solid #e1d6ed;border-radius:26px;background:#faf7fd;box-shadow:0 30px 100px #35284945}
+.voxel-gallery-dialog .modal-heading{position:sticky;top:0;z-index:7;background:linear-gradient(115deg,#f1e8fded,#fff3eae8);backdrop-filter:blur(16px)}
+.gallery-heading-actions{display:flex;align-items:center;gap:18px}.gallery-heading-actions>span{font-size:12px;color:#9a84ac;white-space:nowrap}
+.voxel-gallery-layout{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(260px,1fr);gap:22px;padding:22px}
+.voxel-gallery-showroom{min-width:0;display:flex;flex-direction:column;border:1px solid #e4dcec;border-radius:21px;overflow:hidden;background:#fff}
+#voxel-gallery-viewer{height:495px;min-height:0;position:relative;isolation:isolate}
+.voxel-gallery-stage.voxel-stage{position:relative;display:flex;align-items:stretch;justify-content:center;width:100%;height:100%;min-height:0;padding:32px 35px 25px;overflow:hidden;border:0;border-radius:0;background:radial-gradient(ellipse at 50% 35%,#fffffffa,transparent 63%),linear-gradient(140deg,color-mix(in srgb,var(--exhibit-color),#fff 86%),#fff5ed)}
+.voxel-gallery-stage:before{content:"";position:absolute;inset:18px 18px 10px;border:1px solid #ffffffcf;border-radius:180px 180px 24px 24px;box-shadow:inset 0 0 65px #ffffff6b;pointer-events:none}
+.voxel-gallery-stage:after{content:"";position:absolute;width:70%;height:34px;bottom:14px;border-radius:50%;background:radial-gradient(ellipse,color-mix(in srgb,var(--exhibit-color),transparent 74%),#ffffff82 65%,transparent 68%);pointer-events:none}
+.voxel-gallery-stage .podium-person{position:relative;z-index:2;display:flex;align-items:stretch;justify-content:center;width:100%;min-width:0;min-height:0;padding:0;border:0;background:none;box-shadow:none;align-self:stretch;border-radius:18px;transform:none}
+.voxel-gallery-stage .podium-avatar{position:relative;display:block;width:100%;max-width:420px;height:100%;margin:0;filter:none;background:none;border:0;isolation:auto}
+.voxel-gallery-stage .podium-avatar:after{display:none}.voxel-gallery-stage .podium-person:focus-visible{outline-offset:-4px}
+.voxel-gallery-dialog:has(.voxel-gallery-stage[data-voxel-mode=static]) .gallery-drag-hint{visibility:hidden}
+.gallery-render-status{position:absolute;z-index:4;left:18px;top:19px;color:#8f77a0;font-size:11px;padding:6px 10px;background:#fff9;border-radius:20px;pointer-events:none}
+.voxel-gallery-caption{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:88px;padding:17px 22px;background:linear-gradient(100deg,#f9f4ff,#fffaf4);border-top:1px solid #eee7f4}
+.voxel-gallery-caption>div:first-child{display:grid;grid-template-columns:auto auto;align-items:center;gap:5px 13px}.gallery-exhibit-number{font-size:10px;letter-spacing:1.5px;color:#a28cab}.voxel-gallery-caption strong{font-size:23px;letter-spacing:-.5px;color:#655177}.gallery-drag-hint{grid-column:1/-1;font-size:11px;color:#a18aaa}.gallery-step-actions{display:flex;gap:7px}
+.voxel-gallery-roster{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;align-content:start;min-width:0}
+.voxel-exhibit-card{position:relative;min-width:0;overflow:hidden;padding:0;border:1px solid #e7dfee;border-radius:16px;background:linear-gradient(150deg,color-mix(in srgb,var(--exhibit-color),#fff 87%),#fff);box-shadow:0 6px 18px #7d639409;text-align:center;transition:transform .2s,box-shadow .2s,border-color .2s}
+.voxel-exhibit-portrait{display:block;width:100%;height:132px;object-fit:cover;object-position:center 20%;padding:7px 4px 0;mix-blend-mode:multiply;transition:transform .25s}
+.voxel-exhibit-label{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:5px;padding:11px 3px;background:#ffffffc9;color:#776187;font-size:11px}.voxel-exhibit-label img{width:15px;height:15px;object-fit:contain}.voxel-exhibit-label strong{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.voxel-exhibit-card:hover{transform:translateY(-3px);box-shadow:0 10px 24px #7d63941a}.voxel-exhibit-card:hover .voxel-exhibit-portrait{transform:scale(1.04)}
+.voxel-exhibit-card[aria-pressed=true]{border-color:var(--exhibit-color);box-shadow:0 0 0 2px color-mix(in srgb,var(--exhibit-color),transparent 75%),0 10px 24px #7d639417}.voxel-exhibit-card[aria-pressed=true]:after{content:"✦";position:absolute;right:8px;top:7px;color:var(--exhibit-color);font-size:17px;text-shadow:0 1px 5px #fff}
+@media(max-width:700px){.top-actions{gap:6px}.top-actions .secondary{font-size:10px;padding:8px}.voxel-gallery-dialog{width:96vw;border-radius:21px}.voxel-gallery-layout{grid-template-columns:minmax(0,1fr);gap:14px;padding:13px}.voxel-gallery-dialog .modal-heading{padding:17px 18px}.voxel-gallery-dialog .modal-heading h2{font-size:19px}.gallery-heading-actions{gap:10px}.gallery-heading-actions>span{font-size:10px}#voxel-gallery-viewer{height:345px}.voxel-gallery-stage.voxel-stage{padding:22px 32px 18px}.voxel-gallery-caption{min-height:72px;padding:12px 17px}.voxel-gallery-caption strong{font-size:20px}.voxel-gallery-roster{gap:9px}.voxel-exhibit-portrait{height:74px;object-position:center 17%}.voxel-exhibit-label{padding:8px 3px;font-size:11px}.voxel-exhibit-card{border-radius:13px}}
+@media(max-width:370px){.top-actions .secondary{font-size:9px;padding:7px 5px}.gallery-heading-actions>span{display:none}}
+@media(max-width:420px){.topbar{padding-inline:14px}.topbar .brand{font-size:20px;gap:6px}.topbar .brand-icon{width:28px;height:28px;font-size:23px}}
+@media(prefers-reduced-motion:reduce){.voxel-exhibit-card,.voxel-exhibit-portrait{transition:none}.voxel-exhibit-card:hover,.voxel-exhibit-card:hover .voxel-exhibit-portrait{transform:none}}

@@ -28424,7 +28424,7 @@
       },
       {
         "path": "galbench/static/voxel-renderer.js",
-        "sha256": "2908eb23147ec28976cfefe356cdbb5701179ccf137db1268949873d56e02485",
+        "sha256": "301970ae1fa2fcdc02a752dbd32db8a8b4cccf604d75aff72b0a675f259f1a77",
         "sha256_mode": "git_lf"
       }
     ],

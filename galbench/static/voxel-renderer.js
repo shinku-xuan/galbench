@@ -24,7 +24,7 @@ export function createVoxelRenderer(onContextChange){
   const geometries=new Map();let actors=[],stage=null,frame=0,active=false,auto=false,lost=false,last=0,lastPaint=0,layoutDirty=true,frames=0,width=0,height=0;
 
   function geometry(kind){
-    if(geometries.has(kind))return geometries.get(kind);
+    if(geometries.has(kind)){const cached=geometries.get(kind);geometries.delete(kind);geometries.set(kind,cached);return cached;}
     const model=voxelModel(kind);if(!model||!model.faces?.length)return null;
     const positions=[],normals=[],colors=[],uvs=[],palette=new Map();
     for(const face of model.faces){
@@ -49,6 +49,10 @@ export function createVoxelRenderer(onContextChange){
       const group=new Group(),mesh=new Mesh(g,entry.empty?emptyMaterial:voxelModel(entry.kind).renderStyle==='pixel'?pixelMaterial:material);group.add(mesh);scene.add(group);
       actors.push({...entry,index,group,yaw:-.32+index*.07,pitch:.14,velocity:0,resumeAt:0,dragging:false});
     });
+    // Share a single context between podium and gallery. Keep at most five
+    // GPU meshes, rather than accumulating every visited gallery character.
+    const visibleKinds=new Set(entries.map(entry=>entry.kind));
+    for(const [kind,g] of geometries)if(geometries.size>5&&!visibleKinds.has(kind)){g.dispose();geometries.delete(kind);}
     layoutDirty=true;last=0;lastPaint=0;
   }
   function layout(){
