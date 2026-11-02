@@ -6,7 +6,7 @@ const statuses = {C:"全对",P:"部分正确",W:"答错",A:"放弃",V:"无效回
 const states = {complete:"评分完成",needs_review:"判分未完成",incomplete:"答题调用失败",stopped:"已停止 · 保留现有成绩"};
 const resultStates = {scored:"评分完成",scored_with_manual:"已人工补分 · 保留异常记录",execution_failed:"调用失败",execution_incomplete:"调用未完成",judge_failed:"判分失败",needs_review:"待复核",topic_only:"类别未齐",not_called:"未调用",cancelled:"用户停止 · 未完成",stopped:"已停止 · 保留现有成绩"};
 const savedFields = ["dataset-profile","target-vision","judge-enabled","repeats","concurrency",
-  ...["target","judge"].flatMap(role=>["provider","executable","cli-model","cli-timeout","use-client-config","cli-profile","model-label","credential-env"].map(field=>role+"-"+field))];
+  ...["target","judge"].flatMap(role=>["provider","executable","cli-model","cli-timeout","use-client-config","cli-profile","model-label","credential-env","direct-connection"].map(field=>role+"-"+field))];
 const preferencesKey = "galbench.preferences.v1.1";
 let bootstrap, mode = "agent_cli", busy = false, currentResult = null, currentRun = null, cursor = 0, startedAt = 0, timer;
 let liveJob = null, bankPage = 1, bankPages = 1, bankSequence = 0, bankLoaded = false, bankDebounce;
@@ -145,7 +145,9 @@ function updateTransport(role) {
   const deepseek=provider==="deepseek_harness",model=$(role+"-cli-model").value.trim();
   $(role+"-model-title").textContent=deepseek?"实际模型路线（provider/model）":"模型调用 ID（可留空）";
   $(role+"-model-template").hidden=!deepseek;
-  $(role+"-model-route").textContent=model?`本次指定路线：${model}`:deepseek?"当前未指定路线，将使用 ACP 默认模型；不会跟随 Web 界面的模型选择。":"沿用客户端默认模型";
+  $(role+"-model-route").textContent=model?`本次指定路线：${model}`:deepseek?"当前未指定路线，将使用 ACP 默认模型；不会跟随 Web 界面的模型选择。":provider==="claude_code"?"使用 Claude 订阅默认模型":"沿用客户端默认模型";
+  $(role+"-credential-env").disabled=busy||provider==="claude_code";
+  $(role+"-credential-env").closest("details").hidden=provider==="claude_code";
   $(role+"-cli").hidden=false;$(role+"-codex-config").hidden=provider!=="codex";
   $(role+"-cli-profile").disabled=busy||!$(role+"-use-client-config").checked;
   $(role+"-cli-model").disabled=busy||info?.model_override===false;
@@ -154,7 +156,7 @@ function updateTransport(role) {
   let hint=(info?.installed?"已发现 CLI。":"需要先安装官方 CLI。")+(info?.notes||"");
   if(provider==="codex")hint+=$(role+"-use-client-config").checked?" 沿用 config.toml / profile 的模型提供商。":" 忽略用户 config.toml，留空使用 CLI 内置模型。";
   if(provider==="kimi_code"&&role==="target"&&$("target-vision").checked)hint+=" 图片通过新版 ACP；请清空模型覆盖 ID，先在客户端选择视觉模型。ACP 完成依据与工具审计边界会写入答卷。";
-  hint+=provider==="deepseek_harness"?" 检查会验证空 ACP 会话和禁用工具的插件；图片声明仅供参考，不发送题目。":" 检查只验证版本、帮助参数和命令配置，不请求模型。";
+  hint+=provider==="deepseek_harness"?" 检查会验证空 ACP 会话和禁用工具的插件；图片声明仅供参考，不发送题目。":provider==="claude_code"?" 检查订阅认证来源，不发送题目。":" 检查只验证版本、帮助参数和命令配置，不请求模型。";
   hint+=" 额度与计费由客户端所选通道决定。";
   $(role+"-cli-hint").textContent=hint;
   $(role+"-cli-docs").href=info?.docs||"#";
@@ -170,7 +172,7 @@ async function checkCli(role) {
     if($(role+"-provider").value!==settings.provider||$(role+"-executable").value.trim()!==settings.executable||config(role).cli_model!==settings.cli_model)return;
     const checked=info.runtime_check;
     const imageStatus=checked?.agent_capabilities?.promptCapabilities?.image?"ACP 声明支持图片。":settings.supports_vision?"ACP 未声明图片能力；将按你的确认尝试识图，失败仅记录对应题目，可随时停止。":"ACP 未声明图片能力。";
-    $(role+"-cli-status").textContent = `已找到 ${info.version || info.provider}。${checked?`ACP 启动及禁用工具验证通过。${imageStatus}`:""}请在客户端确认模型与额度；尚未发送模型请求。`;
+    $(role+"-cli-status").textContent = `已找到 ${info.version || info.provider}。${info.authentication?.verified?"Claude 订阅登录已确认。":""}${checked?`ACP 启动及禁用工具验证通过。${imageStatus}`:""}尚未发送题目。`;
   } catch (exc) {
     const diagnostic=exc.details?.stderr_preview?.split("\n").filter(line=>line.trim()&&!line.includes("GALBENCH_")&&!line.trim().startsWith("at ")).slice(0,3).join(" ").slice(0,360);
     $(role+"-cli-status").textContent = exc.message+(diagnostic?` · ${diagnostic}`:"");
@@ -209,7 +211,8 @@ function config(role) {
   return {provider,executable:$(role+"-executable").value.trim(),cli_model:provider!=="deepseek_harness"&&info?.model_override===false?"":$(role+"-cli-model").value.trim(),
     use_client_config:provider==="codex"&&$(role+"-use-client-config").checked,
     cli_profile:provider==="codex"&&$(role+"-use-client-config").checked?$(role+"-cli-profile").value.trim():"",
-    model_label:$(role+"-model-label").value.trim(),credential_env:$(role+"-credential-env").value.trim(),
+    model_label:$(role+"-model-label").value.trim(),credential_env:provider==="claude_code"?"":$(role+"-credential-env").value.trim(),
+    direct_connection:$(role+"-direct-connection").checked,
     supports_vision:role==="target"&&$("target-vision").checked,timeout_seconds:Number($(role+"-cli-timeout").value)};
 }
 function setBusy(value) { busy = value; updateControls(); }

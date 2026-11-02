@@ -78,6 +78,8 @@ def extra_cli_candidates(provider):
     installs = registered_installs(provider)
     override = os.environ.get(provider.upper()+"_INSTALL_DIR", "")
     if override: installs.insert(0, Path(override))
+    if os.name != "nt":
+        roots += [Path('/opt'), Path('/Applications'), profile/'Applications']
     for root in dict.fromkeys(roots):
         try:
             installs.extend(path for path in sorted(root.iterdir(), key=lambda p:p.name.casefold())
@@ -88,11 +90,37 @@ def extra_cli_candidates(provider):
                "claude_code":"claude", "workbuddy":"codebuddy"}.get(provider, provider)
     for directory in dict.fromkeys(installs):
         candidates.extend(directory/relative for relative in RELATIVE_ENTRIES[provider])
+        if os.name != "nt":
+            candidates.extend(directory/relative for relative in (command,'bin/'+command))
+            resources=directory/'Contents/Resources'
+            entries={'zcode':['glm/zcode.cjs'],
+                'workbuddy':['app.asar.unpacked/cli/dist/codebuddy-lite-wb.mjs'],
+                'deepseek_harness':['runtime/cli/bin/dsh'],
+                'kimi_code':['cli/kimi','bin/kimi'],'claude_code':['claude','bin/claude']}
+            candidates.extend(resources/relative for relative in entries.get(provider,[]))
     for folder in (profile/".local"/"bin", profile/".bun"/"bin", profile/".cargo"/"bin",
                    profile/("."+command)/"bin", roaming/"npm"):
-        candidates.extend(folder/(command+suffix) for suffix in (".exe", ".cmd", ".ps1"))
+        candidates.extend(folder/(command+suffix) for suffix in ((".exe", ".cmd", ".ps1") if os.name=="nt" else ("",)))
     if provider == "kimi_code":
         candidates.append(profile/".local"/"share"/"uv"/"tools"/"kimi-cli"/"Scripts"/"kimi.exe")
         for root in (roaming/"Python", local/"Programs"/"Python"):
             if root.is_dir(): candidates.extend(root.glob("*/Scripts/kimi.exe"))
     return list(dict.fromkeys(candidates))
+
+
+def cli_environment(provider,path):
+    """Resources a desktop normally injects when launching its bundled CLI."""
+    environment={}
+    if provider=='zcode':
+        custom=os.environ.get('ZCODE_BUILTIN_PROVIDER_CONFIG_FILE','').strip()
+        if custom:
+            if not Path(custom).is_file():raise ValueError('ZCODE_BUILTIN_PROVIDER_CONFIG_FILE 指向的配置不存在')
+            environment['ZCODE_BUILTIN_PROVIDER_CONFIG_FILE']=str(Path(custom).resolve())
+        else:
+            for parent in list(path.parents)[:6]:
+                for relative in ('config/provider/zcode-builtin.json','provider/zcode-builtin.json','vendor/provider/zcode-builtin.json'):
+                    candidate=parent/relative
+                    if candidate.is_file():
+                        environment['ZCODE_BUILTIN_PROVIDER_CONFIG_FILE']=str(candidate.resolve())
+                        return environment
+    return environment

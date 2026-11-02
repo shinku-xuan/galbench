@@ -58,6 +58,13 @@ function previewCast(id){
 }
 function initCastHero(){
   if(castUI.ready)return;castUI.ready=true;
+  $("cast-original-link").addEventListener("click",()=>setCastArtView(true));
+  $("cast-art-back").addEventListener("click",()=>{setCastArtView(false);$("cast-original-link").focus();});
+  $("cast-art-zoom").addEventListener("click",()=>{
+    const zoom=$("cast-dialog").classList.toggle("is-art-zoomed");
+    $("cast-art-zoom").setAttribute("aria-pressed",String(zoom));$("cast-art-zoom").textContent=zoom?"适应窗口":"原尺寸";
+  });
+  $("cast-dialog").addEventListener("cancel",event=>{if($("cast-dialog").classList.contains("is-art-focus")){event.preventDefault();setCastArtView(false);$("cast-original-link").focus();}});
   try{
     let saved=JSON.parse(localStorage.getItem(CAST_PREFERENCE_KEY));
     // The old leaderboard/library defaults were automatically selected cards.
@@ -152,11 +159,19 @@ function paintCastDialogue(){
 }
 function openCastDialog(id){
   const member=castMember(id);if(!member)return;
+  setCastArtView(false);
   castImage($("cast-dialog-image"),member);castImage($("cast-dialog-logo"),member,false);
   $("cast-dialog-name").textContent=member.name;$("cast-dialog-quote").textContent=`「${member.quote}」`;
-  $("cast-original-link").href=castPortrait(member);
   for(const button of $("cast-dialog-roster").querySelectorAll("button")){const selected=button.dataset.cast===id;button.setAttribute("aria-pressed",String(selected));button.classList.toggle("is-active",selected);}
   if(!$("cast-dialog").open)$("cast-dialog").showModal();
+}
+
+function setCastArtView(expanded){
+  const dialog=$("cast-dialog");dialog.classList.toggle("is-art-focus",expanded);dialog.classList.remove("is-art-zoomed");
+  $("cast-art-back").hidden=!expanded;$("cast-art-zoom").hidden=!expanded;
+  $("cast-art-zoom").setAttribute("aria-pressed","false");$("cast-art-zoom").textContent="原尺寸";
+  dialog.querySelector(".cast-dialog-art").scrollTo({top:0,left:0,behavior:"instant"});
+  if(expanded)$("cast-art-back").focus();
 }
 
 // A small, bounded canvas supplies the light, while actual local SVG logos

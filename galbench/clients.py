@@ -9,7 +9,6 @@ import re
 import shutil
 import signal
 import subprocess
-import tempfile
 import threading
 import time
 from dataclasses import dataclass
@@ -18,7 +17,8 @@ from pathlib import Path
 from .api import APIError, ChatClient, ModelConfig
 from .control import CURRENT_CANCEL
 from .harnesses import SPECS, adapter
-from .discovery import extra_cli_candidates
+from .discovery import extra_cli_candidates, cli_environment
+from .runtime import InvocationRuntime
 
 AGENTS = {
     "codex": {"label": "Codex", "command": "codex", "login": "codex login",
@@ -33,7 +33,7 @@ for _provider, _info in AGENTS.items():
     _info.setdefault("model_override", _provider != "zcode")
     _info.setdefault("image_input", True)
     _info.setdefault("notes", "每题使用新会话，沿用客户端认证与生成预算，检测到工具调用的答卷不纳入评分。")
-ADAPTER_VERSION = "official-cli-5"
+ADAPTER_VERSION = "official-cli-6"
 MAX_CAPTURE = 16 * 1024 * 1024
 CODEX_MODELS = [
     {"id": "gpt-6-luna", "label": "GPT-6 Luna"},
@@ -65,6 +65,7 @@ class AgentConfig:
     cli_profile: str = ""
     model_label: str = ""
     credential_env: str = ""
+    direct_connection: bool = False
 
     def __post_init__(self):
         if self.provider not in AGENTS:
@@ -82,6 +83,8 @@ class AgentConfig:
             raise ValueError("supports_vision must be a boolean")
         if type(self.use_client_config) is not bool:
             raise ValueError("use_client_config must be a boolean")
+        if type(self.direct_connection) is not bool:
+            raise ValueError("direct_connection must be a boolean")
         if self.cli_profile and (self.provider != "codex" or not self.use_client_config
                 or not re.fullmatch(r"[A-Za-z0-9_-]{1,80}", self.cli_profile)):
             raise ValueError("Codex profile 须为字母、数字、下划线或连字符，并启用客户端配置")
@@ -103,8 +106,10 @@ class AgentConfig:
                 "cli_model": self.cli_model, "supports_vision": self.supports_vision,
                 "timeout_seconds": self.timeout_seconds, "adapter_version": ADAPTER_VERSION,
                 "use_client_config": self.use_client_config, "cli_profile": self.cli_profile,
-                "model_label": self.model_label, "credential_env": self.credential_env,
-                "auth": "official_client", "tool_policy": "no_tools_requested_and_audited",
+                "model_label": self.model_label, "direct_connection":self.direct_connection,
+                "credential_env": "" if self.provider=="claude_code" else self.credential_env,
+                "auth": "claude_subscription" if self.provider=="claude_code" else "official_client", "tool_policy": "no_tools_requested_and_audited",
+                "history_policy": "ephemeral_harness; project_predictions_preserved",
                 "isolation": "fresh_workspace_and_session; not_an_OS_security_boundary"}
 
 
@@ -170,7 +175,7 @@ def find_executable(config):
             candidates += [native/"codebuddy.exe",native/"codebuddy.cmd"]
         found = next((str(p) for p in candidates if p.is_file()),None)
     if not found:
-        if not config.executable and os.name == "nt":
+        if not config.executable:
             found = next((str(path) for path in extra_cli_candidates(config.provider) if path.is_file()),None)
     if not found:
         raise ValueError(f"未找到 {AGENTS[config.provider]['command']}；请安装官方 CLI，或填写可执行文件的完整路径")
@@ -202,6 +207,15 @@ def electron_node_command(path, script):
     return LaunchCommand([str(executable),"--expose-internals",str(entry)],{"ELECTRON_RUN_AS_NODE":"1"})
 
 
+def _node_entry(path):
+    """Recognize extensionless npm bins without executing their shell shims."""
+    if path.suffix.lower() in {".js", ".cjs", ".mjs"}: return True
+    if path.suffix: return False
+    with path.open("rb") as source:
+        header = source.readline(256).rstrip(b"\r\n")
+    return re.fullmatch(rb"#![ \t]*(?:/usr/bin/env[ \t]+node|/(?:[^ \t/]+/)*node)[ \t]*", header) is not None
+
+
 def executable_command(path, *, depth=0):
     """Unwrap Node launchers so question text never passes through cmd.exe."""
     suffix = path.suffix.lower()
@@ -230,16 +244,22 @@ def executable_command(path, *, depth=0):
         if node_path is None and (path.parent / "node.exe").is_file(): node_path = str(path.parent / "node.exe")
         # Standard npm shims and the official installer's relative Node launcher.
         references = re.findall(r'(?:%~dp0|%dp0%|\$basedir|\$PSScriptRoot)[\\/]?([^"\r\n]*?\.(?:cjs|mjs|js|exe))', script, re.I)
-        for reference in references:
+        references += re.findall(r'''(?:%~dp0|%dp0%|\$basedir|\$PSScriptRoot)[\\/]?([^"'\r\n]+)(?=["'])''', script, re.I)
+        for reference in dict.fromkeys(references):
             candidate = (path.parent / reference.replace("\\", "/")).resolve()
             if candidate.is_file() and candidate != path and candidate.name.lower() not in {"node.exe", "node"}:
-                if node_path and candidate.suffix.lower() in {".js", ".cjs", ".mjs"}:
+                if node_path and _node_entry(candidate):
                     return [node_path, str(candidate)]
                 return executable_command(candidate, depth=depth+1)
         raise ValueError("无法安全解析 CLI 启动器；请填写官方 .exe 或 .js/.cjs 入口，不能填写整条 shell 命令")
-    if suffix in {".js", ".cjs", ".mjs"}:
+    if _node_entry(path):
         node = shutil.which("node")
         if not node:
+            # A verified desktop CLI can use its own Electron Node runtime.
+            if path.name=='codebuddy-lite-wb.mjs' and path.parent.name=='dist' and path.parent.parent.name=='cli' and path.parents[2].name=='app.asar.unpacked':
+                resources=path.parents[3]
+                for binary in (resources.parent/'WorkBuddy.exe',resources.parent/'MacOS/WorkBuddy'):
+                    if binary.is_file():return LaunchCommand([str(binary),str(path)],{'ELECTRON_RUN_AS_NODE':'1'})
             raise ValueError("此 CLI 入口需要 Node.js，请安装官方要求的 Node.js 或使用独立 .exe")
         return [node, str(path)]
     if os.name == "nt" and suffix != ".exe":
@@ -255,7 +275,7 @@ def child_environment(credential_env=""):
                "codex_home", "minimax_data_dir", "mavis_data_dir", "zcode_data_base_dir",
                "zcode_personal_provider_config_file", "http_proxy", "https_proxy", "all_proxy", "no_proxy",
                "ssl_cert_file", "ssl_cert_dir", "node_extra_ca_certs", "zcode_http_proxy", "zcode_no_proxy",
-               "xdg_config_home", "xdg_data_home", "xdg_state_home", "xdg_cache_home", "dsh_home", "kimi_home",
+               "xdg_config_home", "xdg_data_home", "xdg_state_home", "xdg_cache_home", "dsh_home", "kimi_home", "kimi_code_home",
                "qoder_config_dir", "codebuddy_config_dir", "opencode_config_dir"}
     selected = {name.strip().casefold() for name in credential_env.split(",") if name.strip()}
     return {**{k: v for k, v in os.environ.items() if k.lower() in allowed | selected},
@@ -429,12 +449,17 @@ def execution_error(exit_code, stderr, stdout=""):
         if isinstance(node, str):
             try: return unpack(json.loads(node), depth+1)
             except ValueError: return {"message": node}
+        if isinstance(node,list):
+            result={}
+            for item in node:result.update(unpack(item,depth+1))
+            return result
         if not isinstance(node, dict): return {}
         info = {}
         if type(node.get("status")) is int: info["http_status"] = node["status"]
         if isinstance(node.get("code"), str): info["upstream_code"] = node["code"]
-        for key in ("error", "message"):
+        for key in ("error", "message", "errors"):
             if node.get(key): info.update(unpack(node[key], depth+1))
+        if node.get('is_error') is True and node.get('result'):info.update(unpack(node['result'],depth+1))
         return info
 
     candidates = []
@@ -447,7 +472,7 @@ def execution_error(exit_code, stderr, stdout=""):
             try: values.append(json.loads(line))
             except ValueError: pass
     for value in values:
-        if isinstance(value, dict) and (value.get("type") in {"error", "turn.failed", "exec.result"} or value.get("error")):
+        if isinstance(value, dict) and (value.get("type") in {"error", "turn.failed", "exec.result"} or value.get("error") or value.get('is_error') is True):
             candidates.append(unpack(value))
     info = next((v for v in reversed(candidates) if v.get("message")), {})
     message = redact_diagnostic(info.get("message") or stderr.strip() or "官方 CLI 未提供错误详情")
@@ -460,7 +485,7 @@ def execution_error(exit_code, stderr, stdout=""):
     code, text, fatal = "agent_process_failed", "官方 CLI 执行失败，请检查下方错误详情", False
     if upstream in {"model_not_found", "unsupported_model"} or re.search(r"\bmodel\b.{0,200}(not supported|not found|does not exist|unavailable)", lower):
         code, text, fatal = "agent_model_unavailable", "模型 ID 无效或当前账号无权使用；请核对模型调用 ID", True
-    elif status == 401 or any(s in lower for s in ("unauthorized", "not logged", "not authenticated", "login required", "请登录")):
+    elif status == 401 or any(s in lower for s in ("unauthorized", "not logged", "not authenticated", "login required", "authentication required", "please use /login", "client signing requires an api key", "请登录")):
         code, text, fatal = "agent_login_required", "请先在终端运行官方登录命令", True
     elif status == 403:
         code, text, fatal = "agent_access_denied", "当前账号或工作区没有调用权限", True
@@ -468,7 +493,7 @@ def execution_error(exit_code, stderr, stdout=""):
         code, text = "agent_quota_or_rate_limit", "请检查订阅额度，降低并发或稍后续跑"
     elif any(s in lower for s in ("unknown option", "unrecognized", "unexpected argument")):
         code, text, fatal = "agent_cli_version_unsupported", "CLI 缺少要求的参数，请更新官方 CLI", True
-    elif any(s in lower for s in ("access is denied", "permission denied", "os error 5", "拒绝访问")):
+    elif any(s in lower for s in ("access is denied", "permission denied", "os error 5", "eperm", "eacces", "拒绝访问")):
         code, text, fatal = "agent_local_permission_denied", "CLI 本地启动被权限限制，请检查本地执行环境", True
     elif status == 400:
         code, text, fatal = "agent_invalid_request", "模型请求参数有误", True
@@ -478,7 +503,8 @@ def execution_error(exit_code, stderr, stdout=""):
         code, text = "agent_connection_error", "官方 CLI 的连接在回答完成前中断，请降低并发或稍后续跑"
     details = {"exit_code": exit_code, "http_status": status,
                "upstream_code": redact_diagnostic(upstream), "message": message}
-    return APIError(f"{code}：{text}（exit {exit_code}）\n{message}", code=code, fatal=fatal, details=details)
+    evidence=f'exit {exit_code}' if exit_code else 'CLI error event'
+    return APIError(f"{code}：{text}（{evidence}）\n{message}", code=code, fatal=fatal, details=details)
 
 
 def cli_error(code, diagnostic):
@@ -618,28 +644,34 @@ class AgentClient:
         self._probe_lock = threading.Lock()
         self._probe_result = None
         self._probe_error = None
-        if any(name.strip() not in os.environ for name in config.credential_env.split(",") if name.strip()):
+        self._subscription_result = None
+        if config.provider!="claude_code" and any(name.strip() not in os.environ for name in config.credential_env.split(",") if name.strip()):
             raise ValueError("指定的凭据环境变量不存在；只填变量名，请先在启动本程序的环境中设置，再重启服务")
         self.path = find_executable(config)
         self.command = executable_command(self.path)
-        self.launch_environment = dict(getattr(self.command,"environment",{}))
-        code, out, err = execute([*self.command, "--version"], cwd=tempfile.gettempdir(), timeout=15,environment=self.launch_environment)
-        if code: raise ValueError(cli_error(code, err + out))
-        self.version = out.strip()[:160]
+        self.launch_environment = {**getattr(self.command,"environment",{}),**cli_environment(config.provider,self.path)}
         self.capabilities = set()
-        if config.provider in SPECS:
-            help_commands = [["--help"], SPECS[config.provider].get("help_args",["--help"])]
-            for help_args in {tuple(args) for args in help_commands}:
-                code, help_out, help_err = execute([*self.command,*help_args],cwd=tempfile.gettempdir(),timeout=15,environment=self.launch_environment)
-                if code: raise ValueError("无法读取 Harness 帮助参数，请确认 CLI 版本与安装入口")
+        with InvocationRuntime(config) as runtime:
+            launch={**self.launch_environment,**runtime.environment}
+            code,out,err=execute([*self.command,"--version"],cwd=runtime.work,timeout=15,environment=launch)
+            if code:raise ValueError(cli_error(code,err+out))
+            self.version=(out.strip() or err.strip()).splitlines()[0][:160] if (out.strip() or err.strip()) else "unknown"
+            native_help={"codex":["exec","--help"],"minimax_code":["exec","--help"]}
+            help_commands = [["--help"], SPECS.get(config.provider,{}).get("help_args",native_help.get(config.provider,["--help"]))]
+            successes=0
+            for help_args in dict.fromkeys(tuple(args) for args in help_commands):
+                code, help_out, help_err = execute([*self.command,*help_args],cwd=runtime.work,timeout=15,environment=launch)
+                if code:continue
+                successes+=1
                 self.capabilities.update(re.findall(r"--[A-Za-z][A-Za-z0-9-]*",help_out+help_err))
+            if not successes:raise ValueError("无法读取 Harness 帮助参数，请确认 CLI 版本与安装入口")
             # Build only. This validates documented flags without a model request.
-            with tempfile.TemporaryDirectory(prefix="galbench-check-") as directory:
-                root=Path(directory)
-                spec=SPECS[config.provider];module=adapter(config.provider)
-                if spec.get("acp_all") or config.supports_vision and spec.get("acp_images"):
-                    module.acp_invocation(config.provider,config,root,self.capabilities)
-                else: module.invocation(config.provider,config,root,"preflight",[],self.capabilities)
+            root=runtime.work;spec=SPECS.get(config.provider,{})
+            module=adapter(config.provider) if config.provider in SPECS else None
+            if spec.get("acp_all") or config.supports_vision and spec.get("acp_images"):
+                module.acp_invocation(config.provider,config,root,self.capabilities)
+            elif module:module.invocation(config.provider,config,root,"preflight",[],self.capabilities)
+            else:self._invocation(root,"preflight",[])
 
     def info(self):
         info = {"provider": self.config.provider, "executable": str(self.path), "version": self.version,
@@ -647,6 +679,8 @@ class AgentClient:
                 "capabilities":sorted(self.capabilities)}
         if self.launch_environment.get("ELECTRON_RUN_AS_NODE")=="1":info["launch_runtime"]="electron_node"
         if self._probe_result is not None:info["runtime_check"]=self._probe_result
+        if self._subscription_result is not None:info["authentication"]=self._subscription_result
+        info["history_policy"]="ephemeral_harness; project_predictions_preserved"
         return info
 
     def check_runtime(self, *, require_images=False):
@@ -655,17 +689,34 @@ class AgentClient:
         Shared by concurrent answer/judge jobs. Startup errors prevent broken
         calls; an absent image declaration is only an advisory for the tester.
         """
+        if self.config.provider=="claude_code":
+            from .harnesses.claude_kimi import subscription_args
+            with self._probe_lock:
+                if self._subscription_result is None:
+                    with InvocationRuntime(self.config) as runtime:
+                        args=subscription_args(runtime.work,self.capabilities)
+                        code,out,err=execute([*self.command,*args,"auth","status"],cwd=runtime.work,
+                            timeout=min(30,self.config.timeout_seconds),environment={**self.launch_environment,**runtime.environment})
+                        try:status=json.loads(out)
+                        except ValueError:status={}
+                        if code or status.get("loggedIn") is not True or status.get("authMethod") not in {"claude.ai","claudeai"}:
+                            raise APIError("agent_subscription_required：Claude Code 未确认订阅登录。请用桌面 Code 相同的 Claude 订阅账号执行 claude auth login，再检查连接；不会改用 API Key 或自定义网关。",code="agent_subscription_required",fatal=True)
+                        provider=status.get("apiProvider")
+                        if provider not in {None,"firstParty","anthropic"}:
+                            raise APIError("agent_subscription_required：Claude Code 当前指向第三方服务，请登录官方订阅账号；本次不会发送题目。",code="agent_subscription_required",fatal=True)
+                        self._subscription_result={"method":"claude.ai","verified":True}
+            return self.info()
         if self.config.provider != "deepseek_harness":return self.info()
         from .acp import complete_acp, image_capability_warnings
         with self._probe_lock:
             if self._probe_error is not None:raise self._probe_error
             if self._probe_result is None:
                 try:
-                    with tempfile.TemporaryDirectory(prefix="galbench-acp-check-") as directory:
-                        root=Path(directory)
+                    with InvocationRuntime(self.config) as runtime:
+                        root=runtime.work
                         args,environment=adapter(self.config.provider).acp_invocation(self.config.provider,self.config,root,self.capabilities)
                         self._probe_result=complete_acp([*self.command,*args],self.config,root,"",[],
-                            {**self.launch_environment,**environment},probe=True,require_images=require_images)
+                            {**self.launch_environment,**runtime.environment,**environment},probe=True,require_images=require_images)
                         if self.config.cli_model:self._probe_result["configured_route"]=self.config.cli_model
                 except APIError as exc:
                     exc.fatal=True;self._probe_error=exc
@@ -680,15 +731,15 @@ class AgentClient:
         started = time.monotonic()
         # Only public messages/images enter this directory. A fresh directory does
         # not itself deny OS file access; CLI scores use a separate protocol.
-        with tempfile.TemporaryDirectory(prefix="galbench-agent-") as directory:
-            root = Path(directory)
+        with InvocationRuntime(self.config) as runtime:
+            root = runtime.work
             prompt, images = self._input(messages, root)
             self.check_runtime(require_images=bool(images))
             spec = SPECS.get(self.config.provider,{})
             if spec.get("acp_all") or images and spec.get("acp_images"):
                 from .acp import complete_acp
                 args, environment = adapter(self.config.provider).acp_invocation(self.config.provider,self.config,root,self.capabilities)
-                response = complete_acp([*self.command,*args],self.config,root,prompt,images,{**self.launch_environment,**environment})
+                response = complete_acp([*self.command,*args],self.config,root,prompt,images,{**self.launch_environment,**runtime.environment,**environment})
                 err = ""
                 policy = spec.get("acp_tool_policy","disabled_and_audited")
             else:
@@ -698,16 +749,21 @@ class AgentClient:
                     command = [*self.command,*args]
                 else: command, stdin = self._invocation(root, prompt, images)
                 code, out, err = execute(command, cwd=root, timeout=self.config.timeout_seconds, stdin=stdin,
-                                         credential_env=self.config.credential_env,environment={**self.launch_environment,**environment})
+                                         credential_env="" if self.config.provider=="claude_code" else self.config.credential_env,environment={**self.launch_environment,**runtime.environment,**environment})
+                if self.config.provider=='workbuddy' and "Right-hand side of 'instanceof' is not callable" in err and 'setProxy' in err:
+                    raise APIError('agent_proxy_runtime_error：WorkBuddy 内置 CLI 的代理代码异常。请更新官方客户端或改用独立 CodeBuddy CLI；网络允许时也可勾选“直连网络”重试。',
+                        code='agent_proxy_runtime_error',fatal=True,details={'provider':'workbuddy','transport_phase':'proxy_initialization','stderr_preview':redact_diagnostic(err[-2000:])})
                 if code: raise execution_error(code, err, out)
                 try:response = parse_cli_output(self.config.provider, out)
                 except APIError as exc:
                     if err:exc.details={**(exc.details or {}),"stderr_preview":redact_diagnostic(err[-6000:])}
                     raise
                 policy = "disabled_and_audited"
+        if not runtime.cleaned:response.setdefault("warnings",[]).append("Harness 临时文件尚被占用，已排队清理；答卷已保存在项目中。")
         return {**response, "elapsed_seconds": time.monotonic() - started, "http_attempts": 0,
                 "agent": {"provider": self.config.provider, "version": self.version,
                           "adapter_version": ADAPTER_VERSION, "fresh_session": True,
+                          "runtime":runtime.metadata(),
                           "completion_evidence":response.get("completion_evidence","cli_success_result"),
                           "stderr_present": bool(err), "tool_policy": policy}}
 
@@ -737,17 +793,29 @@ class AgentClient:
 
     def _invocation(self, root, prompt, images):
         provider = self.config.provider
+        caps=getattr(self,"capabilities",None)
+        def require(*flags):
+            if caps is not None and (missing:=set(flags)-caps):
+                raise ValueError(f"{AGENTS[provider]['label']} CLI 缺少参数 {', '.join(sorted(missing))}，请更新官方 CLI")
         if provider == "codex":
+            require("--json","--ephemeral","--sandbox","--skip-git-repo-check")
+            if not self.config.use_client_config:require('--ignore-user-config')
+            if self.config.cli_model:require('--model')
+            if self.config.supports_vision or images:require('--image')
             args = ["exec", "--json", "--ephemeral", "--skip-git-repo-check",
                     "--sandbox", "read-only", "--color", "never", "-C", str(root),
                     "-c", 'web_search="disabled"', "-c", "project_doc_max_bytes=0",
-                    "--disable", "shell_tool", "--disable", "unified_exec"]
-            if not self.config.use_client_config: args += ["--ignore-user-config"]
+                    "--disable", "shell_tool", "--disable", "unified_exec",
+                    "-c", 'history.persistence="none"',"-c",'log_dir='+json.dumps(str(root/"logs"))]
+            if not self.config.use_client_config:args += ["--ignore-user-config"]
             if self.config.cli_profile: args += ["--profile", self.config.cli_profile]
             if self.config.cli_model: args += ["--model", self.config.cli_model]
             for path in images: args += ["--image", str(path)]
             return [*self.command, *args, "-"], prompt
         if provider == "minimax_code":
+            require("--input","--mode","--output-format","--cwd")
+            if self.config.cli_model:require('--model')
+            if self.config.supports_vision or images:require('--file')
             args = ["exec", "--input", "-", "--mode", "lightweight", "--output-format", "stream-json",
                     "--cwd", str(root), "--permission", "smart"]
             if self.config.cli_model: args += ["--model", self.config.cli_model]
@@ -759,9 +827,17 @@ class AgentClient:
             "skills": {"enabled": False}, "hooks": {"enabled": False}}), encoding="utf-8")
         blocked = ("Bash Read Write Edit MultiEdit Glob Grep WebSearch WebFetch BrowserUse ComputerUse "
                    "Agent Task Skill AskUserQuestion EnterPlanMode ExitPlanMode NotebookEdit TodoWrite")
-        args = ["--prompt", prompt, "--cwd", str(root), "--mode", "plan", "--disallowed-tools", blocked,
-                "--workflow-mode", "disabled", "--output-format", "stream-json", "--no-color"]
+        require("--prompt","--cwd","--mode")
+        tool_flag="--disallowed-tools" if caps is None or "--disallowed-tools" in caps else "--disallowedTools"
+        require(tool_flag)
+        args = ["--prompt", prompt, "--cwd", str(root), "--mode", "plan", tool_flag, blocked]
+        if caps is None or "--workflow-mode" in caps:args += ["--workflow-mode","disabled"]
+        if caps is None or "--output-format" in caps:args += ["--output-format","stream-json"]
+        elif "--json" in caps:args.append("--json")
+        else:raise ValueError("ZCode CLI 未提供 JSON 输出方式，请升级官方 CLI")
+        if caps is None or "--no-color" in caps:args.append("--no-color")
+        if self.config.supports_vision or images:require("--attach")
         for path in images: args += ["--attach", str(path)]
-        if os.name == "nt" and len(subprocess.list2cmdline([*self.command, *args])) > 30000:
-            raise ValueError("ZCode 的 --prompt 超过 Windows 命令行长度上限；请缩短片段或改用 API/Codex/MiniMax 通道")
+        if os.name == "nt" and len(subprocess.list2cmdline([*self.command, *args]).encode('utf-16-le'))//2 > 30000:
+            raise ValueError("ZCode 的 --prompt 超过 Windows 命令行长度上限；请缩短片段或使用支持 stdin 的 Harness")
         return [*self.command, *args], ""

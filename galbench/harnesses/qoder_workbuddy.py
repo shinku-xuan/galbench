@@ -76,6 +76,7 @@ def invocation(provider, config, root: Path, prompt: str, images: list[Path], ca
     args += ["--input-format", "stream-json", "--settings", json.dumps({
         "disableAllHooks": True, "memory": {"enabled": False}, "promptSuggestionEnabled": False,
     }, separators=(",", ":"))]
+    if "--verbose" in capabilities:args.append("--verbose")
     content = [{"type": "text", "text": prompt}]
     for path in images:
         mime = mimetypes.guess_type(str(path))[0]
@@ -116,15 +117,20 @@ def parse(provider, events: list[dict]):
         raise APIError("agent_invalid_output：缺少有效的 CLI JSON 事件")
     if any(tool_event(e) for e in events):
         raise APIError("agent_tool_use_detected：检测到工具调用，本题不纳入知识评分")
+    if any(e.get('type') in {'error','turn.failed'} for e in events):
+        error=execution_error(0,'',json.dumps(events,ensure_ascii=False))
+        available=_available_text(events)
+        if available:error.details['available_answer']=available
+        raise error
     results = [e for e in events if e.get("type") == "result"]
     if len(results) != 1:
         raise APIError("agent_incomplete：CLI 未返回唯一的最终 result，本题不能自动评分")
     result = results[0]
     if (result.get("subtype") != "success" or result.get("is_error") is not False
             or any(e.get("type") in {"error", "turn.failed"} for e in events)):
-        error = execution_error(0, "", json.dumps(events, ensure_ascii=False))
         available = _available_text(events)
-        if available:
+        error = execution_error(0, available or "", json.dumps(events, ensure_ascii=False))
+        if available and error.code!='agent_login_required':
             error.details["available_answer"] = available
         raise error
     text = result.get("result")

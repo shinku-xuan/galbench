@@ -84,8 +84,8 @@ python -m galbench web --open
 | --- | --- | --- |
 | [Codex](https://github.com/openai/codex) | `codex` | 支持模型 ID 覆盖，以及沿用客户端配置和 profile；可传入原生图片 |
 | [MiniMax Code](https://github.com/MiniMax-AI/minimax-code) | `mcode` | 支持 `provider/model` 路线与图片附件；使用客户端配置的认证方式 |
-| [ZCode](https://github.com/zai-org/ZCode) | `zcode` | 先在客户端选好模型；本项目不提供其模型覆盖参数；支持图片附件 |
-| [Claude Code](https://code.claude.com/docs/en/cli-reference) | `claude` | 使用支持 `--safe-mode` 的兼容版本；图片通过原生消息块传入 |
+| [ZCode](https://github.com/zai-org/ZCode) | `zcode` | 先在客户端选好模型；自动兼容 `--json` / `--output-format`，补齐桌面内置模型目录路径；支持图片附件 |
+| [Claude Code](https://code.claude.com/docs/en/cli-reference) | `claude` | 使用官方 Claude 订阅认证；忽略用户、项目的 API 路由和默认模型配置，发题前验证登录来源；图片通过原生消息块传入 |
 | [Kimi Code](https://moonshotai.github.io/kimi-code/en/reference/kimi-command.html) | `kimi` | 文本支持新旧 Print 方式；识图需新版 ACP 通道，并先在客户端选模型、将模型调用 ID 留空 |
 | [DeepSeek Harness](https://deepseek-harness.github.io/deepseek-harness/en/guide/quickstart) | `dsh` | 通过 ACP 调用；模型 ID 可填已配置的 `provider/model`，留空沿用 ACP profile；支持按确认尝试识图 |
 | [OpenCode](https://dev.opencode.ai/v2/docs/cli/commands/) | `opencode` | 支持 `provider/model` 和图片附件；需具备本项目预检要求的私有运行参数 |
@@ -94,7 +94,15 @@ python -m galbench web --open
 
 CLI 发现与版本、参数预检不代表已验证登录、额度或实际模型能力。桌面应用已安装，也不一定带有可用 CLI；安装与认证要求以各 Harness 官方说明为准。
 
-订阅权益或第三方 API 计费由所选 Harness 及提供商决定，galbench 不转换账户权益。需要传递额外凭据时，在客户端或启动服务前的环境变量中设置密钥；网页只填写**环境变量名**，不填写密钥值。
+Claude Code 是例外：点击检查时会验证 `claude auth status` 返回的是 Claude 订阅登录；仅登录桌面聊天不一定完成 CLI 认证，请先用相同订阅账号执行 `claude auth login`。此通道不接收额外 API 凭据；模型 ID 留空使用订阅默认模型，也可指定订阅允许的模型。
+
+其他 Harness 的订阅权益或第三方 API 计费由所选客户端及提供商决定，galbench 不转换账户权益。需要传递额外凭据时，在客户端或启动服务前的环境变量中设置密钥；网页只填写**环境变量名**，不填写密钥值。
+
+默认继承启动程序的网络代理。客户端出现代理兼容错误时，可更新官方 CLI，或在网络允许的情况下勾选「直连网络（不使用环境代理）」；该选项只作用于对应 Harness 子进程，不修改系统代理，也不会自动重试请求。WorkBuddy 桌面内置 CLI 和独立 CodeBuddy CLI 的登录状态需分别确认。完整 CodeBuddy CLI 可运行 `codebuddy` 后通过 `/login` 登录；部分桌面内置精简包没有终端登录界面，不能直接使用这一登录方式，可改选已登录的独立 CLI。Windows 支持填写官方 npm 的 `codebuddy.cmd` / `codebuddy.ps1`，以及带 Node shebang 的无后缀入口；只填路径，不填整条命令。
+
+每道题使用独立工作目录与新会话。支持原生无历史参数的客户端关闭会话保存；其他客户端在临时数据目录中运行，仅复制必要认证与模型配置，结束时清理本次文件。ZCode 的 SQLite、OpenCode 的会话数据及 ACP 运行文件均随本次目录清理。临时目录位于已忽略的 `runs/.harness-tmp/`，文件占用导致的清理失败会记录到答卷，并在后续调用重试；进程意外退出留下的自有目录也会在后续调用回收。
+
+**答卷与评测历史仍保存在项目中。** galbench 不清扫用户已有 Harness 历史，也不删除客户端公共缓存、账户数据或无法按本次调用区分的诊断文件。临时工作目录不是操作系统安全沙箱。
 
 ## 查看结果与复盘
 

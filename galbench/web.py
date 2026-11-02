@@ -41,10 +41,10 @@ def model_settings(value, label):
     if not isinstance(value, dict): raise ValueError(f"请填写{label}的 Agent 配置")
     provider = value.get("provider")
     if provider not in AGENTS: raise ValueError("直接 API 接口已移除，请选择 Agent Harness")
-    if set(value)-{"provider","executable","cli_model","supports_vision","use_client_config","cli_profile","model_label","credential_env","timeout_seconds"}:
+    if set(value)-{"provider","executable","cli_model","supports_vision","use_client_config","cli_profile","model_label","credential_env","timeout_seconds","direct_connection"}:
         raise ValueError("不再接收直接 API 配置或密钥；请在 Agent 客户端配置提供商和凭据")
     fields = {key:value[key] for key in ("executable","cli_model","supports_vision","use_client_config",
-        "cli_profile","model_label","credential_env") if key in value}
+        "cli_profile","model_label","credential_env","direct_connection") if key in value}
     fields["timeout_seconds"] = integer(value.get("timeout_seconds",600),"超时秒数",10,1800)
     config = AgentConfig(provider,**fields)
     try: create_client(config)  # Version/help and command construction only, no model request.
@@ -476,7 +476,7 @@ class WebApp:
             if settings.get("provider") not in AGENTS:
                 raise ValueError("此存档使用已移除的 API 裁判，请用 Agent 裁判重新评测")
             judge = AgentConfig(**{k:settings[k] for k in ("provider","executable","cli_model","supports_vision","timeout_seconds",
-                "use_client_config","cli_profile","model_label","credential_env") if k in settings})
+                "use_client_config","cli_profile","model_label","credential_env","direct_connection") if k in settings})
             if provided.public_dict() != judge.public_dict():
                 raise ValueError("补判须沿用原裁判的 Harness、模型与运行配置")
             if manifest.get("judge_transport") != create_client(judge).info():
@@ -606,10 +606,10 @@ def make_server(app, port=8765):
                 if self.path == "/api/clients/check":
                     if not isinstance(payload, dict): raise ValueError("请求必须是 JSON 对象")
                     if payload.get("provider") not in AGENTS:raise ValueError("请选择受支持的 Agent Harness")
-                    if set(payload)-{"provider","executable","cli_model","supports_vision","timeout_seconds","use_client_config","cli_profile","model_label","credential_env"}:
+                    if set(payload)-{"provider","executable","cli_model","supports_vision","timeout_seconds","use_client_config","cli_profile","model_label","credential_env","direct_connection"}:
                         raise ValueError("此入口只接收 Agent 配置，不接收直接 API 配置或密钥")
                     config = AgentConfig(**{k:payload[k] for k in ("provider","executable","cli_model","supports_vision","timeout_seconds",
-                        "use_client_config","cli_profile","model_label","credential_env") if k in payload})
+                        "use_client_config","cli_profile","model_label","credential_env","direct_connection") if k in payload})
                     return self.json(AgentClient(config).check_runtime(require_images=config.supports_vision))
                 return self.json(app.start(payload), 202)
             except BusyError as exc:

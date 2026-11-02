@@ -23,7 +23,7 @@ SPECS = {
         "label": "Claude Code", "command": "claude", "login": "claude auth login",
         "docs": "https://code.claude.com/docs/en/cli-reference",
         "model_override": True, "image_input": True,
-        "notes": "使用支持 --safe-mode 的 CLI，保留订阅登录；禁用工具、MCP、持久会话。图片通过 JSON stdin 原生传入，不使用 Read 工具。",
+        "notes": "统一使用 Claude 订阅登录，忽略用户/项目里的 API 路由和默认模型；发题前检查认证来源。兼容有无 --safe-mode 的 CLI，禁用工具、MCP 和对话保存。仅登录桌面聊天而未登录 Claude Code 时，请先执行 claude auth login。",
     },
     "kimi_code": {
         "label": "Kimi Code", "command": "kimi", "login": "kimi login",
@@ -41,18 +41,28 @@ def _require(capabilities, *flags):
         raise ValueError("当前 Harness CLI 缺少必要参数：" + ", ".join(missing) + "；请升级官方 CLI 或选择其他 Harness")
 
 
+def subscription_args(root,capabilities):
+    _require(capabilities,"--setting-sources","--settings")
+    settings=Path(root)/"galbench-claude-subscription.json"
+    settings.write_text(json.dumps({"forceLoginMethod":"claudeai","disableAllHooks":True,
+        "autoMemoryEnabled":False}),encoding="utf-8")
+    return ["--setting-sources","","--settings",str(settings)]
+
+
 def invocation(provider, config, root, prompt, images, capabilities):
     root = Path(root)
     if provider == "claude_code":
         _require(capabilities, "--print", "--input-format", "--output-format", "--verbose",
                  "--tools", "--disallowedTools", "--strict-mcp-config", "--mcp-config",
-                 "--no-session-persistence", "--safe-mode")
+                 "--no-session-persistence")
         mcp = root / "galbench-empty-mcp.json"
         mcp.write_text('{"mcpServers":{}}', encoding="utf-8")
-        args = ["--print", "--safe-mode", "--input-format", "stream-json",
+        args = ["--print", *subscription_args(root,capabilities), "--input-format", "stream-json",
                 "--output-format", "stream-json", "--verbose", "--tools", "",
                 "--disallowedTools", "*", "--strict-mcp-config", "--mcp-config", str(mcp),
                 "--no-session-persistence"]
+        if "--safe-mode" in capabilities:args.append("--safe-mode")
+        if "--debug-file" in capabilities:args += ["--debug-file",str(root/"claude-debug.log")]
         if config.cli_model:
             _require(capabilities, "--model")
             args += ["--model", config.cli_model]
@@ -67,7 +77,7 @@ def invocation(provider, config, root, prompt, images, capabilities):
             content.append({"type":"image", "source":{"type":"base64", "media_type":mime,
                 "data":base64.b64encode(path.read_bytes()).decode("ascii")}})
         stdin = json.dumps({"type":"user", "message":{"role":"user", "content":content}}, ensure_ascii=False) + "\n"
-        return args, stdin, {}
+        return args, stdin, {"CLAUDE_CODE_SKIP_PROMPT_HISTORY":"1","CLAUDE_CODE_DISABLE_AUTO_MEMORY":"1"}
     if provider != "kimi_code":
         raise ValueError("Unsupported Harness")
     if images:
