@@ -5,13 +5,15 @@ import {voxelCastData} from './voxel-cast-data.js';
 export function voxelCastModel(kind){
   if(!Object.hasOwn(voxelCastData,kind))return null;
   const record=voxelCastData[kind];
-  const [width,height,depth]=record.size,raw=atob(record.data),grid=new Uint8Array(width*height*depth);
+  const [width,height,depth]=record.size,raw=atob(record.data),paletteBytes=record.paletteBytes??1,stride=3+paletteBytes;
+  const grid=paletteBytes===2?new Uint16Array(width*height*depth):new Uint8Array(width*height*depth);
+  const colorAt=i=>raw.charCodeAt(i+3)+(paletteBytes===2?raw.charCodeAt(i+4)*256:0);
   const index=(x,y,z)=>x+width*(z+depth*y);
   const at=(x,y,z)=>x<0||y<0||z<0||x>=width||y>=height||z>=depth?0:grid[index(x,y,z)];
-  for(let i=0;i<raw.length;i+=4)grid[index(raw.charCodeAt(i),raw.charCodeAt(i+1),raw.charCodeAt(i+2))]=raw.charCodeAt(i+3);
+  for(let i=0;i<raw.length;i+=stride)grid[index(raw.charCodeAt(i),raw.charCodeAt(i+1),raw.charCodeAt(i+2))]=colorAt(i);
   const faces=[],min=[Infinity,Infinity,Infinity],max=[-Infinity,-Infinity,-Infinity],levels=[.55,.72,.86,1];
-  for(let i=0;i<raw.length;i+=4){
-    const xyz=[raw.charCodeAt(i),raw.charCodeAt(i+1),raw.charCodeAt(i+2)],color=record.palette[raw.charCodeAt(i+3)];
+  for(let i=0;i<raw.length;i+=stride){
+    const xyz=[raw.charCodeAt(i),raw.charCodeAt(i+1),raw.charCodeAt(i+2)],color=record.palette[colorAt(i)];
     xyz.forEach((v,j)=>{min[j]=Math.min(min[j],v-record.origin[j]);max[j]=Math.max(max[j],v+1-record.origin[j]);});
     for(let axis=0;axis<3;axis++)for(const sign of [-1,1]){
       const outside=xyz.slice();outside[axis]+=sign;if(at(...outside))continue;
@@ -27,5 +29,5 @@ export function voxelCastModel(kind){
       faces.push({normal,color,vertices,ao,diagonal:ao[0]+ao[2]<ao[1]+ao[3]});
     }
   }
-  return {kind,voxels:raw.length/4,voxelSize:1,faces,previewFaces:faces,bounds:{min,max},renderStyle:'pixel',aoStrength:record.aoStrength??1,gridStrength:record.gridStrength??1};
+  return {kind,voxels:raw.length/stride,voxelSize:1,faces,previewFaces:faces,bounds:{min,max},renderStyle:'pixel',aoStrength:record.aoStrength??1,gridStrength:record.gridStrength??1};
 }

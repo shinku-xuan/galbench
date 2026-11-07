@@ -1,6 +1,6 @@
 {
   "schema_version": "galbench-third-party-assets-1.0",
-  "reviewed_at": "2026-11-02",
+  "reviewed_at": "2026-11-07",
   "scope": "Current distributed dev-v2.0, spec/v2.0, temporary spec/stability-v2.0 subset and web assets; no raw upstream script dumps, development files or Harness binaries.",
   "project_code_license": "MIT",
   "project_code_license_file": "LICENSE",
@@ -28375,7 +28375,7 @@
     "path": "galbench/static/voxel-models.js",
     "sha256": "5d63fdbe8365dbfa2e0162498df42c3612eba06ad8240f9136c271097f762ec8",
     "sha256_mode": "git_lf",
-    "implementation_status": "implemented_imported_nine_characters",
+    "implementation_status": "implemented_imported_eleven_characters",
     "implemented_kinds": [
       "deepseek",
       "gpt",
@@ -28385,7 +28385,9 @@
       "gemini",
       "minimax",
       "glm",
-      "qwen"
+      "qwen",
+      "muse",
+      "seed"
     ],
     "planned_reference_characters": [
       "deepseek",
@@ -28396,10 +28398,12 @@
       "gemini",
       "minimax",
       "glm",
-      "qwen"
+      "qwen",
+      "muse",
+      "seed"
     ],
     "local_reference_images_bundled": false,
-    "rights_note": "DeepSeek, GPT, Claude, Grok, Kimi, Gemini, MiniMax, GLM and Qwen voxel coordinates and palettes extracted from the user-supplied feiyu_viewer.html, gpt_viewer.html, kexiaojie_viewer.html, gxiaomei_viewer.html, kmiss_viewer.html, hajimi_viewer.html, mi_viewer.html, galama_viewer.html and qwen_viewer.html respectively. Original authors and redistribution permissions remain unverified; these supplied model data are excluded from the root MIT license. Reference character-design and brand rights remain separate. No reference images, textures, original viewer scripts or personal source paths are distributed.",
+    "rights_note": "Eleven character voxel assets extracted from user-supplied model files. The first nine preserve their supplied packed coordinates and palettes. Muse and Seed start from static scale=1 grids of the supplied procedural builders and are restyled to match the other cast models: chibi downsampling to 98 voxels tall, flat palettes of about 50 colours and exterior surface voxels only; the builders, original viewers, animation code and private source paths are not distributed. Seed retains open-eye colors without blink replacement data or decorative stars. All models use the project cube-surface renderer; source rounded-cube viewer geometry is not included. Original authors and redistribution permissions remain unverified; model data are excluded from the root MIT license. Reference character-design and brand rights remain separate.",
     "character_voxel_sizes": {
       "deepseek": 1,
       "gpt": 1,
@@ -28409,17 +28413,19 @@
       "gemini": 1,
       "minimax": 1,
       "glm": 1,
-      "qwen": 1
+      "qwen": 1,
+      "muse": 1,
+      "seed": 1
     },
     "supporting_files": [
       {
         "path": "galbench/static/voxel-cast.js",
-        "sha256": "9308f9a1fd4478020cc735c8e09cfc7ce2046f2ad8b40e3de452105515bef1ed",
+        "sha256": "0b9cdadee06c5d9798341d28b9d832f9e8ffc73ebed3b31d21547c2ca98a93d8",
         "sha256_mode": "git_lf"
       },
       {
         "path": "galbench/static/voxel-cast-data.js",
-        "sha256": "2f1bdfbb5852f0e241418c91d70fe19c957325015185e28aadfd7e210ffb8c88",
+        "sha256": "ffa9fbd6667a247abc2abab3b633c71c5e5db46c157fabca6a0adde383d688e9",
         "sha256_mode": "git_lf"
       },
       {
@@ -28591,6 +28597,64 @@
           "bundled": false
         },
         "modification": "Only x,y,z,palette-index voxel records and palette colors extracted. Axes normalized to y-up/z-front; podium origin uses the supplied coordinate metadata. Original geometry and palette preserved. Source viewer scripts and UI excluded.",
+        "author": "unverified",
+        "redistribution_status": "source_recorded_permission_pending",
+        "root_mit_license_applies": false
+      },
+      "muse": {
+        "geometry_origin": "user_provided_procedural_builder",
+        "pose": "standing",
+        "voxel_count": 20417,
+        "surface_voxel_count": 20417,
+        "source_document": {
+          "name": "alpaca_girl.js",
+          "sha256": "769349e8c0d7320d4569226aff36fc2ac684eac78aa15b96456504d353e5f1e5",
+          "bundled": false
+        },
+        "source_viewer": {
+          "name": "index.html",
+          "sha256": "a51cab55c58443f7bfa6dbbda8f8ab63bdcd9da9b063e99bbba19e266dc2908b",
+          "bundled": false
+        },
+        "build_options": {
+          "scale": 1,
+          "restyle_height": 98,
+          "restyle_body_squash": 0.8
+        },
+        "palette_colors": 50,
+        "palette_index_bytes": 1,
+        "static_state": "default_pose",
+        "animation_data_bundled": false,
+        "modification": "Restyled to match the other cast models: built from the static scale=1 grid (131 voxels tall), downsampled to 98 voxels tall with the body below the chin squashed to 0.8x for chibi proportions (head scale 0.861), pale tones given deeper cream shading, palette quantised to 50 flat colours, exterior surface voxels only, default grid and ambient-occlusion shading. Feet aligned. No source builder, viewer scripts, blink replacements, decorative stars or camera animation bundled.",
+        "author": "unverified",
+        "redistribution_status": "source_recorded_permission_pending",
+        "root_mit_license_applies": false
+      },
+      "seed": {
+        "geometry_origin": "user_provided_procedural_builder",
+        "pose": "standing",
+        "voxel_count": 13356,
+        "surface_voxel_count": 13356,
+        "source_document": {
+          "name": "voxel_girl.js",
+          "sha256": "9d607016577a7ec3a40b0ac42b8d012d2990c9c236adbfbf6aa5d317f5d11ef2",
+          "bundled": false
+        },
+        "source_viewer": {
+          "name": "index.html",
+          "sha256": "89e0e63d5e9917c0425069aeca424d6ecdb7f6a72557a7290cfdee1a0adabc8e",
+          "bundled": false
+        },
+        "build_options": {
+          "scale": 1,
+          "restyle_height": 98,
+          "restyle_body_squash": 0.85
+        },
+        "palette_colors": 54,
+        "palette_index_bytes": 1,
+        "static_state": "open_eyes",
+        "animation_data_bundled": false,
+        "modification": "Restyled to match the other cast models: built from the static scale=1 grid (138 voxels tall), downsampled to 98 voxels tall with the body below the chin squashed to 0.85x for chibi proportions (head scale 0.78), gradient palette quantised to 54 flat colours, exterior surface voxels only, default grid and ambient-occlusion shading. Feet aligned. No source builder, viewer scripts, blink replacements, decorative stars or camera animation bundled.",
         "author": "unverified",
         "redistribution_status": "source_recorded_permission_pending",
         "root_mit_license_applies": false

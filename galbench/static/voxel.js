@@ -1,7 +1,7 @@
 "use strict";
 
 const voxelUI={stages:new Map(),engine:null,loading:null,models:null,current:null,sequence:0,paused:false,ready:false};
-const VOXEL_COLLECTION=["deepseek","gpt","claude","gemini","grok","kimi","minimax","glm","qwen"];
+const VOXEL_COLLECTION=["deepseek","gpt","claude","gemini","grok","kimi","minimax","glm","qwen","muse","seed"];
 const voxelGallery={selected:"deepseek",ready:false};
 function voxelKindFor(row){
   if(!row||["unknown","mixed"].includes(row.model_identity?.source))return "robot";
@@ -15,6 +15,8 @@ function voxelKindFor(row){
   if(/^minimax(?:$|[\s._:-]|\d)/.test(name))return "minimax";
   if(/^glm(?:$|[\s._:-]|\d)/.test(name))return "glm";
   if(/^(?:qwen|qwq|qvq|通义千问|千问)(?:$|[\s._:：-]|\d)/.test(name))return "qwen";
+  if(/^(?:meta[\s_-])?muse(?:spark)?(?:$|[\s._:-]|\d)/.test(name))return "muse";
+  if(/^(?:seed|doubao|豆包)(?:$|[\s._:：-]|\d)/.test(name))return "seed";
   return "robot";
 }
 function registerVoxelStage(stage,rows,{gallery=false,kinds=[]}={}){
@@ -86,7 +88,7 @@ async function loadVoxelEngine(){
   voxelUI.loading=(async()=>{
     voxelUI.models=await import("/voxel-models.js");
     for(const control of voxelUI.stages.values())paintVoxelPreviews(control);
-    if(!["deepseek","gpt","claude","grok","kimi","gemini","minimax","glm","qwen"].some(kind=>voxelUI.models.voxelModel(kind)?.faces?.length))return;
+    if(!VOXEL_COLLECTION.some(kind=>voxelUI.models.voxelModel(kind)?.faces?.length))return;
     const {createVoxelRenderer}=await import("/voxel-renderer.js");
     voxelUI.engine=createVoxelRenderer(ready=>{if(voxelUI.current)setVoxelMode(voxelUI.current,ready?"interactive":"static");if(ready)syncVoxelStage();});
   })().catch(()=>{voxelUI.engine=null;});
@@ -129,6 +131,7 @@ function voxelDiagnostics(){return {loaded:!!voxelUI.models,stages:voxelUI.stage
 function initVoxelGallery(){
   if(voxelGallery.ready)return;voxelGallery.ready=true;
   const dialog=$("voxel-gallery-dialog");
+  $("voxel-gallery-count").textContent=`${VOXEL_COLLECTION.length} 位伙伴`;
   $("open-voxel-gallery").addEventListener("click",()=>{
     if(!$("voxel-gallery-viewer").childElementCount)selectVoxelExhibit(voxelGallery.selected);
     if(!dialog.open)dialog.showModal();
@@ -145,7 +148,7 @@ function initVoxelGallery(){
     card.type="button";card.dataset.voxelExhibit=kind;card.setAttribute("aria-pressed",String(kind===voxelGallery.selected));card.style.setProperty("--exhibit-color",member.color);
     portrait.src=castPortrait(member);portrait.alt="";portrait.loading="lazy";portrait.decoding="async";portrait.draggable=false;
     logo.src=castIcon(member);logo.alt="";logo.width=18;logo.height=18;label.append(logo,node("strong","",member.name));
-    card.append(portrait,label);card.addEventListener("click",()=>{if(kind!==voxelGallery.selected)selectVoxelExhibit(kind);});
+    card.append(portrait,label);card.addEventListener("click",()=>{if(kind!==voxelGallery.selected)selectVoxelExhibit(kind);else revealVoxelExhibit();});
     $("voxel-gallery-roster").append(card);
   }
 }
@@ -159,7 +162,10 @@ function selectVoxelExhibit(kind){
   $("voxel-gallery-name").textContent=member.name;
   $("voxel-gallery-number").textContent=String(VOXEL_COLLECTION.indexOf(kind)+1).padStart(2,"0")+" / "+String(VOXEL_COLLECTION.length).padStart(2,"0");
   for(const card of $("voxel-gallery-roster").children)card.setAttribute("aria-pressed",String(card.dataset.voxelExhibit===kind));
-  const dialog=$("voxel-gallery-dialog");
-  if(dialog.open){actor.focus({preventScroll:true});dialog.scrollTo({top:0,behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"instant":"smooth"});}
+  revealVoxelExhibit();
   syncVoxelStage();
+}
+function revealVoxelExhibit(){
+  const dialog=$("voxel-gallery-dialog");
+  if(dialog.open){$("voxel-gallery-viewer").querySelector(".podium-person")?.focus({preventScroll:true});dialog.scrollTo({top:0,behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"instant":"smooth"});}
 }
